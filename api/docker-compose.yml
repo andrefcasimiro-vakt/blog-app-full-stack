@@ -1,0 +1,15 @@
+version: '3'
+services:
+  database:
+    image: mdillon/postgis:9.6-alpine
+    container_name: quinta-api-database
+    environment:
+      POSTGRES_DB: quinta
+    ports:
+      - 5432:5432
+  rabbitmq:
+    image: rabbitmq:3.6.14-management-alpine
+    container_name: quinta-api-queue
+    ports:
+      - 5672:5672
+      - 8080:15672

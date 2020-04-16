@@ -1,0 +1,26 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Auth {
+  token: String!
+}
+
+type Mutation {
+  login(password: String!, username: String!): Auth!
+  register(password: String!, username: String!): Auth!
+}
+
+type Query {
+  whoAmI: User!
+  findById(id: Float!): User!
+  findByUsername(username: String!): User!
+}
+
+type User {
+  id: ID!
+  username: String!
+  password: String!
+  isActive: Boolean!
+  role: String!
+}
