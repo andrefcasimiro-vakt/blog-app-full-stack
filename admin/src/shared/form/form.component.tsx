@@ -32,7 +32,7 @@ function Form<D, T>({ form }: Props) {
       {form.fields.map((formRow, i) => (
         <FormRow key={i}>
           {formRow.map((formField, j) => (
-            <FormField>
+            <FormField key={j}>
               <GenericField field={formField} register={register} />
             </FormField>
           ))}

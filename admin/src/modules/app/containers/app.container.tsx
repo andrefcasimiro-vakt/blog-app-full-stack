@@ -2,8 +2,7 @@ import React, { Component, ErrorInfo } from 'react'
 import ErrorPage from 'modules/error/error.page'
 import Content from './app.content'
 
-interface Props {
-}
+interface Props {}
 interface State {
   error: Error | null,
 }

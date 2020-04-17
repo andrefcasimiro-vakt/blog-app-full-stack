@@ -1,5 +1,4 @@
 import { RootState } from "core/redux/redux.store"
-import { useSelector } from "react-redux"
 
 // ----------------------------------------------------------------
 // Types & interfaces
@@ -46,8 +45,7 @@ export const authLogout = (): AuthActionTypes => ({
 
 // ----------------------------------------------------------------
 // Selectors
-export const selectCurrentUser = () =>
-  useSelector((state: RootState) => state.auth.currentUser)
+export const selectCurrentUser = (state: RootState) => state.auth.currentUser
 
 // ----------------------------------------------------------------
 // Reducers

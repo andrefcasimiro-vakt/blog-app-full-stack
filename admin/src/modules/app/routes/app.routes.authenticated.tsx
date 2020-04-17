@@ -1,7 +1,9 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Redirect, Route } from 'react-router-dom'
 import { urls } from './app.urls'
 import { RouteProps } from './app.routes.interfaces'
+import { selectCurrentUser } from 'modules/auth/redux/auth.redux'
 
 interface Props extends RouteProps {} 
 
@@ -10,7 +12,7 @@ interface Props extends RouteProps {}
  * If not logged in, will redirect to homepage
  */
 const AuthenticatedRoute = ({ component, ...rest }: Props) => {
-  const loggedIn = false // Query redux here
+  const loggedIn = useSelector(selectCurrentUser)
 
   return loggedIn
     ? <Route {...rest} component={component} />
