@@ -11,6 +11,8 @@ import App from './modules/app/containers/app.container'
 import { config } from './modules/app/config/app.config'
 import { ThemeProvider } from '@material-ui/core/styles'
 import { getMaterialTheme } from 'modules/app/config/app.theme'
+import { Provider } from 'react-redux'
+import { store } from 'core/redux/redux.store'
 
 const httpLink = createHttpLink({
   uri: config.graphql.uri,
@@ -23,12 +25,14 @@ const client = new ApolloClient({
 
 const WrappedApp = (
   <ApolloProvider client={client}>
-    <ThemeProvider theme={getMaterialTheme()}>
-      <Router>
-        <GlobalStyle />
-        <App />
-      </Router>
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={getMaterialTheme()}>
+        <Router>
+          <GlobalStyle />
+          <App />
+        </Router>
+      </ThemeProvider>
+    </Provider>
   </ApolloProvider>
 )
 
