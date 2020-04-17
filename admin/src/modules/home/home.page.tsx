@@ -1,9 +1,12 @@
 import React from 'react'
+import PageTemplate from 'shared/page/default/template'
 
 const HomePage = () => {
 
   return (
-    <h2>Welcome</h2>
+    <PageTemplate title="Home">
+      <h2>Content</h2>
+    </PageTemplate>
   )
 }
 

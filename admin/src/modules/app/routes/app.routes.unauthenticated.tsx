@@ -9,7 +9,7 @@ interface Props extends RouteProps {}
  * Protect routes that should only be accessible by visitors
  */
 const UnauthenticatedRoute = ({ component, ...rest }: Props) => {
-  const loggedIn = true // Query redux here
+  const loggedIn = false // Query redux here
 
   return loggedIn
     ? <Redirect to={urls.home} />

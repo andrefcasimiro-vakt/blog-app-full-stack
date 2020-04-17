@@ -10,11 +10,11 @@ interface Props extends RouteProps {}
  * If not logged in, will redirect to homepage
  */
 const AuthenticatedRoute = ({ component, ...rest }: Props) => {
-  const loggedIn = true // Query redux here
+  const loggedIn = false // Query redux here
 
   return loggedIn
     ? <Route {...rest} component={component} />
-    : <Redirect to={urls.home} />
+    : <Redirect to={urls.login} />
 }
 
 export default AuthenticatedRoute
