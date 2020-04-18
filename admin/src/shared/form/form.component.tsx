@@ -4,23 +4,40 @@ import GenericField from './generic-field/generic-field.component'
 import { Form as FormType } from './form.types'
 import {
   Form as StyledForm,
-  FormRow,
-  FormField,
-  SubmitWrapper,
 } from './form.styles'
 import Button from '@material-ui/core/Button'
+import Grid from '@material-ui/core/Grid'
+import makeStyles from '@material-ui/core/styles/makeStyles'
 
 interface Props {
   form: FormType,
+  schema?: unknown,
 }
 
-function Form<D, T>({ form }: Props) {
+
+const useStyles = makeStyles({
+  fields: {
+    margin: '1rem',
+  },
+  field: {
+    marginBottom: '2rem',
+  },
+});
+
+
+function Form<D, T>({ form, schema }: Props) {
+  const classes = useStyles()
+
   const {
     register,
     handleSubmit,
     watch,
+    control,
     errors,
-  } = useForm<D>()
+  } = useForm<D>({
+    validationSchema: schema,
+    mode: 'onChange',
+  })
 
 
   const onSubmit = (data: D) => {
@@ -30,19 +47,24 @@ function Form<D, T>({ form }: Props) {
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
       {form.fields.map((formRow, i) => (
-        <FormRow key={i}>
+        <Grid className={classes.fields} key={i} container spacing={2}>
           {formRow.map((formField, j) => (
-            <FormField key={j}>
-              <GenericField field={formField} register={register} />
-            </FormField>
+            <Grid className={classes.field} key={j} item xs={12} md={6}>
+              <GenericField
+                field={formField}
+                register={register}
+                errors={errors}
+                control={control}
+              />
+            </Grid>
           ))}
-        </FormRow>
+        </Grid>
       ))}
-      <SubmitWrapper>
+      <Grid container justify="flex-end">
         <Button variant="text" color="secondary" type="submit">
           {form.submitName}
         </Button>
-      </SubmitWrapper>
+      </Grid>
     </StyledForm>
   )
 }

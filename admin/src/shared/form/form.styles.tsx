@@ -9,22 +9,6 @@ export const Form = styled.form`
   align-items: center;
 
   padding: 1rem;
-`
-
-export const FormRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  
-`
-
-export const FormField = styled.div`
-  display: flex;
-  margin: 1rem;
-  width: 100%;
-`
-
-export const SubmitWrapper = styled(FormField)`
-  margin: 0;
-  margin-top: 2rem;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: center;
 `

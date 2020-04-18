@@ -1,8 +1,8 @@
-import { createMuiTheme } from "@material-ui/core"
+import { createMuiTheme, Theme } from "@material-ui/core"
 import { config } from "./app.config"
 import * as colors from '@material-ui/core/colors';
 
-export const getMaterialTheme = (): any => createMuiTheme({
+export const getMaterialTheme = (): Theme => createMuiTheme({
   palette: {
     primary: colors[config.app.theme.pallete.primary],
     secondary: colors[config.app.theme.pallete.secondary],
@@ -21,7 +21,6 @@ export const getMaterialTheme = (): any => createMuiTheme({
   },
 })
 
-const theme = getMaterialTheme()
 
 export const genericColors = {
   WHITE: '#fff',
@@ -29,4 +28,5 @@ export const genericColors = {
   GRAY: '#f5f5f5',
 }
 
+const theme = getMaterialTheme()
 export default theme

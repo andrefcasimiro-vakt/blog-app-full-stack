@@ -11,6 +11,10 @@ export const config = {
         primary: extractEnv('APP_THEME_PALLETE_PRIMARY') || 'lightBlue',
         secondary: extractEnv('APP_THEME_PALLETE_SECONDARY') || 'lightBlue',
       }
+    },
+    language: {
+      default:  extractEnv('APP_LANGUAGE_DEFAULT') || 'pt',
+      useLanguageDetector: extractEnv('APP_LANGUAGE_USE_DETECTOR') || false,
     }
   },
   graphql: {
