@@ -1,5 +1,5 @@
 import React from 'react'
-import LoginForm from './login-form.component'
+import LoginForm from '../form/login-form.component'
 import { TabOption } from 'shared/tab/tab.types'
 import i18n from 'core/i18n/i18n'
 

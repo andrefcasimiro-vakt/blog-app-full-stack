@@ -29,6 +29,6 @@ export const loginForm: Form = {
 
 export const loginFormSchema = yup.object().shape({
   username: stringRequired,
-  password: password('login'),
+  password: password('login', translate('password')),
 })
 

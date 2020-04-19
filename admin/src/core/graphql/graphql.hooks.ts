@@ -1,14 +1,24 @@
-import { useQuery as apolloUseQuery } from '@apollo/react-hooks';
-import { GraphqlResponse } from 'core/graphql/graphql.types'
-import { DocumentNode } from 'graphql';
+import { useQuery as apolloUseQuery, useMutation as apolloUseMutation, MutationTuple } from '@apollo/react-hooks';
+import { GraphqlResponse, Query, Mutation } from 'core/graphql/graphql.types'
+import { DocumentNode } from 'graphql'
+import { path } from 'ramda'
 
 export function useQuery<Variables, Data> (
-  query: DocumentNode,
+  query: Query<Data>,
   variables: Variables,
 ): GraphqlResponse<Data> {  
-  const { data, loading, error } = apolloUseQuery(query, {
+  const { gql, fetchPolicy, selector, transform } = query
+
+  let { data, loading, error } = apolloUseQuery(gql, {
     variables,
+    fetchPolicy: fetchPolicy || 'cache-and-network',
   })
+
+  if (transform) {
+    data = transform(data)
+  } else if (selector) {
+    data = path(selector)(data)
+  }
 
   return {
     data,
@@ -17,3 +27,8 @@ export function useQuery<Variables, Data> (
   }  
 }
 
+export function useMutation<Variables, Data> (
+  mutation: Mutation<Data>,
+):  MutationTuple<Data, Variables> {  
+  return apolloUseMutation(mutation.gql)
+}

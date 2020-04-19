@@ -6,7 +6,7 @@ import AuthenticatedRoute from './app.routes.authenticated'
 import UnauthenticatedRoute from './app.routes.unauthenticated'
 
 import HomePage from 'modules/home/home.page'
-import LoginPage from 'modules/login/login.page'
+import LoginPage from 'modules/login/page/login.page'
 import NotFoundPage from 'modules/not-found/not-found.page'
 
 

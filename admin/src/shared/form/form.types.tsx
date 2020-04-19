@@ -9,3 +9,8 @@ export type Form = {
   fields: Array<Array<Field>>,
   submitName: string,
 }
+
+// Typescript helpers to extract 
+export type ExtractSchemaFields<FormData> = {
+  readonly [P in keyof FormData]: string;
+};

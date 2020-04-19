@@ -9,11 +9,11 @@ import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 
-interface Props {
+interface Props<FormData, FormSchema> {
   form: FormType,
-  schema?: unknown,
+  schema?: FormSchema,
+  onSubmit: (formData: FormData) => void,
 }
-
 
 const useStyles = makeStyles({
   fields: {
@@ -25,7 +25,11 @@ const useStyles = makeStyles({
 });
 
 
-function Form<D, T>({ form, schema }: Props) {
+function Form<FormData, FormSchema>({
+  form,
+  schema,
+  onSubmit,
+}: Props<FormData, FormSchema>) {
   const classes = useStyles()
 
   const {
@@ -34,18 +38,13 @@ function Form<D, T>({ form, schema }: Props) {
     watch,
     control,
     errors,
-  } = useForm<D>({
+  } = useForm<FormData>({
     validationSchema: schema,
     mode: 'onChange',
   })
 
-
-  const onSubmit = (data: D) => {
-    console.log('data--', data)
-  }
-
   return (
-    <StyledForm onSubmit={handleSubmit(onSubmit)}>
+    <StyledForm>
       {form.fields.map((formRow, i) => (
         <Grid className={classes.fields} key={i} container spacing={2}>
           {formRow.map((formField, j) => (
@@ -61,7 +60,7 @@ function Form<D, T>({ form, schema }: Props) {
         </Grid>
       ))}
       <Grid container justify="flex-end">
-        <Button variant="text" color="secondary" type="submit">
+        <Button variant="text" color="secondary" onClick={handleSubmit(onSubmit)}>
           {form.submitName}
         </Button>
       </Grid>

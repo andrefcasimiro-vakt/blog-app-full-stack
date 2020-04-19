@@ -11,11 +11,11 @@ export const stringRequired = stringOptional.required(
   translate('stringRequired')
 )
 
-export const minLengthRequired = (length: number) =>
+export const minLengthRequired = (length: number, fieldName: string = 'Field') =>
 yup.string().min(
     length,
     translate('minimumLength')
-      .replace('{fieldName}', 'Field')
+      .replace('{fieldName}', fieldName)
       .replace('{minimumLength}', length.toString())
   )
 
@@ -23,8 +23,8 @@ yup.string().min(
  * According to login / register,
  * we want to expose different validation mechanisms
  */
-export const password = (type: 'login' | 'register') => {
-  const validator = minLengthRequired(8)
+export const password = (type: 'login' | 'register', fieldName: string = 'Password') => {
+  const validator = minLengthRequired(8, fieldName)
     .test(
       'is-not-whitespace',
       translate('noEmptyCharacters'),
