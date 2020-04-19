@@ -1,5 +1,5 @@
 import i18n from 'core/i18n/i18n'
-import { Form } from 'shared/form/form.types'
+import { Form, ExtractSchemaFields } from 'shared/form/form.types'
 import FaceIcon from '@material-ui/icons/Face';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import * as yup from 'yup'
@@ -32,3 +32,4 @@ export const loginFormSchema = yup.object().shape({
   password: password('login', translate('password')),
 })
 
+export type LoginFormData = ExtractSchemaFields<typeof loginFormSchema.fields>

@@ -24,7 +24,6 @@ const useStyles = makeStyles({
   },
 });
 
-
 function Form<FormData, FormSchema>({
   form,
   schema,
