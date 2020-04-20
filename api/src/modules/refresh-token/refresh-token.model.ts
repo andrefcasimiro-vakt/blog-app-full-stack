@@ -6,7 +6,7 @@ import { User } from '../user/user.model';
 export class RefreshToken extends Model {
 
   @Field({ description: `The user who owns this refresh token` })
-  user: User
+  user: Partial<User>
 
   @Field()
   hash: string

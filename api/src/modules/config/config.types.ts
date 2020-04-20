@@ -21,6 +21,12 @@ export type Config = {
     /** The duration of the generated JWT token */
     expiresIn: number,
   },
+  http: {
+    customHeaders: {
+      accessToken: string,
+      refreshToken: string,
+    }
+  }
   /** List of modules used in the application */
   modules: Array<string>,
 }

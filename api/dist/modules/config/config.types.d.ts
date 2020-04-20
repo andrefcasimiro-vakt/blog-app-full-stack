@@ -15,5 +15,11 @@ export declare type Config = {
         secret: string;
         expiresIn: number;
     };
+    http: {
+        customHeaders: {
+            accessToken: string;
+            refreshToken: string;
+        };
+    };
     modules: Array<string>;
 };

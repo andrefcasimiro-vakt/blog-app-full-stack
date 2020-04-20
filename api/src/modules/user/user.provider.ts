@@ -27,9 +27,10 @@ export class UserProvider {
     return this.usersRepository.findOne( { where: { email } } )
   }
 
-  async createUser(username: string, hashedPassword: string) {
+  async createUser(username: string, email: string, hashedPassword: string) {
     const userObject: Partial<UserEntity> = {
       username,
+      email,
       password: hashedPassword,
       role: UserRole.USER,
     }

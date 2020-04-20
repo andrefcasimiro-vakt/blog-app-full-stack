@@ -21,7 +21,7 @@ scalar DateTime
 
 type Mutation {
   login(password: String!, username: String!): AuthResponse!
-  createAccount(password: String!, username: String!): AuthResponse!
+  createAccount(password: String!, email: String!, username: String!): AuthResponse!
 }
 
 type Query {

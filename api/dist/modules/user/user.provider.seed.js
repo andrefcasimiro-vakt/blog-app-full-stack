@@ -20,7 +20,7 @@ const users = [
     {
         username: 'admin',
         email: 'admin@app.com',
-        password: '1234qwer',
+        password: '$2b$10$tbRa37rfDDFM7DZ1uNJA6ODgk30gXHVsZZ/rBJmgQ0O1O1MXrG3RS',
     }
 ];
 let UserProviderSeed = class UserProviderSeed {

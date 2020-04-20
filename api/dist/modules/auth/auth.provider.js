@@ -37,7 +37,7 @@ let AuthProvider = class AuthProvider {
         if (!user) {
             return null;
         }
-        const passwordsMatch = bcrypt_helpers_1.compareHashed(pwd, user.password);
+        const passwordsMatch = await bcrypt_helpers_1.compareHashed(pwd, user.password);
         if (!passwordsMatch) {
             return null;
         }

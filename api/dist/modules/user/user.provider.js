@@ -34,9 +34,10 @@ let UserProvider = class UserProvider {
     async findByEmail(email) {
         return this.usersRepository.findOne({ where: { email } });
     }
-    async createUser(username, hashedPassword) {
+    async createUser(username, email, hashedPassword) {
         const userObject = {
             username,
+            email,
             password: hashedPassword,
             role: user_enum_1.UserRole.USER,
         };

@@ -17,6 +17,12 @@ const config = {
         secret: process.env.JWT_SECRET_KEY || 'jwtSecretKey',
         expiresIn: parseInt(process.env.JWT_EXPIRES_IN) || 1,
     },
+    http: {
+        customHeaders: {
+            accessToken: process.env.ACCESS_TOKEN || 'x-access-token',
+            refreshToken: process.env.REFRESH_TOKEN || 'x-refresh-token',
+        },
+    },
     modules: [
         'auth',
         'blog',

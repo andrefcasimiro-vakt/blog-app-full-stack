@@ -21,7 +21,7 @@ export class AuthProvider {
       return null
     }
 
-    const passwordsMatch = compareHashed(pwd, user.password)
+    const passwordsMatch = await compareHashed(pwd, user.password)
 
     if (!passwordsMatch) {
       return null
