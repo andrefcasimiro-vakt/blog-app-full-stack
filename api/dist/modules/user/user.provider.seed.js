@@ -34,7 +34,7 @@ let UserProviderSeed = class UserProviderSeed {
             if (userRecord) {
                 return Promise.resolve(null);
             }
-            return Promise.resolve(await this.userRepository.create(user));
+            return Promise.resolve(await this.userRepository.save(user));
         })
             .catch(error => Promise.reject(error)));
     }

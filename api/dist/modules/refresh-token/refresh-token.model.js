@@ -11,12 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const graphql_1 = require("@nestjs/graphql");
 const graphql_model_1 = require("../graphql/graphql.model");
+const user_model_1 = require("../user/user.model");
 let RefreshToken = class RefreshToken extends graphql_model_1.Model {
 };
 __decorate([
     graphql_1.Field({ description: `The user who owns this refresh token` }),
-    __metadata("design:type", Number)
-], RefreshToken.prototype, "userId", void 0);
+    __metadata("design:type", user_model_1.User)
+], RefreshToken.prototype, "user", void 0);
 __decorate([
     graphql_1.Field(),
     __metadata("design:type", String)

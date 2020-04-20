@@ -6,6 +6,7 @@ import config from '../config/config.main'
 import { RefreshToken as RefreshTokenEntity } from './refresh-token.entity'
 import { RefreshToken as RefreshTokenModel } from './refresh-token.model'
 import { compareHashed } from '../bcrypt/bcrypt.helpers'
+import { User } from '../user/user.model'
 
 @Injectable()
 export class RefreshTokenProvider {
@@ -20,13 +21,13 @@ export class RefreshTokenProvider {
    * User is allowed to have a limited number of refresh tokens (set in config)
    * If limit is reached, the oldest refresh tokens are deleted from database
    */
-  async createRefreshToken(userId: number): Promise<string> {
+  async createRefreshToken(user: User): Promise<string> {
     const newRefreshData = await generateRefreshToken()
     const { limit } = config.auth.refreshToken
 
     const refreshTokens = await this.refreshTokenRepository
       .find({
-        where: [{ userId }],
+        where: [{ user }],
         order: { id: 'DESC' },
       })
 
@@ -44,7 +45,7 @@ export class RefreshTokenProvider {
     const newRefreshToken = await this.refreshTokenRepository
       .save({
         hash: newRefreshData.refreshTokenHash,
-        userId,
+        user,
       })
 
     const { separator } = config.auth.refreshToken

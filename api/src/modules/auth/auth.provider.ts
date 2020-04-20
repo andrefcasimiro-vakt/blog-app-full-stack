@@ -38,7 +38,7 @@ export class AuthProvider {
     
     // Generate refresh token
     const refreshToken = await this.refreshTokenProvider
-      .createRefreshToken(user.id)
+      .createRefreshToken(user)
 
     // Update last login
     await this.userProvider.updateLastLoginAt(user.id)

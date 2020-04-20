@@ -2382,8 +2382,8 @@
         "signature": "04033aec7b8abb89745544b6b312aaaa277fa562d826f6b18c8f3cd1e2aee2ac"
       },
       "../src/modules/refresh-token/refresh-token.entity.ts": {
-        "version": "5ad9113784631b10a5fa20766b3688472928e62faed3c36f87fd74abf2e7d6ce",
-        "signature": "0ae477b99d48feef73c4155b201c36dc4ca503c2d2e963f005cf46d8dfed0b9c"
+        "version": "36c7760096bb470bc5b83e4e9418d98ebe43b7571c3ddd555a5abee6eeb9dd93",
+        "signature": "c4f2dd28f212722c94d7820016c954e3af15fd40e6e421329c12a14ad2f7f7d8"
       },
       "../src/modules/config/config.types.ts": {
         "version": "d364a996ee06dbe676f4011992ab806832b0ae0b0783083a7ffb6657e39f1e54",
@@ -4001,12 +4001,12 @@
         "signature": "0fcb6758f6597df503a0c32def9287bce04e7eb08162ff6f2ade292b4689b098"
       },
       "../src/modules/refresh-token/refresh-token.model.ts": {
-        "version": "e8fde86e4e43b724b96420e7bfe50492d6d77d325cdd10fac9fdf3efcc95d81b",
-        "signature": "14d27c4ef721fdc6ffc4593d2e50ae01cb995c0d95c33547eebd9f61c07fbbed"
+        "version": "e77d076012b619d77d35b491c484a470c8d76f24bdb47c49c07e34d91c7c0667",
+        "signature": "0ec1ed0ce5c1ca5dd804df846235a91f6ecf035d94e907fa1068f9de595e9374"
       },
       "../src/modules/refresh-token/refresh-token.provider.ts": {
-        "version": "bb1746c3f19c87b3836f99de592c6335a60f3b973462882daddc6fcbbb33b89a",
-        "signature": "db359e8381e1b31baf151ae606ea488b9dd5a6f7df599d475c569cea223d7898"
+        "version": "36922ce66fc1da715010db9d69492bd22376405990dddf871f83523fc892bf0b",
+        "signature": "2b3ea49f3ec3d49df6116d07c9c9f4ad2fbade1ec4843da550d261426e049acb"
       },
       "../src/modules/refresh-token/refresh-token.module.ts": {
         "version": "349a5c89935a9eb01781ac154134c94a4538bd625d2dfa7683eecb11e788c164",
@@ -4037,7 +4037,7 @@
         "signature": "65a6fb3a938ee30247e8c0784c0b62c67e01345f680dc033a43bcb32ed346bb5"
       },
       "../src/modules/user/user.provider.seed.ts": {
-        "version": "0cdf4a9ef00dc9e766a333f25e6679d8d5b7d52c885bf681b9beb12c0089f1d7",
+        "version": "85cc591dfa2e7b5439e3c19ebf0a568b055e3695cef418715ed702a7068f3c57",
         "signature": "e727b4a741b2c24483abeada98468bb9bf1449cef763a447e7a340fcd9d95608"
       },
       "../src/modules/user/user.module.ts": {
@@ -4049,7 +4049,7 @@
         "signature": "e1250c17b43cb1783dccd2350b6e52cdc1977a3e9b060cfcdfc21e5524d35a0b"
       },
       "../src/modules/auth/auth.provider.ts": {
-        "version": "9c8a6947c9314b1e4e263efa4b2100b06d8ea1b54cc92598aa76dc44177a3014",
+        "version": "278984bd6065709bd498c8fc39a18b894cad1a8313d699fd30577f7246f89905",
         "signature": "82b58d8e874cb897ce9d824dac460b969c99088eba3f2e56f68ee9d9a3793cc4"
       },
       "../node_modules/@types/passport-strategy/index.d.ts": {
@@ -12974,6 +12974,7 @@
       "../src/modules/refresh-token/refresh-token.model.ts": [
         "../node_modules/@nestjs/graphql/index.d.ts",
         "../src/modules/graphql/graphql.model.ts",
+        "../src/modules/user/user.model.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -12988,6 +12989,7 @@
         "../src/modules/refresh-token/refresh-token.entity.ts",
         "../src/modules/refresh-token/refresh-token.model.ts",
         "../src/modules/bcrypt/bcrypt.helpers.ts",
+        "../src/modules/user/user.model.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -22216,11 +22218,13 @@
         "../src/modules/user/user.model.ts"
       ],
       "../src/modules/refresh-token/refresh-token.model.ts": [
+        "../src/modules/user/user.model.ts",
         "../src/modules/graphql/graphql.model.ts"
       ],
       "../src/modules/refresh-token/refresh-token.provider.ts": [
         "../node_modules/typeorm/index.d.ts",
-        "../src/modules/refresh-token/refresh-token.model.ts"
+        "../src/modules/refresh-token/refresh-token.model.ts",
+        "../src/modules/user/user.model.ts"
       ],
       "../src/modules/user/user.provider.ts": [
         "../node_modules/typeorm/index.d.ts",
@@ -23314,6 +23318,13 @@
       "../node_modules/@nestjs/typeorm/dist/index.d.ts",
       "../node_modules/@nestjs/typeorm/index.d.ts",
       "../src/modules/user/user.enum.ts",
+      "../src/modules/database/database.entities.base.ts",
+      "../src/modules/user/user.entity.ts",
+      "../src/modules/refresh-token/refresh-token.entity.ts",
+      "../src/modules/config/config.types.ts",
+      "../src/modules/config/config.main.ts",
+      "../src/modules/bcrypt/bcrypt.helpers.ts",
+      "../src/modules/refresh-token/refresh-token.types.ts",
       "../node_modules/@nestjs/graphql/dist/decorators/args-type.decorator.d.ts",
       "../node_modules/@nestjs/graphql/dist/interfaces/base-type-options.interface.d.ts",
       "../node_modules/graphql/version.d.ts",
@@ -23710,11 +23721,25 @@
       "../node_modules/@nestjs/graphql/dist/type-helpers/index.d.ts",
       "../node_modules/@nestjs/graphql/dist/index.d.ts",
       "../node_modules/@nestjs/graphql/index.d.ts",
+      "../src/modules/graphql/graphql.model.ts",
+      "../src/modules/user/user.model.ts",
+      "../src/modules/refresh-token/refresh-token.errors.ts",
+      "../src/modules/refresh-token/refresh-token.helpers.ts",
+      "../src/modules/refresh-token/refresh-token.model.ts",
+      "../src/modules/refresh-token/refresh-token.module.ts",
+      "../src/modules/user/user.provider.ts",
       "../src/modules/jwt/jwt.guard.ts",
       "../src/modules/graphql/graphql.guard.ts",
       "../src/modules/graphql/decorators/current-user.ts",
+      "../src/modules/auth/auth.model.ts",
+      "../src/modules/user/user.resolver.ts",
+      "../src/modules/user/user.provider.seed.ts",
+      "../src/modules/user/user.module.ts",
+      "../src/modules/auth/auth.types.ts",
+      "../src/modules/auth/auth.provider.ts",
       "../node_modules/@types/passport-strategy/index.d.ts",
       "../node_modules/@types/passport-local/index.d.ts",
+      "../src/modules/auth/auth.strategy.ts",
       "../node_modules/graphql-subscriptions/dist/pubsub-engine.d.ts",
       "../node_modules/graphql-subscriptions/dist/pubsub.d.ts",
       "../node_modules/graphql-subscriptions/dist/with-filter.d.ts",
@@ -23722,6 +23747,11 @@
       "../node_modules/@types/cors/index.d.ts",
       "../node_modules/apollo-server-express/dist/apolloserver.d.ts",
       "../node_modules/apollo-server-express/dist/index.d.ts",
+      "../src/modules/auth/auth.helpers.ts",
+      "../src/modules/auth/auth.resolver.ts",
+      "../src/modules/jwt/jwt.strategy.ts",
+      "../src/modules/auth/auth.module.ts",
+      "../src/modules/blog/blog.module.ts",
       "../node_modules/@nestjs/config/dist/config.service.d.ts",
       "../node_modules/@nestjs/config/dist/interfaces/config-factory.interface.d.ts",
       "../node_modules/@nestjs/config/dist/interfaces/config-module-options.interface.d.ts",
@@ -23734,6 +23764,18 @@
       "../node_modules/@nestjs/config/dist/index.d.ts",
       "../node_modules/@nestjs/config/index.d.ts",
       "../src/modules/config/config.module.ts",
+      "../src/modules/database/database.entities.ts",
+      "../src/modules/database/database.module.ts",
+      "../src/modules/graphql/graphql.module.ts",
+      "../src/modules/config/config.module.mappers.ts",
+      "../src/modules/config/config.helpers.ts",
+      "../src/modules/app/app.module.ts",
+      "../src/main.ts",
+      "../src/modules/seeder/seeder.provider.ts",
+      "../src/modules/seeder/seeder.module.ts",
+      "../src/seed.ts",
+      "../src/modules/blog/post/post.model.ts",
+      "../src/modules/refresh-token/refresh-token.resolver.ts",
       "../node_modules/@types/anymatch/index.d.ts",
       "../node_modules/@babel/types/lib/index.d.ts",
       "../node_modules/@types/babel__generator/index.d.ts",
@@ -23771,7 +23813,8 @@
       "../node_modules/@types/webpack-sources/index.d.ts",
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
-      "../node_modules/@types/yargs/index.d.ts"
+      "../node_modules/@types/yargs/index.d.ts",
+      "../src/modules/refresh-token/refresh-token.provider.ts"
     ]
   },
   "version": "3.8.3"

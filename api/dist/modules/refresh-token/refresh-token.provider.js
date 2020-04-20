@@ -26,12 +26,12 @@ let RefreshTokenProvider = class RefreshTokenProvider {
     constructor(refreshTokenRepository) {
         this.refreshTokenRepository = refreshTokenRepository;
     }
-    async createRefreshToken(userId) {
+    async createRefreshToken(user) {
         const newRefreshData = await refresh_token_helpers_1.generateRefreshToken();
         const { limit } = config_main_1.default.auth.refreshToken;
         const refreshTokens = await this.refreshTokenRepository
             .find({
-            where: [{ userId }],
+            where: [{ user }],
             order: { id: 'DESC' },
         });
         const extraRefreshTokens = refreshTokens.slice(limit - 1);
@@ -46,7 +46,7 @@ let RefreshTokenProvider = class RefreshTokenProvider {
         const newRefreshToken = await this.refreshTokenRepository
             .save({
             hash: newRefreshData.refreshTokenHash,
-            userId,
+            user,
         });
         const { separator } = config_main_1.default.auth.refreshToken;
         return `${newRefreshToken.id}${separator}${newRefreshData.refreshToken}`;

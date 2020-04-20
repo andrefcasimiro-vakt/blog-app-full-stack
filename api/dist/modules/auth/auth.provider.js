@@ -48,7 +48,7 @@ let AuthProvider = class AuthProvider {
         const payload = { username: user.username, id: user.id };
         const accessToken = this.jwtProvider.sign(payload);
         const refreshToken = await this.refreshTokenProvider
-            .createRefreshToken(user.id);
+            .createRefreshToken(user);
         await this.userProvider.updateLastLoginAt(user.id);
         return {
             user,
