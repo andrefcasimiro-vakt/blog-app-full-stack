@@ -4165,7 +4165,7 @@
         "signature": "c040e6152d31f70b603fff2b97d3ce89a4ab291383e6cfbf7549f96c03881652"
       },
       "../src/modules/database/database.module.ts": {
-        "version": "71bc3e36f0b0f577775ecb0f77a88f1b2d49f47cb535b0c4551bcda2981d84e6",
+        "version": "3d5ef6b2b712431580be2289344ef180a167e6fcb9eeebbd98d0253115c9f890",
         "signature": "012ca69dacdbff2b4621a9a43ccfba38fabd3511b3a084afb4b12446140989d3"
       },
       "../src/modules/graphql/graphql.module.ts": {
@@ -4197,7 +4197,7 @@
         "signature": "be6b499c99a619f84e099fa341152f0006548beb115bc67ae4c8913c3e6e0d3e"
       },
       "../src/seed.ts": {
-        "version": "a362f9ac58738a593b4a1789f90545b97b26c998ab000fe10fa67758059e7e8e",
+        "version": "2c386f5839e52bd17a536fc5f21b4b38ed55231c7ed42e34308f8eaeecb359de",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6"
       },
       "../src/modules/blog/post/post.model.ts": {
@@ -22239,6 +22239,10 @@
         "../src/modules/auth/auth.model.ts",
         "../src/modules/user/user.model.ts"
       ],
+      "../src/modules/user/user.provider.seed.ts": [
+        "../node_modules/typeorm/index.d.ts",
+        "../src/modules/user/user.model.ts"
+      ],
       "../src/modules/auth/auth.types.ts": [
         "../src/modules/user/user.model.ts"
       ],
@@ -22434,6 +22438,9 @@
       ],
       "../src/modules/config/config.helpers.ts": [
         "../node_modules/@nestjs/common/interfaces/index.d.ts"
+      ],
+      "../src/modules/seeder/seeder.provider.ts": [
+        "../src/modules/user/user.provider.seed.ts"
       ],
       "../src/modules/blog/post/post.model.ts": [
         "../src/modules/graphql/graphql.model.ts"
@@ -22711,13 +22718,6 @@
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "../src/modules/user/user.provider.seed.ts": [
-        "../node_modules/typeorm/index.d.ts",
-        "../src/modules/user/user.model.ts"
-      ],
-      "../src/modules/seeder/seeder.provider.ts": [
-        "../src/modules/user/user.provider.seed.ts"
       ]
     },
     "semanticDiagnosticsPerFile": [

@@ -29,7 +29,7 @@ export class UserProviderSeed {
         }
 
         return Promise.resolve(
-          await this.userRepository.create(user)
+          await this.userRepository.save(user)
         )
       })
       .catch(error => Promise.reject(error))
