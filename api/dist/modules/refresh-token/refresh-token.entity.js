@@ -19,7 +19,7 @@ __decorate([
     __metadata("design:type", String)
 ], RefreshToken.prototype, "hash", void 0);
 __decorate([
-    typeorm_1.OneToOne(type => user_entity_1.User),
+    typeorm_1.ManyToOne(type => user_entity_1.User),
     typeorm_1.JoinColumn(),
     __metadata("design:type", user_entity_1.User)
 ], RefreshToken.prototype, "user", void 0);

@@ -2382,7 +2382,7 @@
         "signature": "04033aec7b8abb89745544b6b312aaaa277fa562d826f6b18c8f3cd1e2aee2ac"
       },
       "../src/modules/refresh-token/refresh-token.entity.ts": {
-        "version": "36c7760096bb470bc5b83e4e9418d98ebe43b7571c3ddd555a5abee6eeb9dd93",
+        "version": "3aeefcc61fa58413dd3c9ded27dc8f9e2f9d04915c18479c0cb47a1833023728",
         "signature": "c4f2dd28f212722c94d7820016c954e3af15fd40e6e421329c12a14ad2f7f7d8"
       },
       "../src/modules/config/config.types.ts": {
@@ -23320,7 +23320,6 @@
       "../src/modules/user/user.enum.ts",
       "../src/modules/database/database.entities.base.ts",
       "../src/modules/user/user.entity.ts",
-      "../src/modules/refresh-token/refresh-token.entity.ts",
       "../src/modules/config/config.types.ts",
       "../src/modules/config/config.main.ts",
       "../src/modules/bcrypt/bcrypt.helpers.ts",
@@ -23726,6 +23725,7 @@
       "../src/modules/refresh-token/refresh-token.errors.ts",
       "../src/modules/refresh-token/refresh-token.helpers.ts",
       "../src/modules/refresh-token/refresh-token.model.ts",
+      "../src/modules/refresh-token/refresh-token.provider.ts",
       "../src/modules/refresh-token/refresh-token.module.ts",
       "../src/modules/user/user.provider.ts",
       "../src/modules/jwt/jwt.guard.ts",
@@ -23814,7 +23814,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/modules/refresh-token/refresh-token.provider.ts"
+      "../src/modules/refresh-token/refresh-token.entity.ts"
     ]
   },
   "version": "3.8.3"
