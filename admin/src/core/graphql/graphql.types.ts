@@ -5,7 +5,7 @@ import { FetchPolicy } from "apollo-client";
 export interface GraphqlResponse<T> {
   data: T,
   loading: boolean,
-  error: ApolloError | unknown,
+  error: ApolloError | any,
 }
 
 interface Base<Data> {
@@ -19,7 +19,7 @@ export interface Query<Data> extends Base<Data> {
   selector?: string[],
   fetchPolicy?: FetchPolicy,
   /** If set, will act as a callback to modify the received data before returning it */
-  transform?: (data: Data) => unknown,
+  transform?: (data: Data) => any,
 }
 
 export interface Mutation<Data> extends Base<Data> {

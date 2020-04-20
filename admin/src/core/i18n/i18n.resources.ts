@@ -30,6 +30,14 @@ const generateTranslation = (language: Language) => ({
       }[language],
     },
   },
+  'errors': {
+    'graphql': {
+      'AUTHORIZATION_ERROR': {
+        en: 'Not authorized',
+        pt: 'Não autorizado',
+      }[language],
+    },
+  },
 })
 
 export const resources = {
