@@ -14,11 +14,10 @@ export const login: Mutation<AuthResponse> = {
           username
           email
         }
-        accessToken
-        refreshToken
       }
     }
-  `
+  `,
+  selector: ['login'],
 }
 
 export const getRefreshTokenMutation: Mutation<{

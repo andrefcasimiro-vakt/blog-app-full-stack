@@ -5,12 +5,15 @@ import { AuthResponse } from 'modules/auth/types/auth.types'
 import { useLogin } from 'modules/auth/hooks/auth.hooks'
 
 const LoginForm = () => {
+  const onSuccess = (result: AuthResponse) => {
+    console.log('completed: ', result)
+  }
 
   return (
     <Form<LoginFormData, typeof loginFormSchema, AuthResponse>
       form={loginForm}
       schema={loginFormSchema}
-      useMutation={useLogin}
+      useMutation={() => useLogin(onSuccess)}
       successMessage={`Welcome back`}
     />
   )

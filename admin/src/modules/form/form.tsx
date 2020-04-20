@@ -3,7 +3,7 @@ import { useSnackbar } from 'notistack';
 import { Paper, makeStyles } from '@material-ui/core'
 import BaseForm from 'shared/form/form.component'
 import { Form as FormType } from 'shared/form/form.types'
-import { MutationTuple } from '@apollo/react-hooks';
+import { MutationTuple, MutationHookOptions } from '@apollo/react-hooks';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -18,7 +18,11 @@ type Props<
 > = {
   form: FormType,
   schema: FormSchema,
-  useMutation: () => MutationTuple<MutationReturn, FormData>,
+  useMutation: (
+    onCompleted?: (result: MutationReturn) => unknown,
+  ) => MutationTuple<MutationReturn, FormData>,
+
+  onSuccess?: (result: MutationReturn) => unknown,
 
   /** If set, displays a snackbar notification upon a successfull mutation response */
   successMessage?: string,
@@ -46,7 +50,7 @@ function Form<
   const classes = useStyles();
 
   const handleSubmit = (formData: FormData) => {
-    mutate({ variables: formData})
+    mutate({ variables: formData })
   }
 
   if (error) {
