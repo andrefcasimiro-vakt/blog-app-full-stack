@@ -5,21 +5,21 @@ import { UserProvider } from 'src/modules/user/user.provider'
 import { GqlAuthGuard } from 'src/modules/graphql/graphql.guard'
 import { CurrentUser } from '../graphql/decorators/current-user'
 import { AuthUser } from '../auth/auth.model'
-import { AuthProvider } from '../auth/auth.provider'
 
 @Resolver(of => User)
 export class UserResolver {
   constructor(
     private readonly userProvider: UserProvider,
-  ) {}
+  ) {
+  }
 
-  @Query(returns => User)
+  @Query(returns => User, { name: 'whoAmI' })
   @UseGuards(GqlAuthGuard)
   whoAmI(@CurrentUser() user: AuthUser) {
     return this.userProvider.findById(user.id)
   }
 
-  @Query(returns => User)
+  @Query(returns => User, { name: 'getUserById' })
   async findById(
     @Args('id') id: number
   ): Promise<User> {
@@ -32,7 +32,7 @@ export class UserResolver {
     return user
   }
 
-  @Query(returns => User)
+  @Query(returns => User, { name: 'getUserByUsername' })
   async findByUsername(
     @Args('username') username: string
   ): Promise<User> {

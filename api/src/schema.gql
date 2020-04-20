@@ -2,25 +2,46 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Auth {
-  token: String!
+type AuthResponse {
+  user: AuthUser!
+  accessToken: String!
+  refreshToken: String!
 }
 
+type AuthUser {
+  id: Float!
+  username: String!
+  email: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type Mutation {
-  login(password: String!, username: String!): Auth!
-  register(password: String!, username: String!): Auth!
+  login(password: String!, username: String!): AuthResponse!
+  createAccount(password: String!, username: String!): AuthResponse!
 }
 
 type Query {
   whoAmI: User!
-  findById(id: Float!): User!
-  findByUsername(username: String!): User!
+  getUserById(id: Float!): User!
+  getUserByUsername(username: String!): User!
 }
 
 type User {
   id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   username: String!
+  email: String!
   password: String!
+
+  """Describes if user account is verified and allowed"""
   isActive: Boolean!
+
+  """Describes the group of permissions to which the user belongs """
   role: String!
+  lastLoginAt: DateTime!
 }

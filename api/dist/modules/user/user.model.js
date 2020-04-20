@@ -11,12 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const graphql_1 = require("@nestjs/graphql");
 const user_enum_1 = require("./user.enum");
-let User = class User {
+const graphql_model_1 = require("../graphql/graphql.model");
+let User = class User extends graphql_model_1.Model {
 };
-__decorate([
-    graphql_1.Field(type => graphql_1.ID),
-    __metadata("design:type", Number)
-], User.prototype, "id", void 0);
 __decorate([
     graphql_1.Field(),
     __metadata("design:type", String)
@@ -24,15 +21,23 @@ __decorate([
 __decorate([
     graphql_1.Field(),
     __metadata("design:type", String)
-], User.prototype, "password", void 0);
-__decorate([
-    graphql_1.Field(),
-    __metadata("design:type", Boolean)
-], User.prototype, "isActive", void 0);
+], User.prototype, "email", void 0);
 __decorate([
     graphql_1.Field(),
     __metadata("design:type", String)
+], User.prototype, "password", void 0);
+__decorate([
+    graphql_1.Field({ description: `Describes if user account is verified and allowed` }),
+    __metadata("design:type", Boolean)
+], User.prototype, "isActive", void 0);
+__decorate([
+    graphql_1.Field({ description: `Describes the group of permissions to which the user belongs ` }),
+    __metadata("design:type", String)
 ], User.prototype, "role", void 0);
+__decorate([
+    graphql_1.Field(),
+    __metadata("design:type", Date)
+], User.prototype, "lastLoginAt", void 0);
 User = __decorate([
     graphql_1.ObjectType()
 ], User);

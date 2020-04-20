@@ -5,6 +5,11 @@ export declare type Config = {
         };
         pepper: string;
         saltRounds: number;
+        refreshToken: {
+            length: number;
+            limit: number;
+            separator: string;
+        };
     };
     jwt: {
         secret: string;

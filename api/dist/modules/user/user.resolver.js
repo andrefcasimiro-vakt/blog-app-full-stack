@@ -42,7 +42,7 @@ let UserResolver = class UserResolver {
     }
 };
 __decorate([
-    graphql_1.Query(returns => user_model_1.User),
+    graphql_1.Query(returns => user_model_1.User, { name: 'whoAmI' }),
     common_1.UseGuards(graphql_guard_1.GqlAuthGuard),
     __param(0, current_user_1.CurrentUser()),
     __metadata("design:type", Function),
@@ -50,14 +50,14 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], UserResolver.prototype, "whoAmI", null);
 __decorate([
-    graphql_1.Query(returns => user_model_1.User),
+    graphql_1.Query(returns => user_model_1.User, { name: 'getUserById' }),
     __param(0, graphql_1.Args('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "findById", null);
 __decorate([
-    graphql_1.Query(returns => user_model_1.User),
+    graphql_1.Query(returns => user_model_1.User, { name: 'getUserByUsername' }),
     __param(0, graphql_1.Args('username')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),

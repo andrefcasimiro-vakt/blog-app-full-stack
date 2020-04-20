@@ -1,3 +1,4 @@
 import { User } from 'src/modules/user/user.entity';
-declare const _default: (typeof User)[];
+import { RefreshToken } from '../refresh-token/refresh-token.entity';
+declare const _default: (typeof RefreshToken | typeof User)[];
 export default _default;

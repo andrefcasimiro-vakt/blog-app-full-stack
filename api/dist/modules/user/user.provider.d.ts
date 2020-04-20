@@ -7,5 +7,7 @@ export declare class UserProvider {
     constructor(usersRepository: Repository<UserModel>, context: any);
     findById(id: number): Promise<UserModel>;
     findByUsername(username: string): Promise<UserModel>;
+    findByEmail(email: string): Promise<UserModel>;
     createUser(username: string, hashedPassword: string): Promise<Partial<UserEntity> & UserModel>;
+    updateLastLoginAt(userId: number): Promise<void>;
 }

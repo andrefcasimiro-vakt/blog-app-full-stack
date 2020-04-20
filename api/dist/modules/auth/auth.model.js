@@ -10,16 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const graphql_1 = require("@nestjs/graphql");
-let Auth = class Auth {
-};
-__decorate([
-    graphql_1.Field(),
-    __metadata("design:type", String)
-], Auth.prototype, "token", void 0);
-Auth = __decorate([
-    graphql_1.ObjectType()
-], Auth);
-exports.Auth = Auth;
 let AuthUser = class AuthUser {
 };
 __decorate([
@@ -30,8 +20,30 @@ __decorate([
     graphql_1.Field(),
     __metadata("design:type", String)
 ], AuthUser.prototype, "username", void 0);
+__decorate([
+    graphql_1.Field(),
+    __metadata("design:type", String)
+], AuthUser.prototype, "email", void 0);
 AuthUser = __decorate([
     graphql_1.ObjectType()
 ], AuthUser);
 exports.AuthUser = AuthUser;
+let AuthResponse = class AuthResponse {
+};
+__decorate([
+    graphql_1.Field(),
+    __metadata("design:type", AuthUser)
+], AuthResponse.prototype, "user", void 0);
+__decorate([
+    graphql_1.Field(),
+    __metadata("design:type", String)
+], AuthResponse.prototype, "accessToken", void 0);
+__decorate([
+    graphql_1.Field(),
+    __metadata("design:type", String)
+], AuthResponse.prototype, "refreshToken", void 0);
+AuthResponse = __decorate([
+    graphql_1.ObjectType()
+], AuthResponse);
+exports.AuthResponse = AuthResponse;
 //# sourceMappingURL=auth.model.js.map

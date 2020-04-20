@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common'
 import { PassportModule } from '@nestjs/passport'
 import { JwtModule } from '@nestjs/jwt'
 
+import { RefreshTokenModule } from 'src/modules/refresh-token/refresh-token.module'
 import { UserModule } from 'src/modules/user/user.module'
 import { AuthProvider } from './auth.provider'
 import { LocalStrategy } from './auth.strategy'
@@ -12,6 +13,7 @@ import { JwtStrategy } from 'src/modules/jwt/jwt.strategy'
 
 @Module({
   imports: [
+    RefreshTokenModule,
     UserModule,
     PassportModule,
     JwtModule.register({

@@ -31,6 +31,9 @@ let UserProvider = class UserProvider {
     async findByUsername(username) {
         return this.usersRepository.findOne({ where: { username } });
     }
+    async findByEmail(email) {
+        return this.usersRepository.findOne({ where: { email } });
+    }
     async createUser(username, hashedPassword) {
         const userObject = {
             username,
@@ -38,6 +41,11 @@ let UserProvider = class UserProvider {
             role: user_enum_1.UserRole.USER,
         };
         return this.usersRepository.save(userObject);
+    }
+    async updateLastLoginAt(userId) {
+        await this.usersRepository.save([
+            { id: userId, lastLoginAt: Date.now().toString() }
+        ]);
     }
 };
 UserProvider = __decorate([

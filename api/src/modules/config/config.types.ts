@@ -8,6 +8,11 @@ export type Config = {
     /** String used to pepperify hash strings */
     pepper: string,
     saltRounds: number,
+    refreshToken: {
+      length: number,
+      limit: number,
+      separator: string,
+    },
   }
   /** JWT configuration */
   jwt: {

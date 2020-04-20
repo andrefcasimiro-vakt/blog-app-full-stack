@@ -25,10 +25,12 @@ const user_provider_1 = require("../user/user.provider");
 const user_model_1 = require("../user/user.model");
 const jwt_1 = require("@nestjs/jwt");
 const bcrypt_helpers_1 = require("../bcrypt/bcrypt.helpers");
+const refresh_token_provider_1 = require("../refresh-token/refresh-token.provider");
 let AuthProvider = class AuthProvider {
-    constructor(userProvider, jwtProvider) {
+    constructor(userProvider, jwtProvider, refreshTokenProvider) {
         this.userProvider = userProvider;
         this.jwtProvider = jwtProvider;
+        this.refreshTokenProvider = refreshTokenProvider;
     }
     async validateUser(username, pwd) {
         const user = await this.userProvider.findByUsername(username);
@@ -44,15 +46,22 @@ let AuthProvider = class AuthProvider {
     }
     async login(user) {
         const payload = { username: user.username, id: user.id };
+        const accessToken = this.jwtProvider.sign(payload);
+        const refreshToken = await this.refreshTokenProvider
+            .createRefreshToken(user.id);
+        await this.userProvider.updateLastLoginAt(user.id);
         return {
-            access_token: this.jwtProvider.sign(payload)
+            user,
+            accessToken,
+            refreshToken,
         };
     }
 };
 AuthProvider = __decorate([
     common_1.Injectable(),
     __metadata("design:paramtypes", [user_provider_1.UserProvider,
-        jwt_1.JwtService])
+        jwt_1.JwtService,
+        refresh_token_provider_1.RefreshTokenProvider])
 ], AuthProvider);
 exports.AuthProvider = AuthProvider;
 //# sourceMappingURL=auth.provider.js.map

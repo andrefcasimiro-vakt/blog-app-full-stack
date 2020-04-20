@@ -11,6 +11,7 @@ const typeorm_1 = require("@nestjs/typeorm");
 const user_entity_1 = require("./user.entity");
 const user_resolver_1 = require("./user.resolver");
 const user_provider_1 = require("./user.provider");
+const user_provider_seed_1 = require("./user.provider.seed");
 let UserModule = class UserModule {
 };
 UserModule = __decorate([
@@ -20,10 +21,12 @@ UserModule = __decorate([
         ],
         exports: [
             user_provider_1.UserProvider,
+            user_provider_seed_1.UserProviderSeed,
         ],
         providers: [
             user_resolver_1.UserResolver,
             user_provider_1.UserProvider,
+            user_provider_seed_1.UserProviderSeed,
         ],
         controllers: [],
     })

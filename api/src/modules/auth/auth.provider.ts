@@ -3,12 +3,15 @@ import { UserProvider } from 'src/modules/user/user.provider'
 import { User } from 'src/modules/user/user.model'
 import { JwtService } from '@nestjs/jwt'
 import { compareHashed } from '../bcrypt/bcrypt.helpers'
+import { RefreshTokenProvider } from '../refresh-token/refresh-token.provider'
+import { AuthResponse } from './auth.types'
 
 @Injectable()
 export class AuthProvider {
   constructor(
     private userProvider: UserProvider,
     private jwtProvider: JwtService,
+    private refreshTokenProvider: RefreshTokenProvider,
   ) {}
 
   async validateUser(username: string, pwd: string): Promise<User> {
@@ -28,11 +31,22 @@ export class AuthProvider {
     return user
   }
 
-  async login(user: User) {
+  async login(user: User): Promise<AuthResponse> {
     const payload = { username: user.username, id: user.id }
 
+    const accessToken = this.jwtProvider.sign(payload)
+    
+    // Generate refresh token
+    const refreshToken = await this.refreshTokenProvider
+      .createRefreshToken(user.id)
+
+    // Update last login
+    await this.userProvider.updateLastLoginAt(user.id)
+
     return {
-      access_token: this.jwtProvider.sign(payload)
+      user,
+      accessToken,
+      refreshToken,
     }
   }
 }

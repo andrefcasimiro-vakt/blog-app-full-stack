@@ -23,6 +23,10 @@ export class UserProvider {
     return this.usersRepository.findOne( { where: { username } } )
   }
 
+  async findByEmail(email: string) {
+    return this.usersRepository.findOne( { where: { email } } )
+  }
+
   async createUser(username: string, hashedPassword: string) {
     const userObject: Partial<UserEntity> = {
       username,
@@ -31,5 +35,11 @@ export class UserProvider {
     }
 
     return this.usersRepository.save(userObject)
+  }
+
+  async updateLastLoginAt(userId: number) {
+    await this.usersRepository.save([
+      { id: userId, lastLoginAt: Date.now().toString() }
+    ])
   }
 }

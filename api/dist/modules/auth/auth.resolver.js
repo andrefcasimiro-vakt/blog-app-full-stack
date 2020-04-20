@@ -14,13 +14,11 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const graphql_1 = require("@nestjs/graphql");
-const apollo_server_express_1 = require("apollo-server-express");
 const auth_model_1 = require("./auth.model");
 const user_provider_1 = require("../user/user.provider");
 const auth_provider_1 = require("./auth.provider");
 const auth_helpers_1 = require("./auth.helpers");
 const bcrypt_helpers_1 = require("../bcrypt/bcrypt.helpers");
-const pubSub = new apollo_server_express_1.PubSub();
 let AuthResolver = class AuthResolver {
     constructor(authProvider, userProvider) {
         this.authProvider = authProvider;
@@ -31,12 +29,14 @@ let AuthResolver = class AuthResolver {
         if (!user) {
             throw new common_1.UnauthorizedException();
         }
-        const { access_token } = await this.authProvider.login(user);
+        const { accessToken, refreshToken } = await this.authProvider.login(user);
         return {
-            token: access_token
+            user,
+            accessToken,
+            refreshToken,
         };
     }
-    async register(username, password) {
+    async createAccount(username, password) {
         const user = await this.userProvider.findByUsername(username);
         if (user) {
             throw new common_1.ConflictException("Username is already registered");
@@ -44,14 +44,16 @@ let AuthResolver = class AuthResolver {
         auth_helpers_1.checkPassword(password);
         const hashedPassword = await bcrypt_helpers_1.hashString(password);
         const createdUser = await this.userProvider.createUser(username, hashedPassword);
-        const { access_token } = await this.authProvider.login(createdUser);
+        const { accessToken, refreshToken } = await this.authProvider.login(createdUser);
         return {
-            token: access_token
+            user,
+            accessToken,
+            refreshToken,
         };
     }
 };
 __decorate([
-    graphql_1.Mutation(returns => auth_model_1.Auth),
+    graphql_1.Mutation(returns => auth_model_1.AuthResponse, { name: 'login' }),
     __param(0, graphql_1.Args('username')),
     __param(1, graphql_1.Args('password')),
     __metadata("design:type", Function),
@@ -59,15 +61,15 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], AuthResolver.prototype, "login", null);
 __decorate([
-    graphql_1.Mutation(returns => auth_model_1.Auth),
+    graphql_1.Mutation(returns => auth_model_1.AuthResponse, { name: 'createAccount' }),
     __param(0, graphql_1.Args('username')),
     __param(1, graphql_1.Args('password')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, String]),
     __metadata("design:returntype", Promise)
-], AuthResolver.prototype, "register", null);
+], AuthResolver.prototype, "createAccount", null);
 AuthResolver = __decorate([
-    graphql_1.Resolver(of => auth_model_1.Auth),
+    graphql_1.Resolver(of => auth_model_1.AuthResponse),
     __metadata("design:paramtypes", [auth_provider_1.AuthProvider,
         user_provider_1.UserProvider])
 ], AuthResolver);
