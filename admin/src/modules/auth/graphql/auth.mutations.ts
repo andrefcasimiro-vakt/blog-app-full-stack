@@ -13,6 +13,7 @@ export const login: Mutation<AuthResponse> = {
           id
           username
           email
+          role
         }
       }
     }

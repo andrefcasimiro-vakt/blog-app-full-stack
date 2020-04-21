@@ -1,17 +1,18 @@
 import { RootState } from "core/redux/redux.store"
+import { UserRole } from "modules/user/enums/user.enums"
 
 // ----------------------------------------------------------------
 // Types & interfaces
 
 export interface AuthUser {
   /** The authenticated user id */
-  id: string,
+  id: number,
   /** The authenticated username */
   username: string,
   /** The authenticated user email */
   email: string,
   /** The role of the authenticated user */
-  role: string,
+  role: UserRole,
 }
 
 export interface AuthState {

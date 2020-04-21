@@ -1,6 +1,12 @@
 type Language = 'en' | 'pt'
 
 const generateTranslation = (language: Language) => ({
+  'generic': {
+    'search': { en: 'Search', pt: 'Pesquisar' }[language],
+  },
+  'userAvatarOptions': {
+    'logout': { en: 'Logout', pt: 'Terminar sessão' } [language],
+  },
   'pages': {
     'login': {
       'tabs': {

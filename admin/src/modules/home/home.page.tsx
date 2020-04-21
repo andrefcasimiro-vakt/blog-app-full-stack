@@ -1,12 +1,16 @@
 import React from 'react'
-import PageTemplate from 'shared/page/default/template'
+import DashboardPageTemplate from 'shared/page/dashboard/template'
+import { navbarDefaultConfiguration } from 'shared/navbar/navbar.configuration.default'
 
 const HomePage = () => {
 
   return (
-    <PageTemplate title="Home">
+    <DashboardPageTemplate
+      title="Home"
+      navbarConfiguration={navbarDefaultConfiguration}
+    >
       <h2>Content</h2>
-    </PageTemplate>
+    </DashboardPageTemplate>
   )
 }
 

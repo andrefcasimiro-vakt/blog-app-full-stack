@@ -2,11 +2,18 @@ import { persistStore } from 'redux-persist'
 import { combineReducers, createStore, applyMiddleware, compose } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import {
-  authReducer
+  authReducer,
 } from 'modules/auth/redux/auth.redux'
 import persistReducer from 'redux-persist/es/persistReducer'
 import storage from 'redux-persist/lib/storage';
-import epicMiddleware, { rootEpic } from './redux.middleware.epic';
+import authEpics from 'modules/auth/epics/auth.epics'
+import { combineEpics, createEpicMiddleware } from 'redux-observable'
+
+export const rootEpic = combineEpics(
+  ...authEpics,
+)
+
+const epicMiddleware = createEpicMiddleware()
 
 const rootReducer = combineReducers({
   auth: persistReducer({
@@ -22,23 +29,24 @@ const middlewares: any[] = [
   epicMiddleware,
 ]
 
-// @ts-ignore (FIX LATER)
-epicMiddleware.run(rootEpic)
-
 if (process.env.NODE_ENV === 'development') {
   // middlewares.push(secretMiddleware)
 }
 
 const middlewareEnhancer = applyMiddleware(...middlewares)
 
+
 const enhancers = [middlewareEnhancer]
 const composedEnhancers = composeWithDevTools(...enhancers)
-
 
 export const store = createStore(
   rootReducer,
   undefined,
   composedEnhancers,
 )
+
+// Run after creating the store
+// @ts-ignore
+epicMiddleware.run(rootEpic)
 
 export const persistor = persistStore(store)
