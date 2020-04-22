@@ -88,7 +88,6 @@ const renderUserAvatar = (props: NavbarProps) => {
           aria-label="account of current user"
           aria-controls="primary-search-account-menu"
           aria-haspopup="true"
-          color="default"
           >
           <AccountCircle />
         </IconButton>
@@ -105,7 +104,6 @@ const renderUserAvatar = (props: NavbarProps) => {
         aria-controls={menuId}
         aria-haspopup="true"
         onClick={handleProfileMenuOpen}
-        color="default"
       >
         <AccountCircle />
       </IconButton>

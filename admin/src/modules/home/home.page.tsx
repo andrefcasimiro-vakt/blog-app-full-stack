@@ -1,6 +1,6 @@
 import React from 'react'
 import DashboardPageTemplate from 'shared/page/dashboard/template'
-import { navbarDefaultConfiguration } from 'shared/navbar/navbar.configuration.default'
+import { navbarDefaultConfiguration } from 'shared/navbar/configurations/navbar.configuration.default'
 
 const HomePage = () => {
 

@@ -4,6 +4,17 @@ const generateTranslation = (language: Language) => ({
   'generic': {
     'search': { en: 'Search', pt: 'Pesquisar' }[language],
   },
+  'users': {
+    'accounts': { en: 'Accounts', pt: 'Contas' }[language],
+    'users': { en: 'Users', pt: 'Utilizadores' }[language],
+  },
+  'blog': {
+    'blog': { en: 'Blog', pt: 'Blogue' }[language],
+    'posts': { en: 'Posts', pt: 'Publicações' }[language],
+    'categories': { en: 'Categories', pt: 'Categorias' }[language],
+    'comments': { en: 'Comments', pt: 'Comentários' }[language],
+    'settings': { en: 'Settings', pt: 'Configurações' }[language],
+  },
   'userAvatarOptions': {
     'logout': { en: 'Logout', pt: 'Terminar sessão' } [language],
   },

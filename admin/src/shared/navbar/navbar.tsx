@@ -1,7 +1,9 @@
 import React from 'react'
-import { makeStyles, AppBar, Toolbar, Typography } from '@material-ui/core'
-import { defaultLayout, Layout, layoutMapper } from './navbar.layout'
+import { makeStyles, Toolbar } from '@material-ui/core'
+import { defaultLayout, layoutMapper } from './navbar.layout'
 import { NavbarProps } from './navbar.types'
+
+export const NAVBAR_HEIGHT = 56
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -15,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   toolbar: {
     background: theme.palette.common.white,
     margin: theme.spacing(.5),
-    minHeight: '56px',
+    minHeight: `${NAVBAR_HEIGHT}px`,
   },
   title: {
     display: 'none',
@@ -33,7 +35,7 @@ const Navbar = ({
   
   return (
     <div className={classes.grow}>
-      <Toolbar className={classes.toolbar} variant="dense">
+      <Toolbar className={classes.toolbar} >
         {layout.map((element, index) => {
           if (layoutMapper[element]) {
             const C = layoutMapper[element]

@@ -1,4 +1,4 @@
-import { NavbarProps } from "./navbar.types";
+import { NavbarProps } from "../navbar.types";
 import i18n from "core/i18n/i18n";
 import { store } from "core/redux/redux.store";
 import { authLogout } from "modules/auth/redux/auth.redux";

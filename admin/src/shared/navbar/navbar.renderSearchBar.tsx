@@ -1,7 +1,5 @@
 import React from 'react'
-import { config } from 'modules/app/config/app.config'
 import makeStyles from '@material-ui/core/styles/makeStyles'
-import Typography from '@material-ui/core/Typography/Typography'
 import { NavbarProps } from './navbar.types';
 import { fade } from '@material-ui/core/styles/colorManipulator'
 import InputBase from '@material-ui/core/InputBase/InputBase'
@@ -21,7 +19,6 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 0,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(3),
       width: 'auto',
     },
   },
