@@ -15,59 +15,58 @@ import UserPageList from 'modules/user/pages/user.page.list'
 import { navbarDefaultConfiguration } from 'shared/navbar/configurations/navbar.configuration.default'
 
 interface Props {
-  title?: string,
-  titleIcon?: SvgIcon,
-  children?: React.ReactChild,
+	title?: string
+	titleIcon?: SvgIcon
+	children?: React.ReactChild
 
-  navbarConfiguration?: NavbarProps,
+	navbarConfiguration?: NavbarProps
 }
 
 const useStyles = makeStyles({
-  root: {
-    flexGrow: 1,
-    padding: theme.spacing(1),
-    marginTop: theme.spacing(10),
-    // border: '1px solid red',
-  },
-  content: {
-    // border: '1px solid green',
-    border: '1px solid red',
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginTop: `${NAVBAR_HEIGHT}px`
-  },
-  title: {
-    color: theme.palette.primary[500],
-    marginBottom: theme.spacing(2),
-  },
-  titleIcon: {
-    marginRight: theme.spacing(1),
-  },
-});
-
+	root: {
+		flexGrow: 1,
+		padding: theme.spacing(1),
+		marginTop: theme.spacing(10),
+		// border: '1px solid red',
+	},
+	content: {
+		// border: '1px solid green',
+		border: '1px solid red',
+		width: `calc(100% - ${drawerWidth}px)`,
+		marginTop: `${NAVBAR_HEIGHT}px`,
+	},
+	title: {
+		color: theme.palette.primary[500],
+		marginBottom: theme.spacing(2),
+	},
+	titleIcon: {
+		marginRight: theme.spacing(1),
+	},
+})
 
 const DashboardPageTemplate = ({
-  title,
-  titleIcon: TitleIcon,
-  children,
+	title,
+	titleIcon: TitleIcon,
+	children,
 }: Props) => {
-  const classes = useStyles()
-  const navbarConfiguration = navbarDefaultConfiguration
+	const classes = useStyles()
+	const navbarConfiguration = navbarDefaultConfiguration
 
-  return (
-    <React.Fragment>
-      <Grid container>
-        {/** Side menu and navbar */}
-        <Drawer drawerMenu={defaultDrawerMenu}>
-          <Navbar {...navbarConfiguration} />
-        </Drawer>
+	return (
+		<React.Fragment>
+			<Grid container>
+				{/** Side menu and navbar */}
+				<Drawer drawerMenu={defaultDrawerMenu}>
+					<Navbar {...navbarConfiguration} />
+				</Drawer>
 
-        {/** Internal Content */}
-        <Grid className={classes.content} container>
-          {children}
-        </Grid>
-      </Grid>
-    </React.Fragment>
-  )
+				{/** Internal Content */}
+				<Grid className={classes.content} container>
+					{children}
+				</Grid>
+			</Grid>
+		</React.Fragment>
+	)
 }
 
 export default DashboardPageTemplate

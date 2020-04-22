@@ -1,51 +1,45 @@
-import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import React from 'react'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
-import { DrawerMenu } from './drawer.types';
-import { Typography, makeStyles, createStyles, Theme } from '@material-ui/core';
+import { DrawerMenu } from './drawer.types'
+import { Typography, makeStyles, createStyles, Theme } from '@material-ui/core'
 
 // MAIN MENU ICONS
 // Blog
-import ChromeReaderModeIcon from '@material-ui/icons/ChromeReaderMode';
+import ChromeReaderModeIcon from '@material-ui/icons/ChromeReaderMode'
 // Users
-import PeopleOutlineOutlinedIcon from '@material-ui/icons/PeopleOutlineOutlined';
+import PeopleOutlineOutlinedIcon from '@material-ui/icons/PeopleOutlineOutlined'
 
 // BLOG SUB MENU ICONS
-import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
-import CategoryOutlinedIcon from '@material-ui/icons/CategoryOutlined';
-import ChatBubbleOutlineOutlinedIcon from '@material-ui/icons/ChatBubbleOutlineOutlined';
-import SettingsApplicationsOutlinedIcon from '@material-ui/icons/SettingsApplicationsOutlined';
-
+import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined'
+import CategoryOutlinedIcon from '@material-ui/icons/CategoryOutlined'
+import ChatBubbleOutlineOutlinedIcon from '@material-ui/icons/ChatBubbleOutlineOutlined'
+import SettingsApplicationsOutlinedIcon from '@material-ui/icons/SettingsApplicationsOutlined'
 
 // ACCOUNT SUB MENU ICONS
-import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
+import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined'
 
-import ListItemLink from './drawer.list-item';
-import { CSSProperties } from '@material-ui/core/styles/withStyles';
-import theme from 'modules/app/config/app.theme';
-import i18n from 'core/i18n/i18n';
-import { urls } from 'modules/app/routes/app.urls';
+import ListItemLink from './drawer.list-item'
+import { CSSProperties } from '@material-ui/core/styles/withStyles'
+import theme from 'modules/app/config/app.theme'
+import i18n from 'core/i18n/i18n'
+import { urls } from 'modules/app/routes/app.urls'
 
 const classes: CSSProperties | any = {
-  listItem: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    paddingLeft: theme.spacing(4),
-  },
-  typography: {
-    marginLeft: theme.spacing(1),
-  },
-  link: {
-    textDecoration: 'none',
-    width: '100%',
-    color: 'black'
-  }
+	listItem: {
+		display: 'flex',
+		flexDirection: 'row',
+		justifyContent: 'space-around',
+		paddingLeft: theme.spacing(4),
+	},
+	typography: {
+		marginLeft: theme.spacing(1),
+	},
+	link: {
+		textDecoration: 'none',
+		width: '100%',
+		color: 'black',
+	},
 }
 
 const goToRoute = (path: string) => window.location.assign(path)
@@ -54,34 +48,35 @@ const goToRoute = (path: string) => window.location.assign(path)
  * Generator for building menu items dynamically
  */
 const generateAction = (title: string, icon: React.FC, to: string = '') => (
-  <Link to={to} style={classes.link}>
-    <ListItemLink style={classes.listItem} icon={icon}>
-      <Typography style={classes.typography}>
-        {title}
-      </Typography>     
-    </ListItemLink>
-  </Link>
+	<Link to={to} style={classes.link}>
+		<ListItemLink style={classes.listItem} icon={icon}>
+			<Typography style={classes.typography}>{title}</Typography>
+		</ListItemLink>
+	</Link>
 )
 const blogActions = [
-  generateAction(i18n.t('blog.posts'), DescriptionOutlinedIcon),
-  generateAction(i18n.t('blog.categories'), CategoryOutlinedIcon),
-  generateAction(i18n.t('blog.comments'), ChatBubbleOutlineOutlinedIcon),
-  generateAction(i18n.t('blog.settings'), SettingsApplicationsOutlinedIcon),
+	generateAction(i18n.t('blog.posts'), DescriptionOutlinedIcon),
+	generateAction(i18n.t('blog.categories'), CategoryOutlinedIcon),
+	generateAction(i18n.t('blog.comments'), ChatBubbleOutlineOutlinedIcon),
+	generateAction(i18n.t('blog.settings'), SettingsApplicationsOutlinedIcon),
 ]
 const userActions = [
-  generateAction(i18n.t('users.accounts'), PermIdentityOutlinedIcon, urls.users),
+	generateAction(
+		i18n.t('users.accounts'),
+		PermIdentityOutlinedIcon,
+		urls.users,
+	),
 ]
 
-export const defaultDrawerMenu : DrawerMenu[] = [
-  {
-    displayName: i18n.t('blog.blog'),
-    icon: ChromeReaderModeIcon,
-    children: blogActions,
-  },
-  {
-    displayName: i18n.t('users.users'),
-    icon: PeopleOutlineOutlinedIcon,
-    children: userActions,
-  },
+export const defaultDrawerMenu: DrawerMenu[] = [
+	{
+		displayName: i18n.t('blog.blog'),
+		icon: ChromeReaderModeIcon,
+		children: blogActions,
+	},
+	{
+		displayName: i18n.t('users.users'),
+		icon: PeopleOutlineOutlinedIcon,
+		children: userActions,
+	},
 ]
-

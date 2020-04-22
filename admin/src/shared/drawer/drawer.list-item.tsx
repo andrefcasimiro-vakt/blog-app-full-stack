@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
     },
     listWrapper: {
-      width: '100%',
+      width: "'100%'",
     },
     drawerMinimized: {
       borderLeft: `.25rem solid ${theme.palette.primary[500]}`,

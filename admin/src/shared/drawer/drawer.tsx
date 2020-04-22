@@ -15,7 +15,7 @@ import { config } from 'modules/app/config/app.config';
 import Typography from '@material-ui/core/Typography/Typography';
 
 export const drawerWidth = 240;
-export const drawerWidthMinimized = 57;
+       export const drawerWidthMinimized = 57;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
