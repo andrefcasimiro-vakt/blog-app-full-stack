@@ -15,9 +15,11 @@ import IconButton from '@material-ui/core/IconButton'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import { DrawerMenu } from './drawer.types'
-import DrawerMenuItem from './drawer.menu-item'
+import DrawerMenuItem from './drawer.menu.main'
 import { config } from 'modules/app/config/app.config'
 import Typography from '@material-ui/core/Typography/Typography'
+import { useDispatch, useSelector } from 'react-redux'
+import { updateDrawer, selectDrawerStatus } from 'modules/app/redux/app.redux'
 
 export const drawerWidth = 240
 export const drawerWidthMinimized = 57
@@ -106,15 +108,19 @@ const useStyles = makeStyles((theme: Theme) =>
 type Props = {
 	children: React.ReactChild | React.ReactNode
 	drawerMenu: DrawerMenu[]
+	notifyParent?: (open: boolean) => void
 }
 
-const Drawer = ({ children, drawerMenu }: Props) => {
+const Drawer = ({ children, drawerMenu, notifyParent }: Props) => {
 	const classes = useStyles()
 	const theme = useTheme()
-	const [open, setOpen] = React.useState(true)
+
+	// Redux
+	const dispatch = useDispatch()
+	const open = useSelector(selectDrawerStatus) === 'open' ? true : false
 
 	const handleDrawer = () => {
-		setOpen(!open)
+		dispatch(updateDrawer(open ? 'closed' : 'open'))
 	}
 
 	return (
@@ -161,7 +167,7 @@ const Drawer = ({ children, drawerMenu }: Props) => {
 				<List>
 					{/* Menu Items */}
 					{drawerMenu.map((menu, index) => (
-						<DrawerMenuItem drawerMenuItem={menu} drawerMinimized={!open} />
+						<DrawerMenuItem drawerMenuItem={menu} open={open} />
 					))}
 				</List>
 			</MaterialUIDrawer>

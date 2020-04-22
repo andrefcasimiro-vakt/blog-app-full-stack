@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
-import ListItemLink from 'shared/drawer/drawer.list-item'
+import DrawerMenuMainItem from 'shared/drawer/drawer.menu.main.item'
 import Collapse from '@material-ui/core/Collapse/Collapse'
 import List from '@material-ui/core/List/List'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import createStyles from '@material-ui/core/styles/createStyles'
 import { Theme } from '@material-ui/core/styles/createMuiTheme'
-import { DrawerMenu } from './drawer.types'
+import { DrawerMenu as DrawerMenuType } from './drawer.types'
 import { pathOr } from 'ramda'
 import { Typography } from '@material-ui/core'
+import { selectDrawerStatus, updateDrawer } from 'modules/app/redux/app.redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
@@ -30,47 +32,58 @@ const useStyles = makeStyles((theme: Theme) =>
 			flexDirection: 'row',
 			alignItems: 'center',
 		},
+		menuOpen: {
+			border: '1px solid red',
+			boxShadow: '1px 5px 5px rgba(0, 0, 0, 0.1)',
+		},
+		menuClosed: {},
 	}),
 )
 
 type Props = {
-	drawerMenuItem: DrawerMenu
-
-	/** If drawer is minimize, we want to render only the icon and no text */
-	drawerMinimized?: boolean
+	drawerMenuItem: DrawerMenuType
+	open?: boolean
 }
 
-const DrawerMenuItem = ({ drawerMenuItem, drawerMinimized }: Props) => {
-	const classes = useStyles()
-	const [open, setOpen] = useState<boolean>(false)
+/**
+ * Draws a main menu that will have a collapse functionality to show / hide its sub-menus
+ */
+const DrawerMenuMain = ({ drawerMenuItem }: Props) => {
+	const { icon: Icon } = drawerMenuItem
 
+	const classes = useStyles()
+
+	const [open, setOpen] = useState<boolean>(false)
 	const handleClick = () => setOpen(!open)
 
-	const Icon = drawerMenuItem.icon
+	// Redux
+	const drawerMinimized =
+		useSelector(selectDrawerStatus) === 'open' ? false : true
 
 	return (
 		<React.Fragment>
-			<ListItemLink
-				open={open}
-				onClick={handleClick}
-				renderArrow={!drawerMinimized}
-			>
+			<DrawerMenuMainItem onClick={handleClick} open={open}>
 				<div className={classes.buttonContent}>
 					<Icon />
-					<Typography
-						className={classes.displayName}
-						variant="h6"
-						color="textPrimary"
-					>
-						{!drawerMinimized && drawerMenuItem.displayName}
-					</Typography>
+					{
+						// Only render the menu display name if the drawer is maximized
+						!drawerMinimized && (
+							<Typography
+								className={classes.displayName}
+								variant="h6"
+								color="textPrimary"
+							>
+								{drawerMenuItem.displayName}
+							</Typography>
+						)
+					}
 				</div>
-			</ListItemLink>
+			</DrawerMenuMainItem>
 			<Collapse component="li" in={open} timeout="auto" unmountOnExit>
 				{pathOr([], ['children'], drawerMenuItem).map(
 					(Component: any, index) => (
 						<List className={classes.subMenus} key={index} disablePadding>
-							{React.cloneElement(Component, { drawerMinimized })}
+							{Component}
 						</List>
 					),
 				)}
@@ -79,4 +92,4 @@ const DrawerMenuItem = ({ drawerMenuItem, drawerMinimized }: Props) => {
 	)
 }
 
-export default DrawerMenuItem
+export default DrawerMenuMain

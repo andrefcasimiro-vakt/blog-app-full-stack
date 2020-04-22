@@ -4,10 +4,12 @@ import theme from 'modules/app/config/app.theme'
 import { SvgIcon } from 'shared/icons/icons.types'
 import Navbar, { NAVBAR_HEIGHT } from 'shared/navbar/navbar'
 import { NavbarProps } from 'shared/navbar/navbar.types'
-import Drawer, { drawerWidth } from 'shared/drawer/drawer'
-import { defaultDrawerMenu } from 'shared/drawer/drawer.menu.config.default'
+import Drawer, { drawerWidth, drawerWidthMinimized } from 'shared/drawer/drawer'
+import { defaultDrawerMenu } from 'shared/drawer/configs/drawer.config.default'
 import Grid from '@material-ui/core/Grid/Grid'
 import { navbarDefaultConfiguration } from 'shared/navbar/configurations/navbar.configuration.default'
+import { useSelector } from 'react-redux'
+import { selectDrawerStatus } from 'modules/app/redux/app.redux'
 
 interface Props {
 	title?: string
@@ -24,8 +26,11 @@ const useStyles = makeStyles({
 		marginTop: theme.spacing(10),
 		// border: '1px solid red',
 	},
-	content: {
-		// border: '1px solid green',
+	drawerMinimized: {
+		width: `calc(100% - ${drawerWidthMinimized}px)`,
+		marginTop: `${NAVBAR_HEIGHT}px`,
+	},
+	drawerMaximized: {
 		width: `calc(100% - ${drawerWidth}px)`,
 		marginTop: `${NAVBAR_HEIGHT}px`,
 	},
@@ -46,6 +51,9 @@ const DashboardPageTemplate = ({
 	const classes = useStyles()
 	const navbarConfiguration = navbarDefaultConfiguration
 
+	const drawerMinimized =
+		useSelector(selectDrawerStatus) === 'open' ? false : true
+
 	return (
 		<React.Fragment>
 			<Grid container>
@@ -55,7 +63,12 @@ const DashboardPageTemplate = ({
 				</Drawer>
 
 				{/** Internal Content */}
-				<Grid className={classes.content} container>
+				<Grid
+					className={
+						drawerMinimized ? classes.drawerMinimized : classes.drawerMaximized
+					}
+					container
+				>
 					{children}
 				</Grid>
 			</Grid>

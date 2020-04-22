@@ -6,6 +6,8 @@ import ListItemText from '@material-ui/core/ListItemText'
 import ExpandLess from '@material-ui/icons/ExpandLess'
 import ExpandMore from '@material-ui/icons/ExpandMore'
 import { useHistory } from 'react-router'
+import { useSelector } from 'react-redux'
+import { selectDrawerStatus } from 'modules/app/redux/app.redux'
 
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
@@ -28,28 +30,22 @@ interface ListItemLinkProps extends LinkProps {
 	renderArrow?: boolean
 	icon?: React.FC
 	onClick?: any
-
-	/** For when the drawer is minimized */
-	drawerMinimized?: boolean
 }
 
-function ListItemLink(props: Omit<ListItemLinkProps, 'ref'>) {
-	const {
-		children,
-		open,
-		renderArrow,
-		icon,
-		onClick,
-		drawerMinimized,
-		href,
-		...other
-	} = props
+/**
+ * Similar to main.item but does not contain a collapse
+ */
+function DrawerMenuSubItem(props: Omit<ListItemLinkProps, 'ref'>) {
+	const { children, open, icon: Icon, onClick, href, ...other } = props
 
 	const classes = useStyles()
 
+	// React router
 	const history = useHistory()
 
-	const Icon = icon
+	// Redux
+	const drawerMinimized =
+		useSelector(selectDrawerStatus) === 'open' ? false : true
 
 	return (
 		<li
@@ -75,14 +71,6 @@ function ListItemLink(props: Omit<ListItemLinkProps, 'ref'>) {
 								{children}
 							</div>
 						</ListItemText>
-						{renderArrow &&
-							(open != null ? (
-								open ? (
-									<ExpandLess className={classes.arrow} />
-								) : (
-									<ExpandMore className={classes.arrow} />
-								)
-							) : null)}
 					</>
 				)}
 			</ListItem>
@@ -90,4 +78,4 @@ function ListItemLink(props: Omit<ListItemLinkProps, 'ref'>) {
 	)
 }
 
-export default ListItemLink
+export default DrawerMenuSubItem

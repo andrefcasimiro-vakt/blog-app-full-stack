@@ -7,7 +7,7 @@ import {
 	useHistory,
 } from 'react-router-dom'
 
-import { DrawerMenu } from './drawer.types'
+import { DrawerMenu } from '../drawer.types'
 import { Typography, makeStyles, createStyles, Theme } from '@material-ui/core'
 
 // MAIN MENU ICONS
@@ -25,7 +25,7 @@ import SettingsApplicationsOutlinedIcon from '@material-ui/icons/SettingsApplica
 // ACCOUNT SUB MENU ICONS
 import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined'
 
-import ListItemLink from './drawer.list-item'
+import DrawerMenuSubItem from '../drawer.menu.sub.item'
 import { CSSProperties } from '@material-ui/core/styles/withStyles'
 import theme from 'modules/app/config/app.theme'
 import i18n from 'core/i18n/i18n'
@@ -51,13 +51,12 @@ const classes: CSSProperties | any = {
 /**
  * Generator for building menu items dynamically
  */
-const generateAction = (title: string, icon: React.FC, to: string = '') => {
-	return (
-		<ListItemLink style={classes.listItem} icon={icon} href={to}>
-			<Typography style={classes.typography}>{title}</Typography>
-		</ListItemLink>
-	)
-}
+const generateAction = (title: string, icon: React.FC, to: string = '') => (
+	<DrawerMenuSubItem style={classes.listItem} icon={icon} href={to}>
+		<Typography style={classes.typography}>{title}</Typography>
+	</DrawerMenuSubItem>
+)
+
 const blogActions = [
 	generateAction(i18n.t('blog.posts'), DescriptionOutlinedIcon, 'url'),
 	generateAction(i18n.t('blog.categories'), CategoryOutlinedIcon),
