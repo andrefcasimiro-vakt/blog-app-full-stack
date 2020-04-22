@@ -12,6 +12,7 @@ type AuthUser {
   id: Float!
   username: String!
   email: String!
+  role: String!
 }
 
 """

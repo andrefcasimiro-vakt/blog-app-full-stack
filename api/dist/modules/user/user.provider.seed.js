@@ -16,11 +16,13 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const user_entity_1 = require("./user.entity");
 const typeorm_2 = require("typeorm");
+const user_enum_1 = require("./user.enum");
 const users = [
     {
         username: 'admin',
         email: 'admin@app.com',
         password: '$2b$10$tbRa37rfDDFM7DZ1uNJA6ODgk30gXHVsZZ/rBJmgQ0O1O1MXrG3RS',
+        role: user_enum_1.UserRole.ADMIN,
     }
 ];
 let UserProviderSeed = class UserProviderSeed {

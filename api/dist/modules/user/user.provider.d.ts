@@ -9,5 +9,5 @@ export declare class UserProvider {
     findByUsername(username: string): Promise<UserModel>;
     findByEmail(email: string): Promise<UserModel>;
     createUser(username: string, email: string, hashedPassword: string): Promise<Partial<UserEntity> & UserModel>;
-    updateLastLoginAt(userId: number): Promise<void>;
+    updateLastLoginAt(userId: number): Promise<import("typeorm").UpdateResult>;
 }

@@ -3,12 +3,14 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { User as UserEntity } from "./user.entity";
 import { User as UserModel } from "./user.model";
 import { Repository } from "typeorm";
+import { UserRole } from "./user.enum";
 
 const users: Partial<UserModel>[] = [
   {
     username: 'admin',
     email: 'admin@app.com',
     password: '$2b$10$tbRa37rfDDFM7DZ1uNJA6ODgk30gXHVsZZ/rBJmgQ0O1O1MXrG3RS', // 1234qwer
+    role: UserRole.ADMIN,
   }
 ]
 

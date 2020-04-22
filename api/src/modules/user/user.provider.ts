@@ -1,10 +1,11 @@
 import { Injectable, Inject } from '@nestjs/common'
-import { Repository } from 'typeorm'
-import { User as UserEntity } from 'src/modules/user/user.entity'
+import { Repository, getConnection } from 'typeorm'
+import { User as UserEntity, User } from 'src/modules/user/user.entity'
 import { User as UserModel } from 'src/modules/user/user.model'
 import { InjectRepository } from '@nestjs/typeorm'
 import { CONTEXT } from '@nestjs/graphql'
 import { UserRole } from './user.enum'
+import moment from 'moment'
 
 @Injectable()
 export class UserProvider {
@@ -39,8 +40,14 @@ export class UserProvider {
   }
 
   async updateLastLoginAt(userId: number) {
-    await this.usersRepository.save([
-      { id: userId, lastLoginAt: Date.now().toString() }
-    ])
+    const date = moment.utc().toISOString()
+    const result = await getConnection()
+      .createQueryBuilder()
+      .update(User)
+      .set({ lastLoginAt: moment.utc().toISOString() })
+      .where('id = :userId', { userId })
+      .execute()
+
+    return result
   }
 }

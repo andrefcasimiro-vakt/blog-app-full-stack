@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const graphql_1 = require("@nestjs/graphql");
+const user_enum_1 = require("../user/user.enum");
 let AuthUser = class AuthUser {
 };
 __decorate([
@@ -24,6 +25,10 @@ __decorate([
     graphql_1.Field(),
     __metadata("design:type", String)
 ], AuthUser.prototype, "email", void 0);
+__decorate([
+    graphql_1.Field(),
+    __metadata("design:type", String)
+], AuthUser.prototype, "role", void 0);
 AuthUser = __decorate([
     graphql_1.ObjectType()
 ], AuthUser);

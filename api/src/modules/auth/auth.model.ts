@@ -1,4 +1,5 @@
 import { Field, ObjectType } from '@nestjs/graphql'
+import { UserRole } from '../user/user.enum'
 
 @ObjectType()
 export class AuthUser {
@@ -10,6 +11,9 @@ export class AuthUser {
 
   @Field()
   email: string
+
+  @Field()
+  role: UserRole
 }
 
 @ObjectType()

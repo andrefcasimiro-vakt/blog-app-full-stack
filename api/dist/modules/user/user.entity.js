@@ -35,7 +35,7 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "role", void 0);
 __decorate([
-    typeorm_1.UpdateDateColumn({ type: 'timestamp' }),
+    typeorm_1.Column({ type: 'timestamptz', default: null, }),
     __metadata("design:type", String)
 ], User.prototype, "lastLoginAt", void 0);
 User = __decorate([

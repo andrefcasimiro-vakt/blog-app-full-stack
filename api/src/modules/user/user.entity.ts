@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
+import { Entity, Column, PrimaryGeneratedColumn, UpdateDateColumn, CreateDateColumn } from 'typeorm'
 import { UserRole } from 'src/modules/user/user.enum'
 import { BaseEntity } from '../database/database.entities.base'
 
@@ -19,6 +19,6 @@ export class User extends BaseEntity {
   @Column({ type: 'enum', enum: UserRole, default: UserRole.USER })
   role: UserRole
 
-  @UpdateDateColumn({ type: 'timestamp' })
+  @Column({ type: 'timestamptz', default: null, })
   lastLoginAt: string
 }

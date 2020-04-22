@@ -11,6 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("typeorm");
@@ -19,6 +22,7 @@ const user_model_1 = require("./user.model");
 const typeorm_2 = require("@nestjs/typeorm");
 const graphql_1 = require("@nestjs/graphql");
 const user_enum_1 = require("./user.enum");
+const moment_1 = __importDefault(require("moment"));
 let UserProvider = class UserProvider {
     constructor(usersRepository, context) {
         this.usersRepository = usersRepository;
@@ -44,9 +48,14 @@ let UserProvider = class UserProvider {
         return this.usersRepository.save(userObject);
     }
     async updateLastLoginAt(userId) {
-        await this.usersRepository.save([
-            { id: userId, lastLoginAt: Date.now().toString() }
-        ]);
+        const date = moment_1.default.utc().toISOString();
+        const result = await typeorm_1.getConnection()
+            .createQueryBuilder()
+            .update(user_entity_1.User)
+            .set({ lastLoginAt: moment_1.default.utc().toISOString() })
+            .where('id = :userId', { userId })
+            .execute();
+        return result;
     }
 };
 UserProvider = __decorate([
