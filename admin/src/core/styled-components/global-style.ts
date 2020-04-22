@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 import { normalize } from 'polished'
-import { genericColors } from 'modules/app/config/app.theme'
+import theme from 'modules/app/config/app.theme'
 
 export default createGlobalStyle`
   ${normalize()}
@@ -12,7 +12,7 @@ export default createGlobalStyle`
   body {
     font-family: 'Roboto';
     
-    background: ${genericColors.GRAY};
+    background: ${theme.palette.grey[100]};
     
     overflow-x: hidden;
 

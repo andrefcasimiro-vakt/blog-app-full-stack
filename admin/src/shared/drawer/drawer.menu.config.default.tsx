@@ -1,5 +1,11 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Link,
+	useHistory,
+} from 'react-router-dom'
 
 import { DrawerMenu } from './drawer.types'
 import { Typography, makeStyles, createStyles, Theme } from '@material-ui/core'
@@ -30,7 +36,7 @@ const classes: CSSProperties | any = {
 		display: 'flex',
 		flexDirection: 'row',
 		justifyContent: 'space-around',
-		paddingLeft: theme.spacing(4),
+		paddingLeft: theme.spacing(3.5),
 	},
 	typography: {
 		marginLeft: theme.spacing(1),
@@ -42,20 +48,18 @@ const classes: CSSProperties | any = {
 	},
 }
 
-const goToRoute = (path: string) => window.location.assign(path)
-
 /**
  * Generator for building menu items dynamically
  */
-const generateAction = (title: string, icon: React.FC, to: string = '') => (
-	<Link to={to} style={classes.link}>
-		<ListItemLink style={classes.listItem} icon={icon}>
+const generateAction = (title: string, icon: React.FC, to: string = '') => {
+	return (
+		<ListItemLink style={classes.listItem} icon={icon} href={to}>
 			<Typography style={classes.typography}>{title}</Typography>
 		</ListItemLink>
-	</Link>
-)
+	)
+}
 const blogActions = [
-	generateAction(i18n.t('blog.posts'), DescriptionOutlinedIcon),
+	generateAction(i18n.t('blog.posts'), DescriptionOutlinedIcon, 'url'),
 	generateAction(i18n.t('blog.categories'), CategoryOutlinedIcon),
 	generateAction(i18n.t('blog.comments'), ChatBubbleOutlineOutlinedIcon),
 	generateAction(i18n.t('blog.settings'), SettingsApplicationsOutlinedIcon),

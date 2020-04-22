@@ -7,11 +7,6 @@ import { NavbarProps } from 'shared/navbar/navbar.types'
 import Drawer, { drawerWidth } from 'shared/drawer/drawer'
 import { defaultDrawerMenu } from 'shared/drawer/drawer.menu.config.default'
 import Grid from '@material-ui/core/Grid/Grid'
-import { Switch, Route } from 'react-router-dom'
-import PrivilegedRoute from 'modules/app/routes/app.routes.privileged'
-import { UserRole } from 'modules/user/enums/user.enums'
-import { urls } from 'modules/app/routes/app.urls'
-import UserPageList from 'modules/user/pages/user.page.list'
 import { navbarDefaultConfiguration } from 'shared/navbar/configurations/navbar.configuration.default'
 
 interface Props {
@@ -31,7 +26,6 @@ const useStyles = makeStyles({
 	},
 	content: {
 		// border: '1px solid green',
-		border: '1px solid red',
 		width: `calc(100% - ${drawerWidth}px)`,
 		marginTop: `${NAVBAR_HEIGHT}px`,
 	},

@@ -1,22 +1,22 @@
-import { RootState } from "core/redux/redux.store"
-import { UserRole } from "modules/user/enums/user.enums"
+import { RootState } from 'core/redux/redux.store'
+import { UserRole } from 'modules/user/enums/user.enums'
 
 // ----------------------------------------------------------------
 // Types & interfaces
 
 export interface AuthUser {
-  /** The authenticated user id */
-  id: number,
-  /** The authenticated username */
-  username: string,
-  /** The authenticated user email */
-  email: string,
-  /** The role of the authenticated user */
-  role: UserRole,
+	/** The authenticated user id */
+	id: number
+	/** The authenticated username */
+	username: string
+	/** The authenticated user email */
+	email: string
+	/** The role of the authenticated user */
+	role: UserRole
 }
 
 export interface AuthState {
-  currentUser: AuthUser | null,
+	currentUser: AuthUser | null
 }
 
 // ----------------------------------------------------------------
@@ -25,23 +25,23 @@ export const AUTH_LOGIN = 'AUTH/LOGIN'
 export const AUTH_LOGOUT = 'AUTH/LOGOUT'
 
 interface AuthLoginAction {
-  type: typeof AUTH_LOGIN,
-  payload: AuthUser,
+	type: typeof AUTH_LOGIN
+	payload: AuthUser
 }
 
 interface AuthLogoutAction {
-  type: typeof AUTH_LOGOUT,
+	type: typeof AUTH_LOGOUT
 }
 
 export type AuthActionTypes = AuthLoginAction | AuthLogoutAction
 
 export const authLogin = (payload: AuthUser): AuthActionTypes => ({
-  type: AUTH_LOGIN,
-  payload,
+	type: AUTH_LOGIN,
+	payload,
 })
 
 export const authLogout = (): AuthActionTypes => ({
-  type: AUTH_LOGOUT,
+	type: AUTH_LOGOUT,
 })
 
 // ----------------------------------------------------------------
@@ -51,25 +51,25 @@ export const selectCurrentUser = (state: RootState) => state.auth.currentUser
 // ----------------------------------------------------------------
 // Reducers
 const initialState: AuthState = {
-  currentUser: null,
+	currentUser: null,
 }
 
 export const authReducer = (
-  state = initialState,
-  action: AuthActionTypes,
+	state = initialState,
+	action: AuthActionTypes,
 ): AuthState => {
-  switch (action.type) {
-    case AUTH_LOGIN:
-      return {
-        ...state,
-        currentUser: action.payload,
-      }
-    case AUTH_LOGOUT:
-      return {
-        ...state,
-        currentUser: null,
-      }
-    default:
-      return state
-  }
+	switch (action.type) {
+		case AUTH_LOGIN:
+			return {
+				...state,
+				currentUser: action.payload,
+			}
+		case AUTH_LOGOUT:
+			return {
+				...state,
+				currentUser: null,
+			}
+		default:
+			return state
+	}
 }

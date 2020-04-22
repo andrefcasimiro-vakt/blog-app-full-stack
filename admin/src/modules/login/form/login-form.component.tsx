@@ -7,28 +7,28 @@ import { authLogin } from 'modules/auth/redux/auth.redux'
 import { useDispatch } from 'react-redux'
 
 const LoginForm = () => {
-  const dispatch = useDispatch()
-  const onSuccess = (result: AuthResponse) => {
-      const user = result.user
+	const dispatch = useDispatch()
+	const onSuccess = (result: AuthResponse) => {
+		const user = result.user
 
-      dispatch(
-        authLogin({
-          id: user.id,
-          username: user.username,
-          email: user.email,
-          role: user.role,
-        })
-      ) 
-  }
+		dispatch(
+			authLogin({
+				id: user.id,
+				username: user.username,
+				email: user.email,
+				role: user.role,
+			}),
+		)
+	}
 
-  return (
-    <Form<LoginFormData, typeof loginFormSchema, AuthResponse>
-      form={loginForm}
-      schema={loginFormSchema}
-      useMutation={() => useLogin(onSuccess)}
-      successMessage={`Welcome back`}
-    />
-  )
+	return (
+		<Form<LoginFormData, typeof loginFormSchema, AuthResponse>
+			form={loginForm}
+			schema={loginFormSchema}
+			useMutation={() => useLogin(onSuccess)}
+			successMessage={`Welcome back`}
+		/>
+	)
 }
 
 export default LoginForm

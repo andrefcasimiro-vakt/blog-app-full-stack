@@ -8,31 +8,29 @@ import { UserRole } from 'modules/user/enums/user.enums'
 import { path } from 'ramda'
 
 interface Props extends RouteProps {
-  role: UserRole,
-} 
+	role: UserRole
+}
 
 /**
  * For accessing this route, user must exist
  * and hold the given role
  */
 const PrivilegedRoute = ({ component, role, ...rest }: Props) => {
-  const user = useSelector(selectCurrentUser)
-  const dispach = useDispatch()
-  
-  if (!user || !user.role) {
-    <Redirect to={urls.login} />
-  }
+	const user = useSelector(selectCurrentUser)
+	const dispach = useDispatch()
 
-  const canAccess = path(['role'], user) === role
+	if (!user || !user.role) {
+		;<Redirect to={urls.login} />
+	}
 
-  if (!canAccess) {
-    dispach(authLogout())
-    return <Redirect to={urls.login} {...rest} />
-  }
+	const canAccess = path(['role'], user) === role
 
-  return (
-    <Route {...rest} component={component} />
-  )
+	if (!canAccess) {
+		dispach(authLogout())
+		return <Redirect to={urls.login} {...rest} />
+	}
+
+	return <Route {...rest} component={component} />
 }
 
 export default PrivilegedRoute

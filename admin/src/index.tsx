@@ -13,18 +13,18 @@ import { client } from 'core/graphql/graphql.apollo-client'
 import { PersistGate } from 'redux-persist/integration/react'
 
 const WrappedApp = (
-  <ApolloProvider client={client}>
-    <Provider store={store}>
-      <PersistGate persistor={persistor}>
-        <ThemeProvider theme={getMaterialTheme()}>
-          <Router>
-            <GlobalStyle />
-            <App />
-          </Router>
-        </ThemeProvider>
-      </PersistGate>
-    </Provider>
-  </ApolloProvider>
+	<ApolloProvider client={client}>
+		<Provider store={store}>
+			<PersistGate persistor={persistor}>
+				<ThemeProvider theme={getMaterialTheme()}>
+					<Router>
+						<GlobalStyle />
+						<App />
+					</Router>
+				</ThemeProvider>
+			</PersistGate>
+		</Provider>
+	</ApolloProvider>
 )
 
 render(WrappedApp, document.getElementById('root'))

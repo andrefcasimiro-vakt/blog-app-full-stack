@@ -4,27 +4,27 @@ import Content from './app.content'
 
 interface Props {}
 interface State {
-  error: Error | null,
+	error: Error | null
 }
 
 class App extends Component<Props, State> {
-  state = {
-    error: null,
-  }
+	state = {
+		error: null,
+	}
 
-  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    this.setState({ error })
-  }
+	componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+		this.setState({ error })
+	}
 
-  render() {
-    const { error } = this.state
+	render() {
+		const { error } = this.state
 
-    if (error) {
-      return <ErrorPage error={error} />
-    }
+		if (error) {
+			return <ErrorPage error={error} />
+		}
 
-    return <Content />
-  }
+		return <Content />
+	}
 }
 
 export default App
