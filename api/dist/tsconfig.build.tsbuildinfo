@@ -3997,7 +3997,7 @@
         "signature": "bb30db237bd743083978b312d9df8ed1bec754ab2f279a422d1d0435130f483f"
       },
       "../src/modules/refresh-token/refresh-token.helpers.ts": {
-        "version": "cc7132338dbf1cb7ba38565732595e9edee7a19b8fc36bc251f38a72e9d1deea",
+        "version": "cd0089f8fa589c2fd36c9f21cdfb815e37569bd9819b4303ae20e2b412f6a876",
         "signature": "0fcb6758f6597df503a0c32def9287bce04e7eb08162ff6f2ade292b4689b098"
       },
       "../src/modules/refresh-token/refresh-token.model.ts": {
@@ -4017,8 +4017,8 @@
         "signature": "d62fa6fe33566fa743b3d6715a1a2fe46e937ba9d2ba158563c5744315d438a7"
       },
       "../src/modules/user/user.provider.ts": {
-        "version": "95406aaf0c580b23508dcf21dfaff55b4df2ebbecbae230ecc7156609bda8e56",
-        "signature": "064405a7b61fdb41f535290d7c1f994a2afecd4c3a37352f28ac653161364dd5"
+        "version": "2257a2aec8308beac7ad0197ae6149ad5db57eea53c54e03fc7c65ed09a3f8b0",
+        "signature": "15a88e9d1193cd5da9a11d606117520fabe721133b7e89678b6efecf91ce6c2b"
       },
       "../src/modules/jwt/jwt.guard.ts": {
         "version": "a5b82c360e01b12b44f5a8ff5147851d80c84c9d13612ce4494bc3bc87a97777",
@@ -4037,8 +4037,8 @@
         "signature": "1d7c3a44c307c84f5596fe27fe2a24f23828fe6a3424afa4b3b85a08ca335ba4"
       },
       "../src/modules/user/user.resolver.ts": {
-        "version": "3ca5c6ec97b432c88e2ae2fe75bd4dcf23023c075326ae4bda3e754b9b880b1c",
-        "signature": "65a6fb3a938ee30247e8c0784c0b62c67e01345f680dc033a43bcb32ed346bb5"
+        "version": "38174a697eae872509c09f21765a16dc800518dc1fb2b4c54d57b1e233ea56d2",
+        "signature": "6b9a35da7d83399d46421946ce47a70db4a84bd0d434afe38ba1e45c27427004"
       },
       "../src/modules/user/user.provider.seed.ts": {
         "version": "3e369bf3804ca8aeef39cbf544935d011c6937f6d08379bf115df5c54c3abea1",
@@ -23773,7 +23773,6 @@
       "../src/modules/graphql/graphql.guard.ts",
       "../src/modules/graphql/decorators/current-user.ts",
       "../src/modules/auth/auth.model.ts",
-      "../src/modules/user/user.resolver.ts",
       "../src/modules/user/user.provider.seed.ts",
       "../src/modules/user/user.module.ts",
       "../src/modules/auth/auth.types.ts",
@@ -23792,6 +23791,7 @@
       "../src/modules/graphql/graphql.ctx.utils.ts",
       "../src/modules/auth/auth.resolver.ts",
       "../src/modules/jwt/jwt.strategy.ts",
+      "../src/modules/auth/auth.module.ts",
       "../src/modules/blog/blog.module.ts",
       "../node_modules/@nestjs/config/dist/config.service.d.ts",
       "../node_modules/@nestjs/config/dist/interfaces/config-factory.interface.d.ts",
@@ -23855,7 +23855,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/modules/auth/auth.module.ts"
+      "../src/modules/user/user.resolver.ts"
     ]
   },
   "version": "3.8.3"

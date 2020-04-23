@@ -29,6 +29,7 @@ type Query {
   whoAmI: User!
   getUserById(id: Float!): User!
   getUserByUsername(username: String!): User!
+  listUsers: [User!]!
 }
 
 type User {

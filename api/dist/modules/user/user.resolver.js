@@ -40,6 +40,9 @@ let UserResolver = class UserResolver {
         }
         return user;
     }
+    async listUsers() {
+        return this.userProvider.listUsers();
+    }
 };
 __decorate([
     graphql_1.Query(returns => user_model_1.User, { name: 'whoAmI' }),
@@ -63,6 +66,13 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "findByUsername", null);
+__decorate([
+    graphql_1.Query(returns => [user_model_1.User], { name: 'listUsers' }),
+    common_1.UseGuards(graphql_guard_1.GqlAuthGuard),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], UserResolver.prototype, "listUsers", null);
 UserResolver = __decorate([
     graphql_1.Resolver(of => user_model_1.User),
     __metadata("design:paramtypes", [user_provider_1.UserProvider])

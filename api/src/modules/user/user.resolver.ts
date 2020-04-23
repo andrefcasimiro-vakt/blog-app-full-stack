@@ -45,5 +45,11 @@ export class UserResolver {
     return user
   }
 
+  @Query(returns => [User], { name: 'listUsers' })
+  @UseGuards(GqlAuthGuard)
+  async listUsers(): Promise<User[]> {
+    return this.userProvider.listUsers()
+  }
+
 }
 

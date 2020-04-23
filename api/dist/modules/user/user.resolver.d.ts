@@ -7,4 +7,5 @@ export declare class UserResolver {
     whoAmI(user: AuthUser): Promise<User>;
     findById(id: number): Promise<User>;
     findByUsername(username: string): Promise<User>;
+    listUsers(): Promise<User[]>;
 }

@@ -14,3 +14,18 @@ export const getUserById: Query<User> = {
 	`,
 	selector: ['getUserByUsername'],
 }
+
+export const listUsers: Query<User[]> = {
+	gql: gql`
+		query listUsers {
+			listUsers {
+				id
+				username
+				email
+				role
+				lastLoginAt
+			}
+		}
+	`,
+	selector: ['listUsers'],
+}

@@ -44,5 +44,3 @@ export const generateAuthTokens = async (payload = {}): Promise<GeneratedAccessT
     expiresIn,
   }
 }
-
-

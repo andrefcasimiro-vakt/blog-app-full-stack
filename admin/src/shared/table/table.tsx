@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import theme from 'modules/app/config/app.theme'
 import Grid from '@material-ui/core/Grid/Grid'
 import MaterialTable, { Column } from 'material-table'
 import { tableIcons } from './table.icons'
+import { Query } from 'core/graphql/graphql.types'
+import { path, pathOr } from 'ramda'
+import { useQuery } from 'core/graphql/graphql.hooks'
 
 const useStyles = makeStyles({
 	table: {
@@ -11,76 +14,77 @@ const useStyles = makeStyles({
 	},
 })
 
-interface Row {
-	name: string
-	surname: string
-	birthYear: number
-	birthCity: number
+interface TableState<TableRow> {
+	// @ts-ignore
+	columns: Column<TableRow>[]
+	data: TableRow[]
 }
 
-interface TableState {
-	columns: Array<Column<Row>>
-	data: Row[]
-}
-
-export interface TableProps {
+export interface TableProps<TableData, TableRow> {
 	title?: string
+
+	query: Query<TableData[]>
+
+	// @ts-ignore
+	columns: Column<TableRow>[]
 }
 
-interface Props {
-	tableProps?: TableProps
+interface Props<TableData, TableRow> {
+	tableProps: TableProps<TableData, TableRow>
 }
 
-const Table = ({ tableProps }: Props) => {
+function Table<TableData, TableRow>({
+	tableProps,
+}: Props<TableData, TableRow>) {
 	const classes = useStyles()
 
-	const [state, setState] = React.useState<TableState>({
-		columns: [
-			{ title: 'Name', field: 'name' },
-			{ title: 'Surname', field: 'surname' },
-			{ title: 'Birth Year', field: 'birthYear', type: 'numeric' },
-			{
-				title: 'Birth Place',
-				field: 'birthCity',
-				lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' },
-			},
-		],
-		data: [
-			{ name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-			{
-				name: 'Zerya Betül',
-				surname: 'Baran',
-				birthYear: 2017,
-				birthCity: 34,
-			},
-		],
+	const [state, setState] = React.useState<
+		Partial<TableProps<TableData, TableRow>>
+	>({
+		columns: pathOr([], ['columns'], tableProps),
+		// @ts-ignore
+		data: [],
 	})
 
+	const { data, error } = useQuery(tableProps.query, {})
+
+	useEffect(() => {
+		if (data) {
+			setState({ ...state, data })
+		}
+	}, [data])
+
 	return (
-		<MaterialTable
+		// @ts-ignore
+		<MaterialTable<TableData>
 			title={tableProps?.title}
 			columns={state.columns}
 			data={state.data}
 			icons={tableIcons}
 			style={{ width: '100%' }}
-			editable={{
-				onRowAdd: (newData) =>
+			editable={
+				{
+					/*
+				onRowAdd: (newData: TableData) =>
 					new Promise((resolve) => {
 						setTimeout(() => {
 							resolve()
 							setState((prevState) => {
+								// @ts-ignore
+
 								const data = [...prevState.data]
 								data.push(newData)
 								return { ...prevState, data }
 							})
 						}, 600)
 					}),
-				onRowUpdate: (newData, oldData) =>
+				onRowUpdate: (newData: TableData, oldData: TableData) =>
 					new Promise((resolve) => {
 						setTimeout(() => {
 							resolve()
 							if (oldData) {
 								setState((prevState) => {
+									// @ts-ignore
 									const data = [...prevState.data]
 									data[data.indexOf(oldData)] = newData
 									return { ...prevState, data }
@@ -88,18 +92,21 @@ const Table = ({ tableProps }: Props) => {
 							}
 						}, 600)
 					}),
-				onRowDelete: (oldData) =>
+				onRowDelete: (oldData: TableData) =>
 					new Promise((resolve) => {
 						setTimeout(() => {
 							resolve()
 							setState((prevState) => {
+								// @ts-ignore
 								const data = [...prevState.data]
 								data.splice(data.indexOf(oldData), 1)
 								return { ...prevState, data }
 							})
 						}, 600)
 					}),
-			}}
+			*/
+				}
+			}
 		/>
 	)
 }

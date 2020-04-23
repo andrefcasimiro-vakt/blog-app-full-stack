@@ -4,6 +4,9 @@ import Grid from '@material-ui/core/Grid/Grid'
 import { Typography } from '@material-ui/core'
 import ListSubpage from 'shared/subpage/list/subpage.list'
 import i18n from 'core/i18n/i18n'
+import { User } from '../types/user.types'
+import { UserRow, userColumns } from '../tables/user.table.list'
+import { listUsers } from '../graphql/user.graphql'
 
 interface Props {}
 
@@ -21,10 +24,12 @@ const UserPageList = ({}: Props) => {
 	return (
 		<React.Fragment>
 			<Grid container>
-				<ListSubpage
+				<ListSubpage<User, UserRow>
 					title={userTitle}
 					tableProps={{
-						title: i18n.t('tables.titles.users'),
+						title: i18n.t('tables.users.title'),
+						columns: userColumns,
+						query: listUsers,
 					}}
 				/>
 			</Grid>

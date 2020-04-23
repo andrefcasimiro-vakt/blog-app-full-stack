@@ -28,6 +28,10 @@ export class UserProvider {
     return this.usersRepository.findOne( { where: { email } } )
   }
 
+  async listUsers() {
+    return this.usersRepository.find()
+  }
+
   async createUser(username: string, email: string, hashedPassword: string) {
     const userObject: Partial<UserEntity> = {
       username,

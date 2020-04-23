@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
 		},
 		drawerMinimized: {},
 		drawerOpened: {
-			boxShadow: '1px 5px 5px rgba(0, 0, 0, 0.1)',
+			boxShadow: '1px 5px 10px rgba(0, 0, 0, 0.05)',
 		},
 	}),
 )

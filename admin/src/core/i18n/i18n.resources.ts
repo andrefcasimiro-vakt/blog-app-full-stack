@@ -5,8 +5,15 @@ const generateTranslation = (language: Language) => ({
 		search: { en: 'Search', pt: 'Pesquisar' }[language],
 	},
 	tables: {
-		titles: {
-			users: { en: 'User List', pt: 'Lista de utilizadores' }[language],
+		users: {
+			title: { en: 'User List', pt: 'Lista de utilizadores' }[language],
+			columns: {
+				id: { en: 'ID', pt: 'ID' }[language],
+				username: { en: 'Username', pt: 'Nome de usuário' }[language],
+				email: { en: 'E-Mail', pt: 'E-Mail' }[language],
+				userRole: { en: 'Role', pt: 'Função' }[language],
+				lastLoginAt: { en: 'Last login at', pt: 'Última atividade' }[language],
+			},
 		},
 	},
 	users: {

@@ -17,11 +17,14 @@ const useStyles = makeStyles({
  * Template for creating generic subpages for lists
  */
 
-interface Props {
+interface Props<TableData, TableRow> {
 	title: string
-	tableProps?: TableProps
+	tableProps: TableProps<TableData, TableRow>
 }
-const ListSubpage = ({ title, tableProps }: Props) => {
+function ListSubpage<TableData, TableRow>({
+	title,
+	tableProps,
+}: Props<TableData, TableRow>) {
 	const classes = useStyles()
 
 	return (

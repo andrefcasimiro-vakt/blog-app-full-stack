@@ -32,11 +32,6 @@ const useStyles = makeStyles((theme: Theme) =>
 			flexDirection: 'row',
 			alignItems: 'center',
 		},
-		menuOpen: {
-			border: '1px solid red',
-			boxShadow: '1px 5px 5px rgba(0, 0, 0, 0.1)',
-		},
-		menuClosed: {},
 	}),
 )
 
