@@ -13,20 +13,24 @@ import { config } from 'modules/app/config/app.config'
 
 // Saves tokens to local storage if they come in response headers
 const linkExtractTokens = new ApolloLink((operation, forward) =>
-  forward(operation).map(response => {
-    const ctx = operation.getContext()
-    const headers: Headers | undefined = path(['response', 'headers'], ctx)
+	forward(operation).map((response) => {
+		const ctx = operation.getContext()
+		const headers: Headers | undefined = path(['response', 'headers'], ctx)
 
-    if (headers) {
-      const accessToken = headers.get(config.http.customHeaders.accessToken)
-      const refreshToken = headers.get(config.http.customHeaders.refreshToken)
+		if (headers) {
+			console.log(
+				'(config.http.customHeaders.accessToken: ',
+				config.http.customHeaders.accessToken,
+			)
+			const accessToken = headers.get(config.http.customHeaders.accessToken)
+			const refreshToken = headers.get(config.http.customHeaders.refreshToken)
 
-      if (accessToken) setAccessToken(accessToken)
-      if (refreshToken) setRefreshToken(refreshToken)
-    }
+			if (accessToken) setAccessToken(accessToken)
+			if (refreshToken) setRefreshToken(refreshToken)
+		}
 
-    return response    
-  }),
+		return response
+	}),
 )
 
 export default linkExtractTokens

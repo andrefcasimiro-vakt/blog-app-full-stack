@@ -38,7 +38,7 @@ let AuthResolver = class AuthResolver {
             refreshToken,
         };
     }
-    async createAccount(username, email, password) {
+    async createAccount(username, email, password, ctx) {
         const user = await this.userProvider.findByUsername(username);
         if (user) {
             throw new common_1.ConflictException("Username is already registered");
@@ -47,6 +47,7 @@ let AuthResolver = class AuthResolver {
         const hashedPassword = await bcrypt_helpers_1.hashString(password);
         const createdUser = await this.userProvider.createUser(username, email, hashedPassword);
         const { accessToken, refreshToken } = await this.authProvider.login(createdUser);
+        graphql_ctx_utils_1.setAuthHeaders(ctx, { accessToken, refreshToken });
         return {
             user,
             accessToken,
@@ -68,8 +69,9 @@ __decorate([
     __param(0, graphql_1.Args('username')),
     __param(1, graphql_1.Args('email')),
     __param(2, graphql_1.Args('password')),
+    __param(3, graphql_1.Context()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String, String]),
+    __metadata("design:paramtypes", [String, String, String, Object]),
     __metadata("design:returntype", Promise)
 ], AuthResolver.prototype, "createAccount", null);
 AuthResolver = __decorate([

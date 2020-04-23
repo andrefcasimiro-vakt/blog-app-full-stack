@@ -9,17 +9,19 @@ const exposeHeader = (ctx, key: string) =>
 export const setAuthHeaders = (ctx, authResponse: Partial<AuthResponse>) => {
   const { accessToken, refreshToken } = authResponse
   
+  const accessTokenHeaderName = config.http.customHeaders.accessToken
+  const refreshTokenHeaderName = config.http.customHeaders.refreshToken
+
   if (accessToken) {
-    const accessTokenHeaderName = config.http.customHeaders.accessToken
     
     ctx.req.res.set(accessTokenHeaderName, accessToken)
-    exposeHeader(ctx, accessTokenHeaderName)
   }
 
   if (refreshToken) {
-    const refreshTokenHeaderName = config.http.customHeaders.refreshToken
     
     ctx.req.res.set(refreshTokenHeaderName, refreshToken)
-    exposeHeader(ctx, refreshTokenHeaderName)
   }
+
+  // Expose access and refresh token in Access Control Expose Headers
+  exposeHeader(ctx, `${accessTokenHeaderName}, ${refreshTokenHeaderName}`)
 }

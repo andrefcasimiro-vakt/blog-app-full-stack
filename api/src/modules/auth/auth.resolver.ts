@@ -44,6 +44,7 @@ export class AuthResolver {
     @Args('username') username: string,
     @Args('email') email: string,
     @Args('password') password: string,
+    @Context() ctx,
   ): Promise<AuthResponse> {
     const user = await this.userProvider.findByUsername(username)
     
@@ -58,6 +59,10 @@ export class AuthResolver {
     const createdUser = await this.userProvider.createUser(username, email, hashedPassword)
 
     const { accessToken, refreshToken } = await this.authProvider.login(createdUser)
+
+
+    // Set Auth Headers
+    setAuthHeaders(ctx, { accessToken, refreshToken })
 
     return {
       user,

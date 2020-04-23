@@ -10,8 +10,6 @@ import { getRefreshTokenMutation } from 'modules/auth/graphql/auth.mutations'
 
 const customFetch = (uri: RequestInfo, options: RequestInit) =>
 	fetch(uri, options).then((response) => {
-		console.log('response: ', response)
-
 		if (response.status !== 401) {
 			// If is not an authorization error
 			return response

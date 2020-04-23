@@ -4101,12 +4101,12 @@
         "signature": "4ac2df345931b7f76771338951da3d78360bb60630886dea61207ddf6a44400a"
       },
       "../src/modules/graphql/graphql.ctx.utils.ts": {
-        "version": "5cfa226945f19e9c5fabd419f5ace5ec5334c11a5edaf004de5653b798a9d79a",
+        "version": "8008bcd3b5ca3081e77453e50fca12952d2f96ec39fb01d873a11f48a3a3e4ed",
         "signature": "f4f878e3698f165c44fcccfeec89e38c1d062025dfb2ebed9d922cb63269c102"
       },
       "../src/modules/auth/auth.resolver.ts": {
-        "version": "f31cba995b213956d5c8a17f25e78bd13e4c4e8437f9955b85cfaf134f707e1f",
-        "signature": "dd9f5b270eb0650cae20953f459a6b35f2912c5d30503799940f5a64d1008bc9"
+        "version": "c293b82528092e23d8a58dc56338443834dfae71e5fd66c190ba0382e656482f",
+        "signature": "e32ee1b57186a1f0a2fb0f0282de031e56a1cb6b4b4d32a684d7ba618baa0318"
       },
       "../src/modules/jwt/jwt.strategy.ts": {
         "version": "69bfb0bd2ea06766502977da0e1bfa016e1cf253de6b28dbe099d3139f622174",
@@ -23773,6 +23773,7 @@
       "../src/modules/graphql/graphql.guard.ts",
       "../src/modules/graphql/decorators/current-user.ts",
       "../src/modules/auth/auth.model.ts",
+      "../src/modules/user/user.resolver.ts",
       "../src/modules/user/user.provider.seed.ts",
       "../src/modules/user/user.module.ts",
       "../src/modules/auth/auth.types.ts",
@@ -23788,7 +23789,6 @@
       "../node_modules/apollo-server-express/dist/apolloserver.d.ts",
       "../node_modules/apollo-server-express/dist/index.d.ts",
       "../src/modules/auth/auth.helpers.ts",
-      "../src/modules/graphql/graphql.ctx.utils.ts",
       "../src/modules/auth/auth.resolver.ts",
       "../src/modules/jwt/jwt.strategy.ts",
       "../src/modules/auth/auth.module.ts",
@@ -23855,7 +23855,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/modules/user/user.resolver.ts"
+      "../src/modules/graphql/graphql.ctx.utils.ts"
     ]
   },
   "version": "3.8.3"
