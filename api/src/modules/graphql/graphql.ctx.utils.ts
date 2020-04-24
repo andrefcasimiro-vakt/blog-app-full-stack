@@ -13,15 +13,17 @@ export const setAuthHeaders = (ctx, authResponse: Partial<AuthResponse>) => {
   const refreshTokenHeaderName = config.http.customHeaders.refreshToken
 
   if (accessToken) {
-    
     ctx.req.res.set(accessTokenHeaderName, accessToken)
   }
 
   if (refreshToken) {
-    
     ctx.req.res.set(refreshTokenHeaderName, refreshToken)
   }
 
   // Expose access and refresh token in Access Control Expose Headers
   exposeHeader(ctx, `${accessTokenHeaderName}, ${refreshTokenHeaderName}`)
 }
+
+
+
+ 

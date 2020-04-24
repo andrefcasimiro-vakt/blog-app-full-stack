@@ -4,6 +4,8 @@ const generateTranslation = (language: Language) => ({
 	generic: {
 		search: { en: 'Search', pt: 'Pesquisar' }[language],
 		back: { en: 'Go back', pt: 'Voltar atrás' }[language],
+		yes: { en: 'Yes', pt: 'Sim' }[language],
+		no: { en: 'No', pt: 'Não' }[language],
 	},
 	fallback: {
 		unknownData: { en: 'Unknown', pt: 'Desconhecido' }[language],
@@ -21,6 +23,7 @@ const generateTranslation = (language: Language) => ({
 				username: { en: 'Username', pt: 'Nome de utilizador' }[language],
 				email: { en: 'E-Mail', pt: 'E-Mail' }[language],
 				userRole: { en: 'Role', pt: 'Função' }[language],
+				isActive: { en: 'Is Active?', pt: 'Está Ativo?' }[language],
 				lastLoginAt: { en: 'Last login at', pt: 'Última atividade' }[language],
 			},
 		},
@@ -78,6 +81,14 @@ const generateTranslation = (language: Language) => ({
 				username: { en: 'Username', pt: 'Nome de usuário' }[language],
 				password: { en: 'Password', pt: 'Palavra-passe' }[language],
 				submit: { en: 'Login', pt: 'Entrar' }[language],
+			},
+		},
+	},
+	subpages: {
+		generic: {
+			details: {
+				view: { en: 'Details', pt: 'Ver detalhes' }[language],
+				update: { en: 'Update', pt: 'Editar' }[language],
 			},
 		},
 	},

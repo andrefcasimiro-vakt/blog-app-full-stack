@@ -7,6 +7,7 @@ import { tableIcons } from './table.icons'
 import { Query } from 'core/graphql/graphql.types'
 import { path, pathOr } from 'ramda'
 import { useQuery } from 'core/graphql/graphql.hooks'
+import { CircularProgress } from '@material-ui/core'
 
 const useStyles = makeStyles({
 	table: {
@@ -46,7 +47,7 @@ function Table<TableData, TableRow>({
 		data: [],
 	})
 
-	const { data, error } = useQuery(tableProps.query, {})
+	const { data, loading, error } = useQuery(tableProps.query, {})
 
 	useEffect(() => {
 		if (data) {
@@ -62,6 +63,7 @@ function Table<TableData, TableRow>({
 			data={state.data}
 			icons={tableIcons}
 			style={{ width: '100%' }}
+			isLoading={loading}
 			editable={
 				{
 					/*
@@ -83,7 +85,7 @@ function Table<TableData, TableRow>({
 						setTimeout(() => {
 							resolve()
 							if (oldData) {
-								setState((prevState) => {
+								setState((prevState: any) => {
 									// @ts-ignore
 									const data = [...prevState.data]
 									data[data.indexOf(oldData)] = newData

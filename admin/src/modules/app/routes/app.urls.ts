@@ -1,5 +1,6 @@
 import UserPageList from 'modules/user/pages/user.page.list'
 import UserPageCreate from 'modules/user/pages/user.page.create'
+import UserPageDetail from 'modules/user/pages/user.page.detail'
 
 export const urls = {
 	home: '/',
@@ -15,6 +16,7 @@ export const routeComponents: {
 	components: {
 		list: React.FC
 		create: React.FC
+		detail: React.FC
 	}
 }[] = [
 	{
@@ -22,6 +24,7 @@ export const routeComponents: {
 		components: {
 			list: UserPageList,
 			create: UserPageCreate,
+			detail: UserPageDetail,
 		},
 	},
 ]

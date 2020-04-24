@@ -13,7 +13,7 @@ const graphql_1 = require("@nestjs/graphql");
 let Model = class Model {
 };
 __decorate([
-    graphql_1.Field((type) => graphql_1.ID),
+    graphql_1.Field((type) => graphql_1.Int),
     __metadata("design:type", Number)
 ], Model.prototype, "id", void 0);
 __decorate([

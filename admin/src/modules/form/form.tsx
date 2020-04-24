@@ -1,9 +1,10 @@
 import React from 'react'
 import { useSnackbar } from 'notistack'
-import { Paper, makeStyles } from '@material-ui/core'
+import { Paper, makeStyles, LinearProgress } from '@material-ui/core'
 import BaseForm from 'shared/form/form.component'
 import { Form as FormType } from 'shared/form/form.types'
 import { MutationTuple, MutationHookOptions } from '@apollo/react-hooks'
+import { DeepPartial } from 'react-hook-form'
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
@@ -23,6 +24,10 @@ type Props<FormData, FormSchema, MutationReturn> = {
 
 	/** If set, displays a snackbar notification upon a successfull mutation response */
 	successMessage?: string
+
+	loading?: boolean
+
+	formData?: DeepPartial<FormData>
 }
 
 /**
@@ -39,7 +44,10 @@ function Form<
 	form,
 	schema,
 	useMutation,
+	onSuccess,
 	successMessage,
+	loading,
+	formData,
 }: Props<FormData, FormSchema, MutationReturn>) {
 	const [mutate, { data, error }] = useMutation()
 	const { enqueueSnackbar } = useSnackbar()
@@ -56,16 +64,20 @@ function Form<
 
 	if (data && successMessage) {
 		enqueueSnackbar(successMessage, { variant: 'success' })
+
+		if (onSuccess) {
+			onSuccess(data)
+		}
 	}
 
 	return (
-		<Paper className={classes.paper}>
-			<BaseForm<FormData, FormSchema>
-				form={form}
-				schema={schema}
-				onSubmit={handleSubmit}
-			/>
-		</Paper>
+		<BaseForm<FormData, FormSchema>
+			form={form}
+			schema={schema}
+			onSubmit={handleSubmit}
+			loading={loading}
+			formData={formData}
+		/>
 	)
 }
 

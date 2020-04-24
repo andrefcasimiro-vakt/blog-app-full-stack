@@ -3985,7 +3985,7 @@
         "signature": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f"
       },
       "../src/modules/graphql/graphql.model.ts": {
-        "version": "7ffd3473994144ba07e48e30d5605843602f9e1a96ab9be61a07f164a91d8c7c",
+        "version": "277fe6b620e2b4e556ef1213241615551380e304eb28e6e3ee79cffa56a23d52",
         "signature": "584c4210cc9237503a34a5eec79ca143ac2c4f848526f086b27d9a5ef9aec3f5"
       },
       "../src/modules/user/user.model.ts": {
@@ -4033,8 +4033,8 @@
         "signature": "d92c6372987a54b554ef3ba33f3c7ef7b0c45aeec354a8cf9904326383ed3db5"
       },
       "../src/modules/auth/auth.model.ts": {
-        "version": "49c00c52902f6b83f24a3d87475fc94b26cd36fa3f151fa5b6dae4814eb1847c",
-        "signature": "1d7c3a44c307c84f5596fe27fe2a24f23828fe6a3424afa4b3b85a08ca335ba4"
+        "version": "3f41512110f612a5d2316ec04611c0dbeb70f4f241be49ca30bd95753b25a155",
+        "signature": "68ef2dccdf85d16d8c21433d9a2830e25ce6d9d362e851305919b007243d8d1a"
       },
       "../node_modules/graphql-subscriptions/dist/pubsub-engine.d.ts": {
         "version": "4c9aded23c1eb21c4d7a4b03edb29e0611ee88975520a4aa8514186bb22cf20c",
@@ -4069,7 +4069,7 @@
         "signature": "4ac2df345931b7f76771338951da3d78360bb60630886dea61207ddf6a44400a"
       },
       "../src/modules/user/user.resolver.ts": {
-        "version": "e9719756cd30cf63b31f3df9570f342890281f6857028a2bfb9ea3f758c91cd9",
+        "version": "1bc6eeb4db91641569a5d21495516014b0c4d4bd32731db1cb98ca1c2cf303fd",
         "signature": "9302626f8471de81b968cf90482aab23ed1281360dabf7fe83d54b6f4a2e7650"
       },
       "../src/modules/user/user.provider.seed.ts": {
@@ -4101,7 +4101,7 @@
         "signature": "4020104fa4510ea8caed95f5f488f45cb1618f42d7dd424bdb02a47a637b173f"
       },
       "../src/modules/graphql/graphql.ctx.utils.ts": {
-        "version": "8008bcd3b5ca3081e77453e50fca12952d2f96ec39fb01d873a11f48a3a3e4ed",
+        "version": "66b7d27272ced37c87a2f8c7f72507ca88490e912096ce80059f264b40e4477f",
         "signature": "f4f878e3698f165c44fcccfeec89e38c1d062025dfb2ebed9d922cb63269c102"
       },
       "../src/modules/auth/auth.resolver.ts": {
@@ -4109,8 +4109,8 @@
         "signature": "d111861cffe277806e0da243650d7a68e4112f13aaba5994392ab52d8ceec2d0"
       },
       "../src/modules/jwt/jwt.strategy.ts": {
-        "version": "69bfb0bd2ea06766502977da0e1bfa016e1cf253de6b28dbe099d3139f622174",
-        "signature": "d486da075f85a571c18c7b36aed69f869da9b98894b2dd29733567d980faaf9c"
+        "version": "23ad296316f6713d8f03db23f99b528a20a098da3f77badb63e87d358efcec8d",
+        "signature": "a8855fe6ff25c9d0bd1d5a75043f2d13c9b138a65d6abac1c1562efe6821249e"
       },
       "../src/modules/auth/auth.module.ts": {
         "version": "837f74ee048d513dd9bfd9b1589e5721734ff0dcea01627006dcca0a50ffa3a2",
@@ -13061,6 +13061,7 @@
       "../src/modules/auth/auth.model.ts": [
         "../node_modules/@nestjs/graphql/index.d.ts",
         "../src/modules/user/user.enum.ts",
+        "../src/modules/graphql/graphql.model.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -22277,7 +22278,8 @@
         "../src/modules/jwt/jwt.guard.ts"
       ],
       "../src/modules/auth/auth.model.ts": [
-        "../src/modules/user/user.enum.ts"
+        "../src/modules/user/user.enum.ts",
+        "../src/modules/graphql/graphql.model.ts"
       ],
       "../node_modules/graphql-subscriptions/dist/pubsub-engine.d.ts": [
         "../node_modules/@types/node/fs.d.ts",
@@ -23767,6 +23769,7 @@
       "../node_modules/@nestjs/graphql/dist/index.d.ts",
       "../node_modules/@nestjs/graphql/index.d.ts",
       "../src/modules/graphql/graphql.model.ts",
+      "../src/modules/user/user.model.ts",
       "../src/modules/refresh-token/refresh-token.errors.ts",
       "../src/modules/refresh-token/refresh-token.helpers.ts",
       "../src/modules/refresh-token/refresh-token.model.ts",
@@ -23786,7 +23789,6 @@
       "../node_modules/apollo-server-express/dist/apolloserver.d.ts",
       "../node_modules/apollo-server-express/dist/index.d.ts",
       "../src/modules/auth/auth.helpers.ts",
-      "../src/modules/user/user.resolver.ts",
       "../src/modules/user/user.provider.seed.ts",
       "../src/modules/user/user.module.ts",
       "../src/modules/auth/auth.types.ts",
@@ -23861,7 +23863,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/modules/user/user.model.ts"
+      "../src/modules/user/user.resolver.ts"
     ]
   },
   "version": "3.8.3"

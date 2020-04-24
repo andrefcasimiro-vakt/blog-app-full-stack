@@ -1,6 +1,6 @@
 import React from 'react'
 import { Field } from '../form.types'
-import { Controller } from 'react-hook-form'
+import { Controller, IsFlatObject } from 'react-hook-form'
 import TextField from '@material-ui/core/TextField'
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core'
@@ -13,6 +13,7 @@ interface Props {
 	register: (ref: Element | null) => void
 	errors: any
 	control: any
+	getValues: () => any
 	setValue: (name: string, value: any, shouldValidate?: boolean) => void
 }
 
@@ -21,7 +22,6 @@ const useStyles = makeStyles({
 		display: 'flex',
 		flexGrow: 1,
 		flexWrap: 'nowrap',
-		width: '100%',
 	},
 	input: {
 		display: 'flex',
@@ -29,7 +29,6 @@ const useStyles = makeStyles({
 		position: 'relative',
 		marginRight: theme.spacing(1),
 		marginLeft: theme.spacing(1),
-		maxWidth: '18rem',
 	},
 	helperText: {
 		position: 'absolute',
@@ -37,7 +36,14 @@ const useStyles = makeStyles({
 	},
 })
 
-function GenericField({ field, register, setValue, control, errors }: Props) {
+function GenericField({
+	field,
+	register,
+	setValue,
+	getValues,
+	control,
+	errors,
+}: Props) {
 	const classes = useStyles()
 
 	const firstLetter = field.label?.charAt(0).toUpperCase()
@@ -46,9 +52,12 @@ function GenericField({ field, register, setValue, control, errors }: Props) {
 	// @ts-ignore
 	const errorMessage = errors[field.name]?.message
 
-	const { type } = field
+	const { name, type, icon: Icon, defaultChecked, options, tooltip } = field
 
-	// Toggle
+	// @ts-ignore
+	const defaultValue = getValues()[name]!
+
+	// Is switch?
 	if (type === 'switch') {
 		return (
 			<Controller
@@ -62,21 +71,23 @@ function GenericField({ field, register, setValue, control, errors }: Props) {
 					>
 						<InputSwitch
 							label={formattedLabel}
-							name={field.name || ''}
-							defaultChecked={field.defaultChecked}
-							tooltip={field.tooltip}
-							icon={field.icon}
+							name={name || ''}
+							defaultChecked={
+								defaultValue == null ? defaultChecked : defaultValue
+							}
+							tooltip={tooltip}
+							icon={Icon}
 							setValue={setValue}
 						/>
 					</Grid>
 				}
-				name={field.name || ''}
+				name={name || ''}
 				control={control}
 			/>
 		)
 	}
 
-	// Select
+	// Is dropdown?
 	if (type === 'select') {
 		return (
 			<Controller
@@ -90,21 +101,22 @@ function GenericField({ field, register, setValue, control, errors }: Props) {
 					>
 						<InputSelect
 							label={formattedLabel}
-							name={field.name || ''}
-							options={field.options || []}
-							tooltip={field.tooltip}
-							icon={field.icon}
+							name={name || ''}
+							options={options || []}
+							tooltip={tooltip}
+							icon={Icon}
 							setValue={setValue}
+							defaultOption={defaultValue}
 						/>
 					</Grid>
 				}
-				name={field.name || ''}
+				name={name || ''}
 				control={control}
 			/>
 		)
 	}
 
-	// Base Input
+	// Is text input
 	const TextInput = (
 		<TextField
 			id="standard-basic"
@@ -115,10 +127,10 @@ function GenericField({ field, register, setValue, control, errors }: Props) {
 			error={!!errorMessage}
 			helperText={errorMessage}
 			FormHelperTextProps={{ classes: { root: classes.helperText } }} // <- smth like that
+			defaultValue={defaultValue}
 		/>
 	)
 
-	const { icon: Icon } = field
 	const Input = Icon ? (
 		<Grid
 			className={classes.grid}
@@ -134,7 +146,7 @@ function GenericField({ field, register, setValue, control, errors }: Props) {
 		TextInput
 	)
 
-	return <Controller as={Input} name={field.name || ''} control={control} />
+	return <Controller as={Input} name={name || ''} control={control} />
 }
 
 export default GenericField

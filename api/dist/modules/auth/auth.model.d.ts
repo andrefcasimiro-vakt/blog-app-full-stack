@@ -1,6 +1,6 @@
 import { UserRole } from '../user/user.enum';
-export declare class AuthUser {
-    id: number;
+import { Model } from '../graphql/graphql.model';
+export declare class AuthUser extends Model {
     username: string;
     email: string;
     role: UserRole;

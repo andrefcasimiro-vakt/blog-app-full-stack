@@ -17,5 +17,5 @@ export type Form = {
 
 // Typescript helpers to extract
 export type ExtractSchemaFields<FormData> = {
-	readonly [P in keyof FormData]: string
+	readonly [P in keyof FormData]: string | boolean | number
 }

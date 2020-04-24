@@ -1,5 +1,5 @@
 import { NotFoundException, UseGuards, ConflictException } from '@nestjs/common'
-import { Args, Mutation, Query, Resolver, Subscription, Context } from '@nestjs/graphql'
+import { Args, Mutation, Query, Resolver, Subscription, Context, Int } from '@nestjs/graphql'
 import { User } from 'src/modules/user/user.model'
 import { UserProvider } from 'src/modules/user/user.provider'
 import { GqlAuthGuard } from 'src/modules/graphql/graphql.guard'
@@ -24,7 +24,7 @@ export class UserResolver {
 
   @Query(returns => User, { name: 'getUserById' })
   async findById(
-    @Args('id') id: number
+    @Args('id', { type: () => Int }) id: number
   ): Promise<User> {
     const user = await this.userProvider.findById(id)
 

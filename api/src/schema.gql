@@ -9,7 +9,9 @@ type AuthResponse {
 }
 
 type AuthUser {
-  id: Float!
+  id: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   username: String!
   email: String!
   role: String!
@@ -27,13 +29,13 @@ type Mutation {
 
 type Query {
   whoAmI: User!
-  getUserById(id: Float!): User!
+  getUserById(id: Int!): User!
   getUserByUsername(username: String!): User!
   listUsers: [User!]!
 }
 
 type User {
-  id: ID!
+  id: Int!
   createdAt: DateTime!
   updatedAt: DateTime!
   username: String!

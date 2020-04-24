@@ -6,8 +6,8 @@ import { useQuery, useMutation } from 'core/graphql/graphql.hooks'
 import { MutationTuple } from '@apollo/react-hooks/lib/types'
 import { UserRole } from '../enums/user.enums'
 
-export function useGetUserByUsername(variables: {
-	username: string
+export function useGetUserByUserId(variables: {
+	id: number
 }): GraphqlResponse<User> {
 	return useQuery(queries.getUserById, variables)
 }

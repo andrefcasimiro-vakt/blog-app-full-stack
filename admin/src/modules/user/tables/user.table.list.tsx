@@ -1,7 +1,10 @@
+import React from 'react'
 import { UserRole } from '../enums/user.enums'
 import i18n from 'core/i18n/i18n'
 import { Column } from 'material-table'
 import { formatUserRole } from '../utils/user.utils.formatters'
+import { urls } from 'modules/app/routes/app.urls'
+import StyledLink from 'shared/link/link'
 
 export interface UserRow {
 	id: number
@@ -15,6 +18,10 @@ export const userColumns: Array<Column<UserRow>> = [
 	{
 		title: i18n.t('tables.users.columns.id'),
 		field: 'id',
+		defaultSort: 'desc',
+		render: (user: UserRow) => (
+			<StyledLink to={`${urls.users}/details/${user.id}`}>{user.id}</StyledLink>
+		),
 	},
 	{
 		title: i18n.t('tables.users.columns.username'),

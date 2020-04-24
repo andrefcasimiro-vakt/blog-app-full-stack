@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
@@ -10,9 +10,12 @@ import Tooltip from '@material-ui/core/Tooltip/Tooltip'
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
 		formControl: {
-			margin: theme.spacing(1),
-			minWidth: '17.5rem',
+			display: 'flex',
 			width: '100%',
+			margin: theme.spacing(1),
+		},
+		icon: {
+			paddingTop: theme.spacing(2),
 		},
 		selectEmpty: {
 			marginTop: theme.spacing(2),
@@ -50,6 +53,7 @@ interface Props {
 	label: string
 	icon?: React.FC
 	tooltip?: string
+	defaultOption?: string
 }
 
 export default function InputSelect({
@@ -57,11 +61,12 @@ export default function InputSelect({
 	setValue,
 	name,
 	label,
-	icon,
+	icon: Icon,
 	tooltip,
+	defaultOption,
 }: Props) {
 	const classes = useStyles()
-	const [selected, setSelected] = React.useState('')
+	const [selected, setSelected] = React.useState(defaultOption)
 
 	const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
 		const value = event.target.value as string
@@ -71,7 +76,19 @@ export default function InputSelect({
 	}
 
 	return (
-		<div>
+		<div
+			style={{
+				display: 'flex',
+				width: '100%',
+				flexDirection: 'row',
+				alignItems: 'center',
+			}}
+		>
+			{Icon && (
+				<div className={classes.icon}>
+					<Icon />
+				</div>
+			)}
 			<Tooltip title={tooltip || ''}>
 				<FormControl className={classes.formControl}>
 					<InputLabel id={label}>{label}</InputLabel>

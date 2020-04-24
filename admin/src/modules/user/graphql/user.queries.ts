@@ -1,31 +1,43 @@
 import gql from 'graphql-tag'
 import { Query } from 'core/graphql/graphql.types'
 import { User } from '../types/user.types'
+import {
+	userMinimumDetailsFragment,
+	userFullDetailsFragment,
+} from './user.fragments'
 
-export const getUserById: Query<User> = {
+export const getUserByUsername: Query<User> = {
 	gql: gql`
 		query getUserByUsername($username: String!) {
 			getUserByUsername(username: $username) {
-				id
-				username
-				role
+				...userFullDetailsFragment
 			}
 		}
+		${userFullDetailsFragment}
 	`,
 	selector: ['getUserByUsername'],
+}
+
+export const getUserById: Query<User> = {
+	gql: gql`
+		query getUserById($id: Int!) {
+			getUserById(id: $id) {
+				...userFullDetailsFragment
+			}
+		}
+		${userFullDetailsFragment}
+	`,
+	selector: ['getUserById'],
 }
 
 export const listUsers: Query<User[]> = {
 	gql: gql`
 		query listUsers {
 			listUsers {
-				id
-				username
-				email
-				role
-				lastLoginAt
+				...userMinimumDetailsFragment
 			}
 		}
+		${userMinimumDetailsFragment}
 	`,
 	selector: ['listUsers'],
 }

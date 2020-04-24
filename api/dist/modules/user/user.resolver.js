@@ -67,7 +67,7 @@ __decorate([
 ], UserResolver.prototype, "whoAmI", null);
 __decorate([
     graphql_1.Query(returns => user_model_1.User, { name: 'getUserById' }),
-    __param(0, graphql_1.Args('id')),
+    __param(0, graphql_1.Args('id', { type: () => graphql_1.Int })),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)

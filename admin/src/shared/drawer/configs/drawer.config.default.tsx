@@ -58,7 +58,7 @@ const generateAction = (title: string, icon: React.FC, to: string = '') => (
 )
 
 const blogActions = [
-	generateAction(i18n.t('blog.posts'), DescriptionOutlinedIcon, 'url'),
+	generateAction(i18n.t('blog.posts'), DescriptionOutlinedIcon, '/'),
 	generateAction(i18n.t('blog.categories'), CategoryOutlinedIcon),
 	generateAction(i18n.t('blog.comments'), ChatBubbleOutlineOutlinedIcon),
 	generateAction(i18n.t('blog.settings'), SettingsApplicationsOutlinedIcon),

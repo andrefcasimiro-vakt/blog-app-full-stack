@@ -10,7 +10,7 @@ export const generateRoutes = (route: string) => {
 		return null
 	}
 
-	const { list, create } = match?.components
+	const { list, create, detail } = match?.components
 
 	const formattedURI = urls[route.split('/')[1]]
 
@@ -32,6 +32,14 @@ export const generateRoutes = (route: string) => {
 					exact
 					path={`${formattedURI}/create`}
 					component={create}
+				/>
+			)}
+			{/** Detail */}
+			{detail && (
+				<PrivilegedRoute
+					role={UserRole.ADMIN}
+					path={`${formattedURI}/details/:id`}
+					component={detail}
 				/>
 			)}
 		</>

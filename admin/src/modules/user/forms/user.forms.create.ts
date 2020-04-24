@@ -5,12 +5,18 @@ import FaceIcon from '@material-ui/icons/Face'
 import LockOpenIcon from '@material-ui/icons/LockOpen'
 import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined'
 import CheckCircleIcon from '@material-ui/icons/CheckCircle'
+import AssistantPhotoOutlinedIcon from '@material-ui/icons/AssistantPhotoOutlined'
 
 import PersonIcon from '@material-ui/icons/Person'
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount'
 
 import * as yup from 'yup'
-import { stringRequired, password } from 'shared/form/form.validators'
+import {
+	stringRequired,
+	password,
+	optional,
+	booleanOptional,
+} from 'shared/form/form.validators'
 import { UserRole } from '../enums/user.enums'
 
 const translate = (key: string): string => i18n.t(`forms.users.create.${key}`)
@@ -46,7 +52,7 @@ export const createUserForm: Form = {
 				name: 'role',
 				label: translate('role'),
 				type: 'select',
-				icon: LockOpenIcon,
+				icon: AssistantPhotoOutlinedIcon,
 				defaultChecked: true,
 				options: [
 					{
@@ -80,6 +86,8 @@ export const createUserSchema = yup.object().shape({
 	username: stringRequired,
 	email: stringRequired.email(i18n.t('validators.yup.invalidEmail')),
 	password: password('login', translate('password')),
+	role: optional,
+	isActive: booleanOptional,
 })
 
 export type CreateUserFormData = ExtractSchemaFields<
