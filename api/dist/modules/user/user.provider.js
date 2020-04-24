@@ -41,17 +41,17 @@ let UserProvider = class UserProvider {
     async listUsers() {
         return this.usersRepository.find();
     }
-    async createUser(username, email, hashedPassword) {
+    async createUser(username, email, hashedPassword, role = user_enum_1.UserRole.USER, isActive = false) {
         const userObject = {
             username,
             email,
             password: hashedPassword,
-            role: user_enum_1.UserRole.USER,
+            role,
+            isActive,
         };
         return this.usersRepository.save(userObject);
     }
     async updateLastLoginAt(userId) {
-        const date = moment_1.default.utc().toISOString();
         const result = await typeorm_1.getConnection()
             .createQueryBuilder()
             .update(user_entity_1.User)

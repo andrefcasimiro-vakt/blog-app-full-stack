@@ -7,6 +7,8 @@ import { checkPassword } from './auth.helpers'
 import { hashString } from '../bcrypt/bcrypt.helpers'
 import { setAuthHeaders } from '../graphql/graphql.ctx.utils'
 import { GqlAuthGuard } from '../graphql/graphql.guard'
+import { UserRole } from '../user/user.enum'
+import { User } from '../user/user.entity'
 
 @Resolver(of => AuthResponse)
 export class AuthResolver {
@@ -39,35 +41,5 @@ export class AuthResolver {
     }
   }
 
-  @Mutation(returns => AuthResponse, { name: 'createAccount'})
-  async createAccount(
-    @Args('username') username: string,
-    @Args('email') email: string,
-    @Args('password') password: string,
-    @Context() ctx,
-  ): Promise<AuthResponse> {
-    const user = await this.userProvider.findByUsername(username)
-    
-    if (user) {
-      throw new ConflictException("Username is already registered")
-    }
-
-    checkPassword(password)
-
-    const hashedPassword = await hashString(password)
-
-    const createdUser = await this.userProvider.createUser(username, email, hashedPassword)
-
-    const { accessToken, refreshToken } = await this.authProvider.login(createdUser)
-
-
-    // Set Auth Headers
-    setAuthHeaders(ctx, { accessToken, refreshToken })
-
-    return {
-      user,
-      accessToken,
-      refreshToken,
-    }
-  }
+ 
 }

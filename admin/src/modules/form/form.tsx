@@ -7,6 +7,7 @@ import { MutationTuple, MutationHookOptions } from '@apollo/react-hooks'
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
+		flexGrow: 1,
 		marginTop: theme.spacing(1),
 	},
 }))

@@ -20,6 +20,6 @@ export class User extends Model {
   @Field({ description: `Describes the group of permissions to which the user belongs `})
   role: UserRole
 
-  @Field()
-  lastLoginAt: Date
+  @Field({ nullable: true })
+  lastLoginAt?: Date
 }

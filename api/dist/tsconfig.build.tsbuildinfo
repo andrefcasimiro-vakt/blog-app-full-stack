@@ -2378,7 +2378,7 @@
         "signature": "a7d8fb354297d34c35e21a0172e2f99c2474f42b61901514f053273458f66e2f"
       },
       "../src/modules/user/user.entity.ts": {
-        "version": "ef36be2fef32d9097d27381ef3e66f98b59da33de78425c77a3f8163e29154cd",
+        "version": "e5d83728f1851846c62ea5a666cd64b6d29f172f4e707cb1dd6b690185012e60",
         "signature": "04033aec7b8abb89745544b6b312aaaa277fa562d826f6b18c8f3cd1e2aee2ac"
       },
       "../src/modules/refresh-token/refresh-token.entity.ts": {
@@ -3989,8 +3989,8 @@
         "signature": "584c4210cc9237503a34a5eec79ca143ac2c4f848526f086b27d9a5ef9aec3f5"
       },
       "../src/modules/user/user.model.ts": {
-        "version": "80f70f22c8657da91f3f45fbc2449486e4356c0843c21cbf420ddc76fb005bc3",
-        "signature": "68c5a09bc2a82d42252719537a540daa7a919633277970361afef10f557a32c5"
+        "version": "e016b6b2f3ac4222c3fce0239ee2906f84c8a2954ba948dfd100110ed2600583",
+        "signature": "222353fd1d37f9f23f4290214a4d550dd13d447af6509f700d2b22fddc736078"
       },
       "../src/modules/refresh-token/refresh-token.errors.ts": {
         "version": "6334024ea4b7b966a0d9123eac2c833b2c9900efbd085c6208e854987301b86b",
@@ -4017,8 +4017,8 @@
         "signature": "d62fa6fe33566fa743b3d6715a1a2fe46e937ba9d2ba158563c5744315d438a7"
       },
       "../src/modules/user/user.provider.ts": {
-        "version": "2257a2aec8308beac7ad0197ae6149ad5db57eea53c54e03fc7c65ed09a3f8b0",
-        "signature": "15a88e9d1193cd5da9a11d606117520fabe721133b7e89678b6efecf91ce6c2b"
+        "version": "374c2fa6cb7b8e5a9e127304075cb51bc43c0de8e508aada13bfe53f56e3b1ba",
+        "signature": "f1896ff76c2e0d1b043b2fdb3cc758e795dc600515b5e9cd5788f8f6c04fa337"
       },
       "../src/modules/jwt/jwt.guard.ts": {
         "version": "a5b82c360e01b12b44f5a8ff5147851d80c84c9d13612ce4494bc3bc87a97777",
@@ -4035,38 +4035,6 @@
       "../src/modules/auth/auth.model.ts": {
         "version": "49c00c52902f6b83f24a3d87475fc94b26cd36fa3f151fa5b6dae4814eb1847c",
         "signature": "1d7c3a44c307c84f5596fe27fe2a24f23828fe6a3424afa4b3b85a08ca335ba4"
-      },
-      "../src/modules/user/user.resolver.ts": {
-        "version": "38174a697eae872509c09f21765a16dc800518dc1fb2b4c54d57b1e233ea56d2",
-        "signature": "6b9a35da7d83399d46421946ce47a70db4a84bd0d434afe38ba1e45c27427004"
-      },
-      "../src/modules/user/user.provider.seed.ts": {
-        "version": "3e369bf3804ca8aeef39cbf544935d011c6937f6d08379bf115df5c54c3abea1",
-        "signature": "e727b4a741b2c24483abeada98468bb9bf1449cef763a447e7a340fcd9d95608"
-      },
-      "../src/modules/user/user.module.ts": {
-        "version": "75a7f663a2031c893e9211a558603666164c8ee01e28cd6fc269efb8889f921c",
-        "signature": "9e36626cb39f17790cf2403e2e54d8a74542da63e2a49aba7061133a1af26dcd"
-      },
-      "../src/modules/auth/auth.types.ts": {
-        "version": "40cb3017a838694184e545b0cec43e46859a50d828d7303b3f015f35e9200b19",
-        "signature": "e1250c17b43cb1783dccd2350b6e52cdc1977a3e9b060cfcdfc21e5524d35a0b"
-      },
-      "../src/modules/auth/auth.provider.ts": {
-        "version": "7b466804c9751d503c51a349664b259e7b82247d5044e25c4eaacdc8461e3729",
-        "signature": "82b58d8e874cb897ce9d824dac460b969c99088eba3f2e56f68ee9d9a3793cc4"
-      },
-      "../node_modules/@types/passport-strategy/index.d.ts": {
-        "version": "29d59e921bc723594bbfc98230d24f38f0d5a669f28fcf989b7468f4f95b7c52",
-        "signature": "29d59e921bc723594bbfc98230d24f38f0d5a669f28fcf989b7468f4f95b7c52"
-      },
-      "../node_modules/@types/passport-local/index.d.ts": {
-        "version": "e50f9ae34bb92232533e3a32848970dd04f874a8f64d3ae48980e062b6489f26",
-        "signature": "e50f9ae34bb92232533e3a32848970dd04f874a8f64d3ae48980e062b6489f26"
-      },
-      "../src/modules/auth/auth.strategy.ts": {
-        "version": "89ff8be55acc44c1c11d26f2c8694d17943aa8f23a1268cd1d1affd0696f4f25",
-        "signature": "4020104fa4510ea8caed95f5f488f45cb1618f42d7dd424bdb02a47a637b173f"
       },
       "../node_modules/graphql-subscriptions/dist/pubsub-engine.d.ts": {
         "version": "4c9aded23c1eb21c4d7a4b03edb29e0611ee88975520a4aa8514186bb22cf20c",
@@ -4100,13 +4068,45 @@
         "version": "5531effa0c3bbc010c9412e504a3fcc07f8b796ec9c1935e58cbb13444bd5f84",
         "signature": "4ac2df345931b7f76771338951da3d78360bb60630886dea61207ddf6a44400a"
       },
+      "../src/modules/user/user.resolver.ts": {
+        "version": "e9719756cd30cf63b31f3df9570f342890281f6857028a2bfb9ea3f758c91cd9",
+        "signature": "9302626f8471de81b968cf90482aab23ed1281360dabf7fe83d54b6f4a2e7650"
+      },
+      "../src/modules/user/user.provider.seed.ts": {
+        "version": "3e369bf3804ca8aeef39cbf544935d011c6937f6d08379bf115df5c54c3abea1",
+        "signature": "e727b4a741b2c24483abeada98468bb9bf1449cef763a447e7a340fcd9d95608"
+      },
+      "../src/modules/user/user.module.ts": {
+        "version": "75a7f663a2031c893e9211a558603666164c8ee01e28cd6fc269efb8889f921c",
+        "signature": "9e36626cb39f17790cf2403e2e54d8a74542da63e2a49aba7061133a1af26dcd"
+      },
+      "../src/modules/auth/auth.types.ts": {
+        "version": "40cb3017a838694184e545b0cec43e46859a50d828d7303b3f015f35e9200b19",
+        "signature": "e1250c17b43cb1783dccd2350b6e52cdc1977a3e9b060cfcdfc21e5524d35a0b"
+      },
+      "../src/modules/auth/auth.provider.ts": {
+        "version": "7b466804c9751d503c51a349664b259e7b82247d5044e25c4eaacdc8461e3729",
+        "signature": "82b58d8e874cb897ce9d824dac460b969c99088eba3f2e56f68ee9d9a3793cc4"
+      },
+      "../node_modules/@types/passport-strategy/index.d.ts": {
+        "version": "29d59e921bc723594bbfc98230d24f38f0d5a669f28fcf989b7468f4f95b7c52",
+        "signature": "29d59e921bc723594bbfc98230d24f38f0d5a669f28fcf989b7468f4f95b7c52"
+      },
+      "../node_modules/@types/passport-local/index.d.ts": {
+        "version": "e50f9ae34bb92232533e3a32848970dd04f874a8f64d3ae48980e062b6489f26",
+        "signature": "e50f9ae34bb92232533e3a32848970dd04f874a8f64d3ae48980e062b6489f26"
+      },
+      "../src/modules/auth/auth.strategy.ts": {
+        "version": "89ff8be55acc44c1c11d26f2c8694d17943aa8f23a1268cd1d1affd0696f4f25",
+        "signature": "4020104fa4510ea8caed95f5f488f45cb1618f42d7dd424bdb02a47a637b173f"
+      },
       "../src/modules/graphql/graphql.ctx.utils.ts": {
         "version": "8008bcd3b5ca3081e77453e50fca12952d2f96ec39fb01d873a11f48a3a3e4ed",
         "signature": "f4f878e3698f165c44fcccfeec89e38c1d062025dfb2ebed9d922cb63269c102"
       },
       "../src/modules/auth/auth.resolver.ts": {
-        "version": "c293b82528092e23d8a58dc56338443834dfae71e5fd66c190ba0382e656482f",
-        "signature": "e32ee1b57186a1f0a2fb0f0282de031e56a1cb6b4b4d32a684d7ba618baa0318"
+        "version": "09dba9e572521abb6c6d8c0ca59206ed0952cbfb0fdd03a20c9426de0762220c",
+        "signature": "d111861cffe277806e0da243650d7a68e4112f13aaba5994392ab52d8ceec2d0"
       },
       "../src/modules/jwt/jwt.strategy.ts": {
         "version": "69bfb0bd2ea06766502977da0e1bfa016e1cf253de6b28dbe099d3139f622174",
@@ -13066,6 +13066,74 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "../node_modules/graphql-subscriptions/dist/pubsub-engine.d.ts": [
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../node_modules/graphql-subscriptions/dist/pubsub.d.ts": [
+        "../node_modules/@types/node/events.d.ts",
+        "../node_modules/graphql-subscriptions/dist/pubsub-engine.d.ts",
+        "../node_modules/@types/node/ts3.2/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../node_modules/graphql-subscriptions/dist/with-filter.d.ts": [
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../node_modules/graphql-subscriptions/dist/index.d.ts": [
+        "../node_modules/graphql-subscriptions/dist/pubsub-engine.d.ts",
+        "../node_modules/graphql-subscriptions/dist/pubsub.d.ts",
+        "../node_modules/graphql-subscriptions/dist/with-filter.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../node_modules/@types/cors/index.d.ts": [
+        "../node_modules/@types/express/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../node_modules/apollo-server-express/dist/apolloserver.d.ts": [
+        "../node_modules/@types/express/index.d.ts",
+        "../node_modules/@types/cors/index.d.ts",
+        "../node_modules/@types/body-parser/index.d.ts",
+        "../node_modules/apollo-server-core/dist/index.d.ts",
+        "../node_modules/subscriptions-transport-ws/dist/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../node_modules/apollo-server-express/dist/index.d.ts": [
+        "../node_modules/apollo-server-core/dist/index.d.ts",
+        "../node_modules/graphql-tools/dist/index.d.ts",
+        "../node_modules/graphql-subscriptions/dist/index.d.ts",
+        "../node_modules/apollo-server-express/dist/apolloserver.d.ts",
+        "../node_modules/@types/cors/index.d.ts",
+        "../node_modules/@types/body-parser/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../src/modules/auth/auth.helpers.ts": [
+        "../src/modules/config/config.main.ts",
+        "../node_modules/apollo-server-express/dist/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
       "../src/modules/user/user.resolver.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/graphql/index.d.ts",
@@ -13074,6 +13142,9 @@
         "../src/modules/graphql/graphql.guard.ts",
         "../src/modules/graphql/decorators/current-user.ts",
         "../src/modules/auth/auth.model.ts",
+        "../src/modules/auth/auth.helpers.ts",
+        "../src/modules/bcrypt/bcrypt.helpers.ts",
+        "../src/modules/user/user.enum.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -13150,74 +13221,6 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "../node_modules/graphql-subscriptions/dist/pubsub-engine.d.ts": [
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "../node_modules/graphql-subscriptions/dist/pubsub.d.ts": [
-        "../node_modules/@types/node/events.d.ts",
-        "../node_modules/graphql-subscriptions/dist/pubsub-engine.d.ts",
-        "../node_modules/@types/node/ts3.2/index.d.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "../node_modules/graphql-subscriptions/dist/with-filter.d.ts": [
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "../node_modules/graphql-subscriptions/dist/index.d.ts": [
-        "../node_modules/graphql-subscriptions/dist/pubsub-engine.d.ts",
-        "../node_modules/graphql-subscriptions/dist/pubsub.d.ts",
-        "../node_modules/graphql-subscriptions/dist/with-filter.d.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "../node_modules/@types/cors/index.d.ts": [
-        "../node_modules/@types/express/index.d.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "../node_modules/apollo-server-express/dist/apolloserver.d.ts": [
-        "../node_modules/@types/express/index.d.ts",
-        "../node_modules/@types/cors/index.d.ts",
-        "../node_modules/@types/body-parser/index.d.ts",
-        "../node_modules/apollo-server-core/dist/index.d.ts",
-        "../node_modules/subscriptions-transport-ws/dist/index.d.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "../node_modules/apollo-server-express/dist/index.d.ts": [
-        "../node_modules/apollo-server-core/dist/index.d.ts",
-        "../node_modules/graphql-tools/dist/index.d.ts",
-        "../node_modules/graphql-subscriptions/dist/index.d.ts",
-        "../node_modules/apollo-server-express/dist/apolloserver.d.ts",
-        "../node_modules/@types/cors/index.d.ts",
-        "../node_modules/@types/body-parser/index.d.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "../src/modules/auth/auth.helpers.ts": [
-        "../src/modules/config/config.main.ts",
-        "../node_modules/apollo-server-express/dist/index.d.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
       "../src/modules/graphql/graphql.ctx.utils.ts": [
         "../src/modules/auth/auth.model.ts",
         "../src/modules/config/config.main.ts",
@@ -13236,6 +13239,8 @@
         "../src/modules/bcrypt/bcrypt.helpers.ts",
         "../src/modules/graphql/graphql.ctx.utils.ts",
         "../src/modules/graphql/graphql.guard.ts",
+        "../src/modules/user/user.enum.ts",
+        "../src/modules/user/user.entity.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -22262,7 +22267,7 @@
       "../src/modules/user/user.provider.ts": [
         "../node_modules/typeorm/index.d.ts",
         "../src/modules/user/user.model.ts",
-        "../src/modules/user/user.entity.ts"
+        "../src/modules/user/user.enum.ts"
       ],
       "../src/modules/jwt/jwt.guard.ts": [
         "../node_modules/@nestjs/passport/index.d.ts"
@@ -22273,46 +22278,6 @@
       ],
       "../src/modules/auth/auth.model.ts": [
         "../src/modules/user/user.enum.ts"
-      ],
-      "../src/modules/user/user.resolver.ts": [
-        "../src/modules/user/user.provider.ts",
-        "../src/modules/auth/auth.model.ts",
-        "../src/modules/user/user.model.ts"
-      ],
-      "../src/modules/user/user.provider.seed.ts": [
-        "../node_modules/typeorm/index.d.ts",
-        "../src/modules/user/user.model.ts"
-      ],
-      "../src/modules/auth/auth.types.ts": [
-        "../src/modules/user/user.model.ts"
-      ],
-      "../src/modules/auth/auth.provider.ts": [
-        "../src/modules/user/user.provider.ts",
-        "../node_modules/@nestjs/jwt/index.d.ts",
-        "../src/modules/refresh-token/refresh-token.provider.ts",
-        "../src/modules/user/user.model.ts",
-        "../src/modules/auth/auth.types.ts"
-      ],
-      "../node_modules/@types/passport-strategy/index.d.ts": [
-        "../node_modules/@types/passport/index.d.ts",
-        "../node_modules/@types/express/index.d.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "../node_modules/@types/passport-local/index.d.ts": [
-        "../node_modules/@types/passport-strategy/index.d.ts",
-        "../node_modules/@types/express/index.d.ts",
-        "../node_modules/@types/passport/index.d.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "../src/modules/auth/auth.strategy.ts": [
-        "../src/modules/auth/auth.provider.ts",
-        "../node_modules/@types/passport-local/index.d.ts"
       ],
       "../node_modules/graphql-subscriptions/dist/pubsub-engine.d.ts": [
         "../node_modules/@types/node/fs.d.ts",
@@ -22373,6 +22338,47 @@
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../src/modules/user/user.resolver.ts": [
+        "../src/modules/user/user.provider.ts",
+        "../src/modules/auth/auth.model.ts",
+        "../src/modules/user/user.model.ts",
+        "../src/modules/user/user.enum.ts"
+      ],
+      "../src/modules/user/user.provider.seed.ts": [
+        "../node_modules/typeorm/index.d.ts",
+        "../src/modules/user/user.model.ts"
+      ],
+      "../src/modules/auth/auth.types.ts": [
+        "../src/modules/user/user.model.ts"
+      ],
+      "../src/modules/auth/auth.provider.ts": [
+        "../src/modules/user/user.provider.ts",
+        "../node_modules/@nestjs/jwt/index.d.ts",
+        "../src/modules/refresh-token/refresh-token.provider.ts",
+        "../src/modules/user/user.model.ts",
+        "../src/modules/auth/auth.types.ts"
+      ],
+      "../node_modules/@types/passport-strategy/index.d.ts": [
+        "../node_modules/@types/passport/index.d.ts",
+        "../node_modules/@types/express/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../node_modules/@types/passport-local/index.d.ts": [
+        "../node_modules/@types/passport-strategy/index.d.ts",
+        "../node_modules/@types/express/index.d.ts",
+        "../node_modules/@types/passport/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../src/modules/auth/auth.strategy.ts": [
+        "../src/modules/auth/auth.provider.ts",
+        "../node_modules/@types/passport-local/index.d.ts"
       ],
       "../src/modules/graphql/graphql.ctx.utils.ts": [
         "../src/modules/auth/auth.model.ts"
@@ -23761,7 +23767,6 @@
       "../node_modules/@nestjs/graphql/dist/index.d.ts",
       "../node_modules/@nestjs/graphql/index.d.ts",
       "../src/modules/graphql/graphql.model.ts",
-      "../src/modules/user/user.model.ts",
       "../src/modules/refresh-token/refresh-token.errors.ts",
       "../src/modules/refresh-token/refresh-token.helpers.ts",
       "../src/modules/refresh-token/refresh-token.model.ts",
@@ -23773,14 +23778,6 @@
       "../src/modules/graphql/graphql.guard.ts",
       "../src/modules/graphql/decorators/current-user.ts",
       "../src/modules/auth/auth.model.ts",
-      "../src/modules/user/user.resolver.ts",
-      "../src/modules/user/user.provider.seed.ts",
-      "../src/modules/user/user.module.ts",
-      "../src/modules/auth/auth.types.ts",
-      "../src/modules/auth/auth.provider.ts",
-      "../node_modules/@types/passport-strategy/index.d.ts",
-      "../node_modules/@types/passport-local/index.d.ts",
-      "../src/modules/auth/auth.strategy.ts",
       "../node_modules/graphql-subscriptions/dist/pubsub-engine.d.ts",
       "../node_modules/graphql-subscriptions/dist/pubsub.d.ts",
       "../node_modules/graphql-subscriptions/dist/with-filter.d.ts",
@@ -23789,6 +23786,15 @@
       "../node_modules/apollo-server-express/dist/apolloserver.d.ts",
       "../node_modules/apollo-server-express/dist/index.d.ts",
       "../src/modules/auth/auth.helpers.ts",
+      "../src/modules/user/user.resolver.ts",
+      "../src/modules/user/user.provider.seed.ts",
+      "../src/modules/user/user.module.ts",
+      "../src/modules/auth/auth.types.ts",
+      "../src/modules/auth/auth.provider.ts",
+      "../node_modules/@types/passport-strategy/index.d.ts",
+      "../node_modules/@types/passport-local/index.d.ts",
+      "../src/modules/auth/auth.strategy.ts",
+      "../src/modules/graphql/graphql.ctx.utils.ts",
       "../src/modules/auth/auth.resolver.ts",
       "../src/modules/jwt/jwt.strategy.ts",
       "../src/modules/auth/auth.module.ts",
@@ -23855,7 +23861,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/modules/graphql/graphql.ctx.utils.ts"
+      "../src/modules/user/user.model.ts"
     ]
   },
   "version": "3.8.3"

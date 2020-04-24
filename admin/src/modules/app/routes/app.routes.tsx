@@ -9,7 +9,7 @@ import NotFoundPage from 'modules/not-found/not-found.page'
 import PrivilegedRoute from './app.routes.privileged'
 import { UserRole } from 'modules/user/enums/user.enums'
 import AppRoutes from 'shared/page/dashboard/template.dashboard'
-import UserPageList from 'modules/user/pages/user.page.list'
+import { generateRoutes } from './app.routes.generators'
 
 const Routes = () => (
 	<Switch>
@@ -24,11 +24,7 @@ const Routes = () => (
 					path={urls.home}
 					component={() => <div />}
 				/>
-				<PrivilegedRoute
-					role={UserRole.ADMIN}
-					path={urls.users}
-					component={UserPageList}
-				/>
+				{generateRoutes(urls.users)}
 			</>
 		</AppRoutes>
 

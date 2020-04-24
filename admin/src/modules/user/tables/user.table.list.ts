@@ -1,6 +1,7 @@
 import { UserRole } from '../enums/user.enums'
 import i18n from 'core/i18n/i18n'
 import { Column } from 'material-table'
+import { formatUserRole } from '../utils/user.utils.formatters'
 
 export interface UserRow {
 	id: number
@@ -14,7 +15,6 @@ export const userColumns: Array<Column<UserRow>> = [
 	{
 		title: i18n.t('tables.users.columns.id'),
 		field: 'id',
-		type: 'numeric',
 	},
 	{
 		title: i18n.t('tables.users.columns.username'),
@@ -27,6 +27,7 @@ export const userColumns: Array<Column<UserRow>> = [
 	{
 		title: i18n.t('tables.users.columns.userRole'),
 		field: 'role',
+		render: (user: UserRow) => formatUserRole(user.role),
 	},
 	{
 		title: i18n.t('tables.users.columns.lastLoginAt'),

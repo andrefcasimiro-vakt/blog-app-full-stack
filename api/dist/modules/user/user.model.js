@@ -35,7 +35,7 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "role", void 0);
 __decorate([
-    graphql_1.Field(),
+    graphql_1.Field({ nullable: true }),
     __metadata("design:type", Date)
 ], User.prototype, "lastLoginAt", void 0);
 User = __decorate([

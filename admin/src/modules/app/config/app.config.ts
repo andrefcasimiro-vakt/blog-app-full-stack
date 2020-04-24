@@ -3,6 +3,8 @@ const prefix = 'REACT_APP_'
 const extractEnv = (key: string): string | undefined =>
 	process.env[`${prefix}${key}`]
 
+const debugLanguage: 'en' | 'pt' | null = null
+
 export const config = {
 	app: {
 		name: extractEnv('APP_NAME') || 'App',
@@ -13,8 +15,10 @@ export const config = {
 			},
 		},
 		language: {
-			default: extractEnv('APP_LANGUAGE_DEFAULT') || 'pt',
-			useLanguageDetector: extractEnv('APP_LANGUAGE_USE_DETECTOR') || false,
+			default: debugLanguage || extractEnv('APP_LANGUAGE_DEFAULT') || 'en',
+			useLanguageDetector: debugLanguage
+				? false
+				: extractEnv('APP_LANGUAGE_USE_DETECTOR') || false,
 		},
 		options: {
 			/** Specifies if a logged in user should be logged out if any Authorization Error occurs */

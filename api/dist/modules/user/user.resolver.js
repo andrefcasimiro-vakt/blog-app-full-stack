@@ -19,6 +19,9 @@ const user_provider_1 = require("./user.provider");
 const graphql_guard_1 = require("../graphql/graphql.guard");
 const current_user_1 = require("../graphql/decorators/current-user");
 const auth_model_1 = require("../auth/auth.model");
+const auth_helpers_1 = require("../auth/auth.helpers");
+const bcrypt_helpers_1 = require("../bcrypt/bcrypt.helpers");
+const user_enum_1 = require("./user.enum");
 let UserResolver = class UserResolver {
     constructor(userProvider) {
         this.userProvider = userProvider;
@@ -42,6 +45,16 @@ let UserResolver = class UserResolver {
     }
     async listUsers() {
         return this.userProvider.listUsers();
+    }
+    async createUser(username, email, password, role, isActive, ctx) {
+        const user = await this.userProvider.findByUsername(username);
+        if (user) {
+            throw new common_1.ConflictException("Username is already registered");
+        }
+        auth_helpers_1.checkPassword(password);
+        const hashedPassword = await bcrypt_helpers_1.hashString(password);
+        const createdUser = await this.userProvider.createUser(username, email, hashedPassword, role, isActive);
+        return createdUser;
     }
 };
 __decorate([
@@ -73,6 +86,18 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "listUsers", null);
+__decorate([
+    graphql_1.Mutation(returns => user_model_1.User, { name: 'createUser' }),
+    __param(0, graphql_1.Args('username')),
+    __param(1, graphql_1.Args('email')),
+    __param(2, graphql_1.Args('password')),
+    __param(3, graphql_1.Args('role')),
+    __param(4, graphql_1.Args('isActive')),
+    __param(5, graphql_1.Context()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String, String, String, Boolean, Object]),
+    __metadata("design:returntype", Promise)
+], UserResolver.prototype, "createUser", null);
 UserResolver = __decorate([
     graphql_1.Resolver(of => user_model_1.User),
     __metadata("design:paramtypes", [user_provider_1.UserProvider])

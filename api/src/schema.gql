@@ -21,8 +21,8 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 scalar DateTime
 
 type Mutation {
+  createUser(isActive: Boolean!, role: String!, password: String!, email: String!, username: String!): User!
   login(password: String!, username: String!): AuthResponse!
-  createAccount(password: String!, email: String!, username: String!): AuthResponse!
 }
 
 type Query {
@@ -45,5 +45,5 @@ type User {
 
   """Describes the group of permissions to which the user belongs """
   role: String!
-  lastLoginAt: DateTime!
+  lastLoginAt: DateTime
 }

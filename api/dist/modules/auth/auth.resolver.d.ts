@@ -6,5 +6,4 @@ export declare class AuthResolver {
     private userProvider;
     constructor(authProvider: AuthProvider, userProvider: UserProvider);
     login(username: string, password: string, ctx: any): Promise<AuthResponse>;
-    createAccount(username: string, email: string, password: string, ctx: any): Promise<AuthResponse>;
 }

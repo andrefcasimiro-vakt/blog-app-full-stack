@@ -6,5 +6,5 @@ export declare class User extends Model {
     password: string;
     isActive: boolean;
     role: UserRole;
-    lastLoginAt: Date;
+    lastLoginAt?: Date;
 }
