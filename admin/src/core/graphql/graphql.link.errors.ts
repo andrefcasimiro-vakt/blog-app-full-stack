@@ -1,9 +1,9 @@
 import { onError } from 'apollo-link-error'
-import { config } from 'modules/app/config/app.config'
 import { store } from 'core/redux/redux.store'
-import { selectCurrentUser, authLogout } from 'modules/auth/redux/auth.redux'
+import { selectCurrentUser, authLogout } from 'modules/auth/auth.redux'
 import { purgeEverything } from './graphql.utils'
 import { path, pathOr } from 'ramda'
+import { config } from 'modules/app/app.config'
 
 // TODO: Check that backend is throwing a custom authorization and not a INTERNAL SERVER ERROR on gql guards
 

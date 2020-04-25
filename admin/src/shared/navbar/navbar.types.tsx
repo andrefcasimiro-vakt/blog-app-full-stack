@@ -1,20 +1,20 @@
-import { Layout } from "./navbar.layout";
+import { Layout } from './navbar.mapper.layout'
 
 export interface NavbarProps {
-  /** Handles how the modal is drawn */
-  layout?: Layout,
+	/** Handles how the modal is drawn */
+	layout?: Layout
 
-  navbarTitle?: string,
+	navbarTitle?: string
 
-  userAvatarConfiguration?: UserAvatarConfiguration,
+	userAvatarConfiguration?: UserAvatarConfiguration
 }
 
 export interface UserAvatarConfiguration {
-  options: UserAvatarMenuOption[],
+	options: UserAvatarMenuOption[]
 }
 
 export interface UserAvatarMenuOption {
-  icon?: React.FC,
-  displayName: string,
-  onClick?: Function,
+	icon?: React.FC
+	displayName: string
+	onClick?: Function
 }

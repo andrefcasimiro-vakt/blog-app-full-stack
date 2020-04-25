@@ -16,10 +16,10 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import { DrawerMenu } from './drawer.types'
 import DrawerMenuItem from './drawer.menu.main'
-import { config } from 'modules/app/config/app.config'
 import Typography from '@material-ui/core/Typography/Typography'
 import { useDispatch, useSelector } from 'react-redux'
-import { updateDrawer, selectDrawerStatus } from 'modules/app/redux/app.redux'
+import { selectDrawerStatus, updateDrawer } from 'modules/app/app.redux'
+import { config } from 'modules/app/app.config'
 
 export const drawerWidth = 240
 export const drawerWidthMinimized = 57

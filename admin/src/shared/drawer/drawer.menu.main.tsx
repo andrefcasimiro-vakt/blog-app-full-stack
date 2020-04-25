@@ -8,8 +8,8 @@ import { Theme } from '@material-ui/core/styles/createMuiTheme'
 import { DrawerMenu as DrawerMenuType } from './drawer.types'
 import { pathOr } from 'ramda'
 import { Typography } from '@material-ui/core'
-import { selectDrawerStatus, updateDrawer } from 'modules/app/redux/app.redux'
-import { useSelector, useDispatch } from 'react-redux'
+import { selectDrawerStatus } from 'modules/app/app.redux'
+import { useSelector } from 'react-redux'
 
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({

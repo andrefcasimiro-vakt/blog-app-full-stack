@@ -3,16 +3,16 @@ import { getAccessToken } from 'core/crypto/crypto.utils'
 
 // Adds access token header
 const linkSetHeaders = new ApolloLink((operation, forward) => {
-  const token = getAccessToken()
+	const token = getAccessToken()
 
-  operation.setContext(({ headers = {} }) => ({
-    headers: {
-      ...headers,
-      ...(token ? { authorization: `Bearer ${token}`} : {}),
-    }
-  }))
+	operation.setContext(({ headers = {} }) => ({
+		headers: {
+			...headers,
+			...(token ? { authorization: `Bearer ${token}` } : {}),
+		},
+	}))
 
-  return forward(operation)
+	return forward(operation)
 })
 
 export default linkSetHeaders

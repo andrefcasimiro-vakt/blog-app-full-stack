@@ -1,8 +1,8 @@
 import React from 'react'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import Grid from '@material-ui/core/Grid/Grid'
-import theme from 'modules/app/config/app.theme'
-import { Card, Typography, Divider } from '@material-ui/core'
+import theme from 'modules/app/app.theme'
+import { Card, Typography } from '@material-ui/core'
 
 const useStyles = makeStyles({
 	root: {

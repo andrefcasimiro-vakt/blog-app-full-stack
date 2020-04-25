@@ -1,7 +1,7 @@
 import { ApolloLink } from 'apollo-link'
 import { path } from 'ramda'
 import { setAccessToken, setRefreshToken } from 'core/crypto/crypto.utils'
-import { config } from 'modules/app/config/app.config'
+import { config } from 'modules/app/app.config'
 
 /**
  * When the backend responds, the headers should include:

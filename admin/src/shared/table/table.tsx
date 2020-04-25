@@ -1,13 +1,10 @@
 import React, { useEffect } from 'react'
 import makeStyles from '@material-ui/core/styles/makeStyles'
-import theme from 'modules/app/config/app.theme'
-import Grid from '@material-ui/core/Grid/Grid'
 import MaterialTable, { Column } from 'material-table'
 import { tableIcons } from './table.icons'
 import { Query } from 'core/graphql/graphql.types'
 import { path, pathOr } from 'ramda'
 import { useQuery } from 'core/graphql/graphql.hooks'
-import { CircularProgress } from '@material-ui/core'
 
 const useStyles = makeStyles({
 	table: {

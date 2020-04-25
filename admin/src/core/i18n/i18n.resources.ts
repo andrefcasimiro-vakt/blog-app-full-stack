@@ -1,125 +1,31 @@
-type Language = 'en' | 'pt'
+import generic from './i18n.lib.generic'
+import fallback from './i18n.lib.fallback'
+import buttons from './i18n.lib.buttons'
+import tables from './i18n.lib.tables'
+import forms from './i18n.lib.forms'
+import users from './i18n.lib.users'
+import blog from './i18n.lib.blog'
+import userAvatarOptions from './i18n.lib.userAvatarOptions'
+import subpages from './i18n.lib.subpages'
+import pages from './i18n.lib.pages'
+import validators from './i18n.lib.validators'
+import errors from './18n.lib.errors'
+
+export type Language = 'en' | 'pt'
 
 const generateTranslation = (language: Language) => ({
-	generic: {
-		search: { en: 'Search', pt: 'Pesquisar' }[language],
-		back: { en: 'Go back', pt: 'Voltar atrás' }[language],
-		yes: { en: 'Yes', pt: 'Sim' }[language],
-		no: { en: 'No', pt: 'Não' }[language],
-	},
-	fallback: {
-		unknownData: { en: 'Unknown', pt: 'Desconhecido' }[language],
-	},
-	buttons: {
-		users: {
-			create: { en: 'Create user', pt: 'Criar utilizador' }[language],
-		},
-	},
-	tables: {
-		users: {
-			title: { en: 'User List', pt: 'Lista de utilizadores' }[language],
-			columns: {
-				id: { en: 'ID', pt: 'ID' }[language],
-				username: { en: 'Username', pt: 'Nome de utilizador' }[language],
-				email: { en: 'E-Mail', pt: 'E-Mail' }[language],
-				userRole: { en: 'Role', pt: 'Função' }[language],
-				isActive: { en: 'Is Active?', pt: 'Está Ativo?' }[language],
-				lastLoginAt: { en: 'Last login at', pt: 'Última atividade' }[language],
-			},
-		},
-	},
-	forms: {
-		users: {
-			create: {
-				title: { en: 'Create user', pt: 'Criar utilizador' }[language],
-				username: { en: 'Username', pt: 'Nome de utilizador' }[language],
-				email: { en: 'E-mail', pt: 'E-mail' }[language],
-				password: { en: 'Password', pt: 'Palavra-passe' }[language],
-				role: { en: 'User role', pt: 'Função do utilizador' }[language],
-				isActive: { en: 'Activate account', pt: 'Ativar conta' }[language],
-				isActiveTooltip: {
-					en: `Determines if this user's account is allowed to use the platform`,
-					pt:
-						'Determina se a conta deste utilizador está autorizada a usar a plataforma',
-				}[language],
-				submit: { en: 'Create', pt: 'Criar' }[language],
-				// Notification
-				successMessage: {
-					en: 'User was created',
-					pt: 'Utilizador criado com sucesso',
-				}[language],
-			},
-		},
-	},
-	users: {
-		accounts: { en: 'Accounts', pt: 'Contas' }[language],
-		users: { en: 'Users', pt: 'Utilizadores' }[language],
-		roles: {
-			admin: { en: 'Administrator', pt: 'Administrador' }[language],
-			user: { en: 'User', pt: 'Utilizador' }[language],
-		},
-	},
-	blog: {
-		blog: { en: 'Blog', pt: 'Blogue' }[language],
-		posts: { en: 'Posts', pt: 'Publicações' }[language],
-		categories: { en: 'Categories', pt: 'Categorias' }[language],
-		comments: { en: 'Comments', pt: 'Comentários' }[language],
-		settings: { en: 'Settings', pt: 'Configurações' }[language],
-	},
-	userAvatarOptions: {
-		logout: { en: 'Logout', pt: 'Terminar sessão' }[language],
-	},
-	pages: {
-		login: {
-			tabs: {
-				login: { en: 'Login', pt: 'Entrar' }[language],
-				forgotPassword: { en: 'Recover password', pt: 'Recuperar acesso' }[
-					language
-				],
-			},
-			form: {
-				username: { en: 'Username', pt: 'Nome de usuário' }[language],
-				password: { en: 'Password', pt: 'Palavra-passe' }[language],
-				submit: { en: 'Login', pt: 'Entrar' }[language],
-			},
-		},
-	},
-	subpages: {
-		generic: {
-			details: {
-				view: { en: 'Details', pt: 'Ver detalhes' }[language],
-				update: { en: 'Update', pt: 'Editar' }[language],
-			},
-		},
-	},
-	validators: {
-		yup: {
-			noEmptyCharacters: {
-				en: 'Spaces are not allowed',
-				pt: 'Espaços em branco não são permitidos',
-			}[language],
-			stringRequired: {
-				en: 'This field is required',
-				pt: 'O campo deve estar preenchido',
-			}[language],
-			invalidEmail: {
-				en: 'Must be a correct email address',
-				pt: 'Formato de e-mail incorrecto',
-			}[language],
-			minimumLength: {
-				en: '{fieldName} must be at least {minimumLength} characters long',
-				pt: '{fieldName} tem de ter no mínimo {minimumLength} carácter(es)',
-			}[language],
-		},
-	},
-	errors: {
-		graphql: {
-			AUTHORIZATION_ERROR: {
-				en: 'Not authorized',
-				pt: 'Não autorizado',
-			}[language],
-		},
-	},
+	generic: generic(language),
+	fallback: fallback(language),
+	buttons: buttons(language),
+	tables: tables(language),
+	forms: forms(language),
+	users: users(language),
+	blog: blog(language),
+	userAvatarOptions: userAvatarOptions(language),
+	pages: pages(language),
+	subpages: subpages(language),
+	validators: validators(language),
+	errors: errors(language),
 })
 
 export const resources = {

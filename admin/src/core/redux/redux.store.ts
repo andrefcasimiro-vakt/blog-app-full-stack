@@ -1,11 +1,11 @@
 import { persistStore } from 'redux-persist'
 import { combineReducers, createStore, applyMiddleware, compose } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import { appReducer } from 'modules/app/redux/app.redux'
-import { authReducer } from 'modules/auth/redux/auth.redux'
+import { appReducer } from 'modules/app/app.redux'
+import { authReducer } from 'modules/auth/auth.redux'
 import persistReducer from 'redux-persist/es/persistReducer'
 import storage from 'redux-persist/lib/storage'
-import authEpics from 'modules/auth/epics/auth.epics'
+import authEpics from 'modules/auth/auth.epics'
 import { combineEpics, createEpicMiddleware } from 'redux-observable'
 
 export const rootEpic = combineEpics(...authEpics)

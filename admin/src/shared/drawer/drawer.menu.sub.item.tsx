@@ -3,11 +3,9 @@ import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
 import { LinkProps } from '@material-ui/core/Link'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
-import ExpandLess from '@material-ui/icons/ExpandLess'
-import ExpandMore from '@material-ui/icons/ExpandMore'
 import { useHistory } from 'react-router'
 import { useSelector } from 'react-redux'
-import { selectDrawerStatus } from 'modules/app/redux/app.redux'
+import { selectDrawerStatus } from 'modules/app/app.redux'
 
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({

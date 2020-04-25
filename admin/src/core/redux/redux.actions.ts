@@ -1,3 +1,3 @@
 export const noopAction = () => ({
-  type: 'NOOP_ACTION',
+	type: 'NOOP_ACTION',
 })

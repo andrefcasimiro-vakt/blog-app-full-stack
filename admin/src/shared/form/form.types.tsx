@@ -1,5 +1,5 @@
 import { SvgIcon } from 'shared/icons/icons.types'
-import { SelectOption } from './inputs/inputs.select'
+import { SelectOption } from 'shared/inputs/inputs.select'
 
 export type Field = React.InputHTMLAttributes<unknown> & {
 	icon?: SvgIcon

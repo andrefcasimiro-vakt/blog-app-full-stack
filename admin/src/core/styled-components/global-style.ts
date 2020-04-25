@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 import { normalize } from 'polished'
-import theme from 'modules/app/config/app.theme'
+import theme from 'modules/app/app.theme'
 
 export default createGlobalStyle`
   ${normalize()}

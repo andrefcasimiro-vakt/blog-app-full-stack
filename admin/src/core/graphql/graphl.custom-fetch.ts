@@ -6,7 +6,7 @@ import {
 } from 'core/crypto/crypto.utils'
 import { errors } from './graphql.errors'
 import { mutate } from './graphql.utils'
-import { getRefreshTokenMutation } from 'modules/auth/graphql/auth.mutations'
+import { getRefreshTokenMutation } from 'modules/auth/auth.mutations'
 
 const customFetch = (uri: RequestInfo, options: RequestInit) =>
 	fetch(uri, options).then((response) => {
