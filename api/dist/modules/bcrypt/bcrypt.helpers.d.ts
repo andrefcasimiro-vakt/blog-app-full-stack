@@ -1,2 +1,2 @@
-export declare const hashString: (plainText: string) => string;
-export declare const compareHashed: (plainText: any, cipherText: any) => boolean;
+export declare const hashString: (plainText: string) => Promise<string>;
+export declare const compareHashed: (plainText: string, cipherText: string) => Promise<boolean>;

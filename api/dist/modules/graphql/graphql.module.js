@@ -6,9 +6,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const path_1 = require("path");
 const common_1 = require("@nestjs/common");
 const graphql_1 = require("@nestjs/graphql");
-const path_1 = require("path");
 let GraphQLModule = class GraphQLModule {
 };
 GraphQLModule = __decorate([

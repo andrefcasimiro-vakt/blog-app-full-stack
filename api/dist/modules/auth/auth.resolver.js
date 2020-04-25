@@ -14,21 +14,21 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const graphql_1 = require("@nestjs/graphql");
-const auth_model_1 = require("./auth.model");
 const user_provider_1 = require("../user/user.provider");
-const auth_provider_1 = require("./auth.provider");
 const graphql_ctx_utils_1 = require("../graphql/graphql.ctx.utils");
+const auth_model_1 = require("./auth.model");
+const auth_provider_1 = require("./auth.provider");
 let AuthResolver = class AuthResolver {
-    constructor(authProvider, userProvider) {
-        this.authProvider = authProvider;
-        this.userProvider = userProvider;
+    constructor(_authProvider, _userProvider) {
+        this._authProvider = _authProvider;
+        this._userProvider = _userProvider;
     }
     async login(username, password, ctx) {
-        const user = await this.authProvider.validateUser(username, password);
+        const user = await this._authProvider.validateUser(username, password);
         if (!user) {
             throw new common_1.UnauthorizedException();
         }
-        const { accessToken, refreshToken } = await this.authProvider.login(user);
+        const { accessToken, refreshToken } = await this._authProvider.login(user);
         graphql_ctx_utils_1.setAuthHeaders(ctx, { accessToken, refreshToken });
         return {
             user,
@@ -38,7 +38,7 @@ let AuthResolver = class AuthResolver {
     }
 };
 __decorate([
-    graphql_1.Mutation(returns => auth_model_1.AuthResponse, { name: 'login' }),
+    graphql_1.Mutation((returns) => auth_model_1.AuthResponse, { name: 'login' }),
     __param(0, graphql_1.Args('username')),
     __param(1, graphql_1.Args('password')),
     __param(2, graphql_1.Context()),
@@ -47,7 +47,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], AuthResolver.prototype, "login", null);
 AuthResolver = __decorate([
-    graphql_1.Resolver(of => auth_model_1.AuthResponse),
+    graphql_1.Resolver((of) => auth_model_1.AuthResponse),
     __metadata("design:paramtypes", [auth_provider_1.AuthProvider,
         user_provider_1.UserProvider])
 ], AuthResolver);

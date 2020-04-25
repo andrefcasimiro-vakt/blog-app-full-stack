@@ -14,8 +14,8 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const user_entity_1 = require("./user.entity");
 const typeorm_2 = require("typeorm");
+const user_entity_1 = require("./user.entity");
 const user_enum_1 = require("./user.enum");
 const users = [
     {
@@ -26,17 +26,17 @@ const users = [
     }
 ];
 let UserProviderSeed = class UserProviderSeed {
-    constructor(userRepository) {
-        this.userRepository = userRepository;
+    constructor(_userRepository) {
+        this._userRepository = _userRepository;
     }
     create() {
-        return users.map(async (user) => await this.userRepository
+        return users.map(async (user) => await this._userRepository
             .findOne({ email: user.email })
             .then(async (userRecord) => {
             if (userRecord) {
-                return Promise.resolve(null);
+                Promise.resolve(null);
             }
-            return Promise.resolve(await this.userRepository.save(user));
+            return Promise.resolve(await this._userRepository.save(user));
         })
             .catch(error => Promise.reject(error)));
     }

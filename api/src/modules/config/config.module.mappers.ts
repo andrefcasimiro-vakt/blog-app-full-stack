@@ -1,3 +1,4 @@
+import { DynamicModule } from '@nestjs/common'
 import { AuthModule } from 'src/modules/auth/auth.module'
 import { BlogModule } from 'src/modules/blog/blog.module'
 import { ConfigModule } from 'src/modules/config/config.module'
@@ -17,4 +18,4 @@ export const moduleMappers = {
   user: UserModule,
 }
 
-export type Modules = AuthModule | BlogModule | ConfigModule | DatabaseModule | GraphQLModule | RefreshTokenModule | UserModule
+export type Modules = typeof AuthModule | typeof BlogModule | typeof ConfigModule | typeof DatabaseModule | typeof GraphQLModule | typeof RefreshTokenModule | typeof UserModule | DynamicModule

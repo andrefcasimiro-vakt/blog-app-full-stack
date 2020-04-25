@@ -1,2 +1,2 @@
-import { DynamicModule } from '@nestjs/common/interfaces';
-export declare const mapModules: (providedModules: string[]) => DynamicModule[];
+import { Modules } from './config.module.mappers';
+export declare const mapModules: (providedModules: string[]) => Modules[];

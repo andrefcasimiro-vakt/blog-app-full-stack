@@ -9,9 +9,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const user_entity_1 = require("./user.entity");
-const user_resolver_1 = require("./user.resolver");
 const user_provider_1 = require("./user.provider");
 const user_provider_seed_1 = require("./user.provider.seed");
+const user_resolver_1 = require("./user.resolver");
 let UserModule = class UserModule {
 };
 UserModule = __decorate([

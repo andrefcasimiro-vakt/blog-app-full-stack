@@ -16,30 +16,29 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const typeorm_1 = require("typeorm");
+const graphql_1 = require("@nestjs/graphql");
+const typeorm_1 = require("@nestjs/typeorm");
+const moment_1 = __importDefault(require("moment"));
 const user_entity_1 = require("./user.entity");
 const user_model_1 = require("./user.model");
-const typeorm_2 = require("@nestjs/typeorm");
-const graphql_1 = require("@nestjs/graphql");
+const typeorm_2 = require("typeorm");
 const user_enum_1 = require("./user.enum");
-const moment_1 = __importDefault(require("moment"));
 let UserProvider = class UserProvider {
-    constructor(usersRepository, context) {
-        this.usersRepository = usersRepository;
-        this.context = context;
+    constructor(_usersRepository, _context) {
+        this._usersRepository = _usersRepository;
+        this._context = _context;
     }
     async findById(id) {
-        console.log('received context: ', this.context);
-        return this.usersRepository.findOne({ where: { id } });
+        return this._usersRepository.findOne({ where: { id } });
     }
     async findByUsername(username) {
-        return this.usersRepository.findOne({ where: { username } });
+        return this._usersRepository.findOne({ where: { username } });
     }
     async findByEmail(email) {
-        return this.usersRepository.findOne({ where: { email } });
+        return this._usersRepository.findOne({ where: { email } });
     }
     async listUsers() {
-        return this.usersRepository.find();
+        return this._usersRepository.find();
     }
     async createUser(username, email, hashedPassword, role = user_enum_1.UserRole.USER, isActive = false) {
         const userObject = {
@@ -49,10 +48,10 @@ let UserProvider = class UserProvider {
             role,
             isActive,
         };
-        return this.usersRepository.save(userObject);
+        return this._usersRepository.save(userObject);
     }
     async updateLastLoginAt(userId) {
-        const result = await typeorm_1.getConnection()
+        const result = await typeorm_2.getConnection()
             .createQueryBuilder()
             .update(user_entity_1.User)
             .set({ lastLoginAt: moment_1.default.utc().toISOString() })
@@ -61,7 +60,7 @@ let UserProvider = class UserProvider {
         return result;
     }
     async updateUser(userId, payload) {
-        const result = await typeorm_1.getConnection()
+        const result = await typeorm_2.getConnection()
             .createQueryBuilder()
             .update(user_entity_1.User)
             .set(Object.assign({}, payload))
@@ -72,9 +71,9 @@ let UserProvider = class UserProvider {
 };
 UserProvider = __decorate([
     common_1.Injectable(),
-    __param(0, typeorm_2.InjectRepository(user_entity_1.User)),
+    __param(0, typeorm_1.InjectRepository(user_entity_1.User)),
     __param(1, common_1.Inject(graphql_1.CONTEXT)),
-    __metadata("design:paramtypes", [typeorm_1.Repository, Object])
+    __metadata("design:paramtypes", [typeorm_2.Repository, Object])
 ], UserProvider);
 exports.UserProvider = UserProvider;
 //# sourceMappingURL=user.provider.js.map

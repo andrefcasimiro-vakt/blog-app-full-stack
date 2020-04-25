@@ -10,7 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
-const user_enum_1 = require("../user/user.enum");
 let BaseEntity = class BaseEntity {
 };
 __decorate([

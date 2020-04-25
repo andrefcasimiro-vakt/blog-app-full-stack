@@ -9,17 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const passport_local_1 = require("passport-local");
-const passport_1 = require("@nestjs/passport");
 const common_1 = require("@nestjs/common");
+const passport_1 = require("@nestjs/passport");
+const passport_local_1 = require("passport-local");
 const auth_provider_1 = require("./auth.provider");
 let LocalStrategy = class LocalStrategy extends passport_1.PassportStrategy(passport_local_1.Strategy) {
-    constructor(authProvider) {
+    constructor(_authProvider) {
         super();
-        this.authProvider = authProvider;
+        this._authProvider = _authProvider;
     }
     async validate(username, password) {
-        const user = await this.authProvider.validateUser(username, password);
+        const user = await this._authProvider.validateUser(username, password);
         if (!user) {
             throw new common_1.UnauthorizedException();
         }

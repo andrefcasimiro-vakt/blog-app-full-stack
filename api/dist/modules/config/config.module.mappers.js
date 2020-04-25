@@ -5,8 +5,8 @@ const blog_module_1 = require("../blog/blog.module");
 const config_module_1 = require("./config.module");
 const database_module_1 = require("../database/database.module");
 const graphql_module_1 = require("../graphql/graphql.module");
-const user_module_1 = require("../user/user.module");
 const refresh_token_module_1 = require("../refresh-token/refresh-token.module");
+const user_module_1 = require("../user/user.module");
 exports.moduleMappers = {
     auth: auth_module_1.AuthModule,
     blog: blog_module_1.BlogModule,

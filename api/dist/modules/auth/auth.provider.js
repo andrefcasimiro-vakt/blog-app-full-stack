@@ -21,24 +21,24 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const user_provider_1 = require("../user/user.provider");
-const user_model_1 = require("../user/user.model");
 const jwt_1 = require("@nestjs/jwt");
+const user_model_1 = require("../user/user.model");
+const user_provider_1 = require("../user/user.provider");
 const bcrypt_helpers_1 = require("../bcrypt/bcrypt.helpers");
 const refresh_token_provider_1 = require("../refresh-token/refresh-token.provider");
 let AuthProvider = class AuthProvider {
-    constructor(userProvider, jwtProvider, refreshTokenProvider) {
-        this.userProvider = userProvider;
-        this.jwtProvider = jwtProvider;
-        this.refreshTokenProvider = refreshTokenProvider;
+    constructor(_userProvider, _jwtProvider, _refreshTokenProvider) {
+        this._userProvider = _userProvider;
+        this._jwtProvider = _jwtProvider;
+        this._refreshTokenProvider = _refreshTokenProvider;
     }
     async validateUser(username, pwd) {
-        const user = await this.userProvider.findByUsername(username);
+        const user = await this._userProvider.findByUsername(username);
         if (!user) {
             return null;
         }
-        const passwordsMatch = await bcrypt_helpers_1.compareHashed(pwd, user.password);
-        if (!passwordsMatch) {
+        const isMatchBetweenPasswords = await bcrypt_helpers_1.compareHashed(pwd, user.password);
+        if (!isMatchBetweenPasswords) {
             return null;
         }
         const { password } = user, result = __rest(user, ["password"]);
@@ -46,10 +46,9 @@ let AuthProvider = class AuthProvider {
     }
     async login(user) {
         const payload = { username: user.username, id: user.id };
-        const accessToken = this.jwtProvider.sign(payload);
-        const refreshToken = await this.refreshTokenProvider
-            .createRefreshToken(user);
-        await this.userProvider.updateLastLoginAt(user.id);
+        const accessToken = this._jwtProvider.sign(payload);
+        const refreshToken = await this._refreshTokenProvider.createRefreshToken(user);
+        await this._userProvider.updateLastLoginAt(user.id);
         return {
             user,
             accessToken,

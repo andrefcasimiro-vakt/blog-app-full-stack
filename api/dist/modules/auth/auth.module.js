@@ -10,15 +10,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const passport_1 = require("@nestjs/passport");
 const jwt_1 = require("@nestjs/jwt");
+const passport_1 = require("@nestjs/passport");
+const config_main_1 = __importDefault(require("../config/config.main"));
+const jwt_strategy_1 = require("../jwt/jwt.strategy");
 const refresh_token_module_1 = require("../refresh-token/refresh-token.module");
 const user_module_1 = require("../user/user.module");
 const auth_provider_1 = require("./auth.provider");
-const auth_strategy_1 = require("./auth.strategy");
 const auth_resolver_1 = require("./auth.resolver");
-const config_main_1 = __importDefault(require("../config/config.main"));
-const jwt_strategy_1 = require("../jwt/jwt.strategy");
+const auth_strategy_1 = require("./auth.strategy");
 let AuthModule = class AuthModule {
 };
 AuthModule = __decorate([
@@ -31,15 +31,10 @@ AuthModule = __decorate([
                 secret: config_main_1.default.jwt.secret,
                 signOptions: {
                     expiresIn: `${config_main_1.default.jwt.expiresIn}h`,
-                }
-            })
+                },
+            }),
         ],
-        providers: [
-            auth_resolver_1.AuthResolver,
-            auth_provider_1.AuthProvider,
-            auth_strategy_1.LocalStrategy,
-            jwt_strategy_1.JwtStrategy,
-        ],
+        providers: [auth_resolver_1.AuthResolver, auth_provider_1.AuthProvider, auth_strategy_1.LocalStrategy, jwt_strategy_1.JwtStrategy],
     })
 ], AuthModule);
 exports.AuthModule = AuthModule;

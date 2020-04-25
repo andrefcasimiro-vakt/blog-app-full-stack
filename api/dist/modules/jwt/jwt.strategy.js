@@ -12,9 +12,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const passport_jwt_1 = require("passport-jwt");
-const passport_1 = require("@nestjs/passport");
 const common_1 = require("@nestjs/common");
+const passport_1 = require("@nestjs/passport");
+const passport_jwt_1 = require("passport-jwt");
 const config_main_1 = __importDefault(require("../config/config.main"));
 let JwtStrategy = class JwtStrategy extends passport_1.PassportStrategy(passport_jwt_1.Strategy) {
     constructor() {
@@ -24,12 +24,12 @@ let JwtStrategy = class JwtStrategy extends passport_1.PassportStrategy(passport
             secretOrKey: config_main_1.default.jwt.secret,
         });
     }
-    async validate(payload) {
-        return {
-            id: payload.id,
-            email: payload.email,
-            username: payload.username,
-            role: payload.role,
+    async validate(user) {
+        return await {
+            id: user.id,
+            email: user.email,
+            username: user.username,
+            role: user.role,
         };
     }
 };

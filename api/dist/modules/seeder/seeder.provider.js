@@ -12,8 +12,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const user_provider_seed_1 = require("../user/user.provider.seed");
 let SeederProvider = class SeederProvider {
-    constructor(userProviderSeeder) {
-        this.userProviderSeeder = userProviderSeeder;
+    constructor(_userProviderSeeder) {
+        this._userProviderSeeder = _userProviderSeeder;
     }
     async seed() {
         await this.createUsers()
@@ -27,7 +27,7 @@ let SeederProvider = class SeederProvider {
         });
     }
     async createUsers() {
-        return await Promise.all(this.userProviderSeeder.create())
+        return Promise.all(this._userProviderSeeder.create())
             .then(resultOfOperation => console.log(`Created ${resultOfOperation.filter(x => x).length} users.`));
     }
 };

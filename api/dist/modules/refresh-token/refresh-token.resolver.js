@@ -11,28 +11,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const graphql_1 = require("@nestjs/graphql");
-const user_model_1 = require("../user/user.model");
-const user_provider_1 = require("../user/user.provider");
 const graphql_guard_1 = require("../graphql/graphql.guard");
-const refresh_token_model_1 = require("./refresh-token.model");
-const refresh_token_provider_1 = require("./refresh-token.provider");
+const user_provider_1 = require("../user/user.provider");
 const refresh_token_errors_1 = require("./refresh-token.errors");
 const refresh_token_helpers_1 = require("./refresh-token.helpers");
+const refresh_token_model_1 = require("./refresh-token.model");
+const refresh_token_provider_1 = require("./refresh-token.provider");
 let RefreshTokenResolver = class RefreshTokenResolver {
-    constructor(userProvider, refreshTokenProvider) {
-        this.userProvider = userProvider;
-        this.refreshTokenProvider = refreshTokenProvider;
+    constructor(_userProvider, _refreshTokenProvider) {
+        this._userProvider = _userProvider;
+        this._refreshTokenProvider = _refreshTokenProvider;
     }
     async authenticateRefreshToken(payload) {
         const { email, refreshToken } = payload;
-        const user = await this.userProvider
+        const user = await this._userProvider
             .findByEmail(email);
         if (!user) {
             throw new common_1.NotFoundException(refresh_token_errors_1.errors.EMAIL_NOT_FOUND);
         }
-        const tokensMatch = await this.refreshTokenProvider
+        const isMatchBetweenTokens = await this._refreshTokenProvider
             .isValidRefreshToken(user.id, refreshToken);
-        if (!tokensMatch) {
+        if (!isMatchBetweenTokens) {
             throw new common_1.NotFoundException(refresh_token_errors_1.errors.INVALID_REFRESH_TOKEN);
         }
         return await refresh_token_helpers_1.generateAuthTokens(user);

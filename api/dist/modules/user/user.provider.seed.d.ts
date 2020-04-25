@@ -1,7 +1,7 @@
-import { User as UserModel } from "./user.model";
 import { Repository } from "typeorm";
+import { User as UserModel } from "./user.model";
 export declare class UserProviderSeed {
-    private readonly userRepository;
-    constructor(userRepository: Repository<UserModel>);
-    create(): Array<Promise<UserModel>>;
+    private readonly _userRepository;
+    constructor(_userRepository: Repository<UserModel>);
+    create(): Promise<UserModel | null>[];
 }

@@ -3,8 +3,8 @@ import { UserProvider } from 'src/modules/user/user.provider';
 import { AuthUser } from '../auth/auth.model';
 import { UserRole } from './user.enum';
 export declare class UserResolver {
-    private readonly userProvider;
-    constructor(userProvider: UserProvider);
+    private readonly _userProvider;
+    constructor(_userProvider: UserProvider);
     whoAmI(user: AuthUser): Promise<User>;
     findById(id: number): Promise<User>;
     findByUsername(username: string): Promise<User>;

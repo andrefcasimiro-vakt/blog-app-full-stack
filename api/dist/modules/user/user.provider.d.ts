@@ -1,10 +1,10 @@
-import { Repository } from 'typeorm';
 import { User as UserModel } from 'src/modules/user/user.model';
+import { Repository } from 'typeorm';
 import { UserRole } from './user.enum';
 export declare class UserProvider {
-    private usersRepository;
-    private context;
-    constructor(usersRepository: Repository<UserModel>, context: any);
+    private readonly _usersRepository;
+    private readonly _context;
+    constructor(_usersRepository: Repository<UserModel>, _context: any);
     findById(id: number): Promise<UserModel>;
     findByUsername(username: string): Promise<UserModel>;
     findByEmail(email: string): Promise<UserModel>;

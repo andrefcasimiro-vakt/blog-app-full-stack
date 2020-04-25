@@ -3,8 +3,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const config_main_1 = __importDefault(require("../config/config.main"));
 const apollo_server_express_1 = require("apollo-server-express");
+const config_main_1 = __importDefault(require("../config/config.main"));
 exports.checkPassword = (password = '') => {
     const minimumPasswordLength = config_main_1.default.auth.password.minimumLength;
     if (password.length < minimumPasswordLength) {

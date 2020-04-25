@@ -16,20 +16,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const typeorm_1 = require("typeorm");
-const typeorm_2 = require("@nestjs/typeorm");
-const refresh_token_helpers_1 = require("./refresh-token.helpers");
+const typeorm_1 = require("@nestjs/typeorm");
+const typeorm_2 = require("typeorm");
+const bcrypt_helpers_1 = require("../bcrypt/bcrypt.helpers");
 const config_main_1 = __importDefault(require("../config/config.main"));
 const refresh_token_entity_1 = require("./refresh-token.entity");
-const bcrypt_helpers_1 = require("../bcrypt/bcrypt.helpers");
+const refresh_token_helpers_1 = require("./refresh-token.helpers");
 let RefreshTokenProvider = class RefreshTokenProvider {
-    constructor(refreshTokenRepository) {
-        this.refreshTokenRepository = refreshTokenRepository;
+    constructor(_refreshTokenRepository) {
+        this._refreshTokenRepository = _refreshTokenRepository;
     }
     async createRefreshToken(user) {
         const newRefreshData = await refresh_token_helpers_1.generateRefreshToken();
         const { limit } = config_main_1.default.auth.refreshToken;
-        const refreshTokens = await this.refreshTokenRepository
+        const refreshTokens = await this._refreshTokenRepository
             .find({
             where: [{ user }],
             order: { id: 'DESC' },
@@ -37,13 +37,13 @@ let RefreshTokenProvider = class RefreshTokenProvider {
         const extraRefreshTokens = refreshTokens.slice(limit - 1);
         if (extraRefreshTokens.length) {
             extraRefreshTokens.forEach(async (extraRefreshToken) => {
-                await this.refreshTokenRepository
+                await this._refreshTokenRepository
                     .delete({
                     id: extraRefreshToken.id,
                 });
             });
         }
-        const newRefreshToken = await this.refreshTokenRepository
+        const newRefreshToken = await this._refreshTokenRepository
             .save({
             hash: newRefreshData.refreshTokenHash,
             user,
@@ -63,7 +63,7 @@ let RefreshTokenProvider = class RefreshTokenProvider {
         if (!Number.isInteger(parseFloat(refreshTokenId))) {
             return false;
         }
-        const refreshTokenInDatabase = await this.refreshTokenRepository
+        const refreshTokenInDatabase = await this._refreshTokenRepository
             .findOne({
             where: [
                 { userId },
@@ -79,8 +79,8 @@ let RefreshTokenProvider = class RefreshTokenProvider {
 };
 RefreshTokenProvider = __decorate([
     common_1.Injectable(),
-    __param(0, typeorm_2.InjectRepository(refresh_token_entity_1.RefreshToken)),
-    __metadata("design:paramtypes", [typeorm_1.Repository])
+    __param(0, typeorm_1.InjectRepository(refresh_token_entity_1.RefreshToken)),
+    __metadata("design:paramtypes", [typeorm_2.Repository])
 ], RefreshTokenProvider);
 exports.RefreshTokenProvider = RefreshTokenProvider;
 //# sourceMappingURL=refresh-token.provider.js.map

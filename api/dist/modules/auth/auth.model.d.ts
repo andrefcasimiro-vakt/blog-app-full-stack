@@ -1,5 +1,5 @@
-import { UserRole } from '../user/user.enum';
 import { Model } from '../graphql/graphql.model';
+import { UserRole } from '../user/user.enum';
 export declare class AuthUser extends Model {
     username: string;
     email: string;

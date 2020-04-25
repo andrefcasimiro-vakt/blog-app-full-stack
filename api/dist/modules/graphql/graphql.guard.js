@@ -7,8 +7,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const jwt_guard_1 = require("../jwt/jwt.guard");
 const graphql_1 = require("@nestjs/graphql");
+const jwt_guard_1 = require("../jwt/jwt.guard");
 let GqlAuthGuard = class GqlAuthGuard extends jwt_guard_1.JwtGuard {
     getRequest(context) {
         const ctx = graphql_1.GqlExecutionContext.create(context);

@@ -14,46 +14,46 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const graphql_1 = require("@nestjs/graphql");
+const graphql_guard_1 = require("../graphql/graphql.guard");
 const user_model_1 = require("./user.model");
 const user_provider_1 = require("./user.provider");
-const graphql_guard_1 = require("../graphql/graphql.guard");
-const current_user_1 = require("../graphql/decorators/current-user");
-const auth_model_1 = require("../auth/auth.model");
 const auth_helpers_1 = require("../auth/auth.helpers");
+const auth_model_1 = require("../auth/auth.model");
 const bcrypt_helpers_1 = require("../bcrypt/bcrypt.helpers");
+const current_user_1 = require("../graphql/decorators/current-user");
 const user_enum_1 = require("./user.enum");
 let UserResolver = class UserResolver {
-    constructor(userProvider) {
-        this.userProvider = userProvider;
+    constructor(_userProvider) {
+        this._userProvider = _userProvider;
     }
     whoAmI(user) {
-        return this.userProvider.findById(user.id);
+        return this._userProvider.findById(user.id);
     }
     async findById(id) {
-        const user = await this.userProvider.findById(id);
+        const user = await this._userProvider.findById(id);
         if (!user) {
             throw new common_1.NotFoundException(id);
         }
         return user;
     }
     async findByUsername(username) {
-        const user = await this.userProvider.findByUsername(username);
+        const user = await this._userProvider.findByUsername(username);
         if (!user) {
             throw new common_1.NotFoundException(username);
         }
         return user;
     }
     async listUsers() {
-        return this.userProvider.listUsers();
+        return this._userProvider.listUsers();
     }
     async createUser(username, email, password, role, isActive, ctx) {
-        const user = await this.userProvider.findByUsername(username);
+        const user = await this._userProvider.findByUsername(username);
         if (user) {
             throw new common_1.ConflictException("Username is already registered");
         }
         auth_helpers_1.checkPassword(password);
         const hashedPassword = await bcrypt_helpers_1.hashString(password);
-        const createdUser = await this.userProvider.createUser(username, email, hashedPassword, role, isActive);
+        const createdUser = await this._userProvider.createUser(username, email, hashedPassword, role, isActive);
         return createdUser;
     }
 };
