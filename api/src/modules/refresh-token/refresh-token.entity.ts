@@ -1,4 +1,5 @@
-import { Entity, Column, JoinColumn, OneToOne, ManyToOne } from 'typeorm'
+import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm'
+
 import { BaseEntity } from '../database/database.entities.base'
 import { User } from '../user/user.entity'
 
@@ -7,7 +8,7 @@ export class RefreshToken extends BaseEntity {
 
   @Column()
   hash: string
-    
+
   @ManyToOne(type => User)
   @JoinColumn()
   user: User

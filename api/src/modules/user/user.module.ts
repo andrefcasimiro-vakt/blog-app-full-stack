@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { User } from 'src/modules/user/user.entity'
-import { UserResolver } from './user.resolver'
+
 import { UserProvider } from './user.provider'
 import { UserProviderSeed } from './user.provider.seed'
+import { UserResolver } from './user.resolver'
 
 @Module({
   imports: [
@@ -22,4 +23,4 @@ import { UserProviderSeed } from './user.provider.seed'
 
   ],
 })
-export class UserModule{}
+export class UserModule { }

@@ -1,0 +1,129 @@
+{
+  "rules": {
+    "@typescript-eslint/naming-convention": [
+      "warn",
+      {
+        "selector": "variable",
+        "types": [
+          "boolean"
+        ],
+        "format": [
+          "PascalCase"
+        ],
+        "prefix": [
+          "is",
+          "should",
+          "has",
+          "can",
+          "do",
+          "did",
+          "will"
+        ]
+      },
+      {
+        "selector": "variable",
+        "format": [
+          "camelCase",
+          "UPPER_CASE"
+        ]
+      },
+      {
+        "selector": "typeParameter",
+        "format": [
+          "PascalCase"
+        ],
+        "prefix": [
+          "T"
+        ]
+      },
+      {
+        "selector": "default",
+        "format": [
+          "camelCase"
+        ]
+      },
+      {
+        "selector": "variable",
+        "format": [
+          "camelCase",
+          "UPPER_CASE"
+        ]
+      },
+      {
+        "selector": "parameter",
+        "format": [
+          "camelCase"
+        ],
+        "leadingUnderscore": "allow"
+      },
+      {
+        "selector": "memberLike",
+        "modifiers": [
+          "private"
+        ],
+        "format": [
+          "camelCase"
+        ],
+        "leadingUnderscore": "require"
+      },
+      {
+        "selector": "typeLike",
+        "format": [
+          "PascalCase"
+        ]
+      }
+    ],
+    "comma-spacing": "off",
+    "@typescript-eslint/comma-spacing": [
+      "error"
+    ],
+    "@typescript-eslint/no-dynamic-delete": [
+      "error"
+    ],
+    "@typescript-eslint/brace-style": [
+      "error"
+    ],
+    "@typescript-eslint/interface-name-prefix": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-magic-numbers": [
+      "warn",
+      {}
+    ],
+    "@typescript-eslint/no-unused-vars": [
+      "warn"
+    ],
+    "@typescript-eslint/no-extra-semi": [
+      "error"
+    ],
+    "@typescript-eslint/no-extra-parens": [
+      "error"
+    ],
+    "@typescript-eslint/no-unused-expressions": [
+      "warn"
+    ],
+    "@typescript-eslint/no-unsafe-return": [
+      "warn"
+    ],
+    "@typescript-eslint/no-use-before-define": [
+      "error"
+    ],
+    "@typescript-eslint/prefer-nullish-coalescing": [
+      "error"
+    ],
+    "@typescript-eslint/prefer-optional-chain": [
+      "error"
+    ],
+    "@typescript-eslint/prefer-readonly": [
+      "error",
+      {
+        "onlyInlineLambdas": true
+      }
+    ],
+    "require-await": "off",
+    "@typescript-eslint/require-await": "error",
+    "space-before-function-paren": "off",
+    "semi": "off",
+    "@typescript-eslint/semi": "off"
+  }
+}

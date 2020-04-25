@@ -2378,8 +2378,8 @@
         "signature": "a7d8fb354297d34c35e21a0172e2f99c2474f42b61901514f053273458f66e2f"
       },
       "../src/modules/user/user.entity.ts": {
-        "version": "e5d83728f1851846c62ea5a666cd64b6d29f172f4e707cb1dd6b690185012e60",
-        "signature": "04033aec7b8abb89745544b6b312aaaa277fa562d826f6b18c8f3cd1e2aee2ac"
+        "version": "4ec34624f54a7a9edbb8a8af52d746090af84ab469309d4bae9424f602a650b4",
+        "signature": "b2bbbc4029d2c2422e60e749b15d36e125976abe50938a354b7269f6bd49e19c"
       },
       "../src/modules/refresh-token/refresh-token.entity.ts": {
         "version": "3aeefcc61fa58413dd3c9ded27dc8f9e2f9d04915c18479c0cb47a1833023728",
@@ -4017,8 +4017,8 @@
         "signature": "d62fa6fe33566fa743b3d6715a1a2fe46e937ba9d2ba158563c5744315d438a7"
       },
       "../src/modules/user/user.provider.ts": {
-        "version": "374c2fa6cb7b8e5a9e127304075cb51bc43c0de8e508aada13bfe53f56e3b1ba",
-        "signature": "f1896ff76c2e0d1b043b2fdb3cc758e795dc600515b5e9cd5788f8f6c04fa337"
+        "version": "1f4a457fc982818e598f9a5a5e2ea55b6c9b81cf96d0f228244d22f62108e0f8",
+        "signature": "23bfba288209a62e8cd7ae9517bcc3cfadb1f6488aea58472ab385fa51466537"
       },
       "../src/modules/jwt/jwt.guard.ts": {
         "version": "a5b82c360e01b12b44f5a8ff5147851d80c84c9d13612ce4494bc3bc87a97777",
@@ -4033,7 +4033,7 @@
         "signature": "d92c6372987a54b554ef3ba33f3c7ef7b0c45aeec354a8cf9904326383ed3db5"
       },
       "../src/modules/auth/auth.model.ts": {
-        "version": "3f41512110f612a5d2316ec04611c0dbeb70f4f241be49ca30bd95753b25a155",
+        "version": "6b2d513bfc4ced3754064dc68ba1e16192020bb23349a57a3bc6db017ab5a5ae",
         "signature": "68ef2dccdf85d16d8c21433d9a2830e25ce6d9d362e851305919b007243d8d1a"
       },
       "../node_modules/graphql-subscriptions/dist/pubsub-engine.d.ts": {
@@ -4065,7 +4065,7 @@
         "signature": "77c71787c70625318099c6eadfc0a0f472ba9b3b37a1fc2fb2701b341394f616"
       },
       "../src/modules/auth/auth.helpers.ts": {
-        "version": "5531effa0c3bbc010c9412e504a3fcc07f8b796ec9c1935e58cbb13444bd5f84",
+        "version": "e69e3c514ecf22071a442320b0cf7dc5286f9b616fd2d8b8c7ddfde787619ede",
         "signature": "4ac2df345931b7f76771338951da3d78360bb60630886dea61207ddf6a44400a"
       },
       "../src/modules/user/user.resolver.ts": {
@@ -4189,7 +4189,7 @@
         "signature": "4637cae61200d256c6056fdd8add7431c3d98090aab0376a5c2841ac31d5c718"
       },
       "../src/modules/app/app.module.ts": {
-        "version": "a7c47e93597ca47af909dbca7527bb8328c3c071de157ddfbf345bfea910c995",
+        "version": "b13260d35d84f645723f8045bec38b1bc3ffc8b44a2a28980a2bce98992afb1c",
         "signature": "9fc7f7b6ad854404973b8cba8e6d883f758237991968e9a3965d716d46f1da88"
       },
       "../src/main.ts": {
@@ -23789,6 +23789,7 @@
       "../node_modules/apollo-server-express/dist/apolloserver.d.ts",
       "../node_modules/apollo-server-express/dist/index.d.ts",
       "../src/modules/auth/auth.helpers.ts",
+      "../src/modules/user/user.resolver.ts",
       "../src/modules/user/user.provider.seed.ts",
       "../src/modules/user/user.module.ts",
       "../src/modules/auth/auth.types.ts",
@@ -23818,7 +23819,6 @@
       "../src/modules/graphql/graphql.module.ts",
       "../src/modules/config/config.module.mappers.ts",
       "../src/modules/config/config.helpers.ts",
-      "../src/modules/app/app.module.ts",
       "../src/main.ts",
       "../src/modules/seeder/seeder.provider.ts",
       "../src/modules/seeder/seeder.module.ts",
@@ -23863,7 +23863,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/modules/user/user.resolver.ts"
+      "../src/modules/app/app.module.ts"
     ]
   },
   "version": "3.8.3"

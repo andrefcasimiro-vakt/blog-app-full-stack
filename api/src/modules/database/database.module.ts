@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
+
 import entities from './database.entities'
 
 @Module({
@@ -16,4 +17,4 @@ import entities from './database.entities'
     })
   ],
 })
-export class DatabaseModule{}
+export class DatabaseModule { }

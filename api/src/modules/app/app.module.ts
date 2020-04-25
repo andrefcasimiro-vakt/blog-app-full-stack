@@ -5,4 +5,4 @@ import config from 'src/modules/config/config.main'
 @Module({
   imports: mapModules(config.modules),
 })
-export class AppModule {}
+export class AppModule { }

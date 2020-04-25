@@ -6,4 +6,4 @@ import { ConfigModule as NestjsConfigModule } from '@nestjs/config'
     envFilePath: ['.env']
   })]
 })
-export class ConfigModule {}
+export class ConfigModule { }

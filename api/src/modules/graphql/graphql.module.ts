@@ -1,6 +1,7 @@
+import { join } from 'path'
+
 import { Module } from '@nestjs/common'
 import { GraphQLModule as NestjsGraphQLModule } from '@nestjs/graphql'
-import { join } from 'path'
 
 @Module({
   imports: [
@@ -11,4 +12,4 @@ import { join } from 'path'
     })
   ]
 })
-export class GraphQLModule {}
+export class GraphQLModule { }

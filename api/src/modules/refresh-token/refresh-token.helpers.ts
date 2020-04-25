@@ -1,10 +1,12 @@
-import * as jwt from 'jsonwebtoken'
 import * as crypto from 'crypto'
-import config from '../config/config.main'
+
+import * as jwt from 'jsonwebtoken'
+
 import { hashString } from '../bcrypt/bcrypt.helpers'
-import { RefreshToken, GeneratedAccessToken } from './refresh-token.types'
+import config from '../config/config.main'
 import { User } from '../user/user.model'
 import { errors } from './refresh-token.errors'
+import { GeneratedAccessToken, RefreshToken } from './refresh-token.types'
 
 export const generateRefreshToken = async (): Promise<RefreshToken> => {
   const token = crypto

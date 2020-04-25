@@ -1,61 +1,61 @@
 {
-  "env": {
-    "browser": true,
-    "es6": true
-  },
-  "globals": {
-    "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
-  },
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": 2018,
-    "sourceType": "module"
-  },
-  "plugins": ["react", "@typescript-eslint", "prettier"],
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:prettier/recommended",
-    "plugin:import/errors",
-    "plugin:import/warnings",
-    "airbnb"
-  ],
-  "rules": {
-    "import/no-unresolved": [{ "commonjs": true }],
-    "import/extensions": [
-      "error",
-      "ignorePackages",
-      {
-        "js": "never",
-        "jsx": "never",
-        "ts": "never",
-        "tsx": "never"
-      }
-    ],
-    "prettier/prettier": "error",
-    "@typescript-eslint/explicit-function-return-type": "on",
-    "@typescript-eslint/no-unused-vars": "on",
-    "react/jsx-filename-extension": [
-      1,
-      { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
-    ],
-    "indent": ["error", "tab"],
-    "linebreak-style": ["error", "unix"],
-    "quotes": ["error", "single"],
-    "semi": ["error", "never"]
-  },
-  "settings": {
-    "import/resolver": {
-      "node": {
-        "paths": ["src"],
-        "moduleDirectory": ["node_modules"],
-        "extensions": [".js", ".jsx", ".ts", ".tsx"]
-      }
-    }
-  }
+	"env": {
+		"browser": true,
+		"es6": true
+	},
+	"globals": {
+		"Atomics": "readonly",
+		"SharedArrayBuffer": "readonly"
+	},
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": 2018,
+		"sourceType": "module"
+	},
+	"plugins": ["react", "@typescript-eslint", "prettier"],
+	"extends": [
+		"eslint:recommended",
+		"plugin:react/recommended",
+		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:prettier/recommended",
+		"plugin:import/errors",
+		"plugin:import/warnings",
+		"airbnb"
+	],
+	"rules": {
+		"import/no-unresolved": [{ "commonjs": true }],
+		"import/extensions": [
+			"error",
+			"ignorePackages",
+			{
+				"js": "never",
+				"jsx": "never",
+				"ts": "never",
+				"tsx": "never"
+			}
+		],
+		"prettier/prettier": "error",
+		"@typescript-eslint/explicit-function-return-type": "on",
+		"@typescript-eslint/no-unused-vars": "on",
+		"react/jsx-filename-extension": [
+			1,
+			{ "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+		],
+		"indent": ["error", "tab"],
+		"linebreak-style": ["error", "unix"],
+		"quotes": ["error", "single"],
+		"semi": ["error", "never"]
+	},
+	"settings": {
+		"import/resolver": {
+			"node": {
+				"paths": ["src"],
+				"moduleDirectory": ["node_modules"],
+				"extensions": [".js", ".jsx", ".ts", ".tsx"]
+			}
+		}
+	}
 }

@@ -1,9 +1,10 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { User as UserEntity } from "./user.entity";
-import { User as UserModel } from "./user.model";
 import { Repository } from "typeorm";
+
+import { User as UserEntity } from "./user.entity";
 import { UserRole } from "./user.enum";
+import { User as UserModel } from "./user.model";
 
 const users: Partial<UserModel>[] = [
   {
@@ -18,20 +19,20 @@ const users: Partial<UserModel>[] = [
 export class UserProviderSeed {
   constructor(
     @InjectRepository(UserEntity)
-    private readonly userRepository: Repository<UserModel>
-  ) {}
+    private readonly _userRepository: Repository<UserModel>
+  ) { }
 
-  create(): Array<Promise<UserModel>> {
-    return users.map(async (user) => await this.userRepository
+  create(): Promise<UserModel | null>[] {
+    return users.map(async (user) => await this._userRepository
       .findOne({ email: user.email })
       .then(async userRecord => {
         // If user exists, do nothing
         if (userRecord) {
-          return Promise.resolve(null)
+          Promise.resolve(null)
         }
 
         return Promise.resolve(
-          await this.userRepository.save(user)
+          await this._userRepository.save(user)
         )
       })
       .catch(error => Promise.reject(error))

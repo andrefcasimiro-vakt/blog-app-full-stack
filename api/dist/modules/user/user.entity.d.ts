@@ -6,5 +6,5 @@ export declare class User extends BaseEntity {
     password: string;
     isActive: boolean;
     role: UserRole;
-    lastLoginAt: string;
+    lastLoginAt: Date;
 }

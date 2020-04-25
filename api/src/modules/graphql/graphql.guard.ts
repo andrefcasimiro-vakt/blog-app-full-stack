@@ -1,6 +1,6 @@
-import { Injectable, ExecutionContext } from '@nestjs/common'
-import { JwtGuard } from 'src/modules/jwt/jwt.guard';
+import { ExecutionContext, Injectable } from '@nestjs/common'
 import { GqlExecutionContext } from '@nestjs/graphql';
+import { JwtGuard } from 'src/modules/jwt/jwt.guard';
 
 @Injectable()
 export class GqlAuthGuard extends JwtGuard {
@@ -12,4 +12,3 @@ export class GqlAuthGuard extends JwtGuard {
   }
 
 }
-  

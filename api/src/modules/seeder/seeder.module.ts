@@ -1,4 +1,5 @@
 import { Module } from "@nestjs/common";
+
 import { DatabaseModule } from "../database/database.module";
 import { UserModule } from "../user/user.module";
 import { SeederProvider } from "./seeder.provider";
@@ -12,4 +13,4 @@ import { SeederProvider } from "./seeder.provider";
     SeederProvider,
   ]
 })
-export class SeederModule {}
+export class SeederModule { }

@@ -8,7 +8,7 @@ const exposeHeader = (ctx, key: string) =>
 
 export const setAuthHeaders = (ctx, authResponse: Partial<AuthResponse>) => {
   const { accessToken, refreshToken } = authResponse
-  
+
   const accessTokenHeaderName = config.http.customHeaders.accessToken
   const refreshTokenHeaderName = config.http.customHeaders.refreshToken
 
@@ -26,4 +26,3 @@ export const setAuthHeaders = (ctx, authResponse: Partial<AuthResponse>) => {
 
 
 
- 

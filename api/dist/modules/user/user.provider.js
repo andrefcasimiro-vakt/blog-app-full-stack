@@ -60,6 +60,15 @@ let UserProvider = class UserProvider {
             .execute();
         return result;
     }
+    async updateUser(userId, payload) {
+        const result = await typeorm_1.getConnection()
+            .createQueryBuilder()
+            .update(user_entity_1.User)
+            .set(Object.assign({}, payload))
+            .where('id = :userId', { userId })
+            .execute();
+        return result;
+    }
 };
 UserProvider = __decorate([
     common_1.Injectable(),

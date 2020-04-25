@@ -11,4 +11,5 @@ export declare class UserProvider {
     listUsers(): Promise<UserModel[]>;
     createUser(username: string, email: string, hashedPassword: string, role?: UserRole, isActive?: boolean): Promise<Partial<UserModel> & UserModel>;
     updateLastLoginAt(userId: number): Promise<import("typeorm").UpdateResult>;
+    updateUser(userId: number, payload: Partial<UserModel>): Promise<import("typeorm").UpdateResult>;
 }

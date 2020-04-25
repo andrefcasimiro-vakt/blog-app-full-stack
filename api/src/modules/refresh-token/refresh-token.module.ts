@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
+
 import { RefreshToken } from './refresh-token.entity'
 import { RefreshTokenProvider } from './refresh-token.provider'
 
@@ -18,4 +19,4 @@ import { RefreshTokenProvider } from './refresh-token.provider'
 
   ],
 })
-export class RefreshTokenModule{}
+export class RefreshTokenModule { }

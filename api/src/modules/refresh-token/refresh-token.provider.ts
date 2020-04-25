@@ -1,20 +1,21 @@
-import { Injectable, Inject } from '@nestjs/common'
-import { Repository } from 'typeorm'
+import { Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
-import { generateRefreshToken } from './refresh-token.helpers'
-import config from '../config/config.main'
-import { RefreshToken as RefreshTokenEntity } from './refresh-token.entity'
-import { RefreshToken as RefreshTokenModel } from './refresh-token.model'
+import { Repository } from 'typeorm'
+
 import { compareHashed } from '../bcrypt/bcrypt.helpers'
+import config from '../config/config.main'
 import { User } from '../user/user.model'
+import { RefreshToken as RefreshTokenEntity } from './refresh-token.entity'
+import { generateRefreshToken } from './refresh-token.helpers'
+import { RefreshToken as RefreshTokenModel } from './refresh-token.model'
 
 @Injectable()
 export class RefreshTokenProvider {
 
   constructor(
     @InjectRepository(RefreshTokenEntity)
-    private refreshTokenRepository: Repository<RefreshTokenModel>,
-  ){}
+    private readonly _refreshTokenRepository: Repository<RefreshTokenModel>,
+  ) { }
 
   /**
    * Generates a new refresh token for the provided user and saves to the database
@@ -25,7 +26,7 @@ export class RefreshTokenProvider {
     const newRefreshData = await generateRefreshToken()
     const { limit } = config.auth.refreshToken
 
-    const refreshTokens = await this.refreshTokenRepository
+    const refreshTokens = await this._refreshTokenRepository
       .find({
         where: [{ user }],
         order: { id: 'DESC' },
@@ -35,14 +36,14 @@ export class RefreshTokenProvider {
     const extraRefreshTokens = refreshTokens.slice(limit - 1)
     if (extraRefreshTokens.length) {
       extraRefreshTokens.forEach(async (extraRefreshToken) => {
-        await this.refreshTokenRepository
+        await this._refreshTokenRepository
           .delete({
             id: extraRefreshToken.id,
           })
       })
     }
 
-    const newRefreshToken = await this.refreshTokenRepository
+    const newRefreshToken = await this._refreshTokenRepository
       .save({
         hash: newRefreshData.refreshTokenHash,
         user,
@@ -62,7 +63,7 @@ export class RefreshTokenProvider {
     }
 
     const [refreshTokenId, refreshTokenHash] = refreshTokenPayload.split(separator)
-    
+
     if (isNaN(refreshTokenId as any)) {
       return false
     }
@@ -71,7 +72,7 @@ export class RefreshTokenProvider {
       return false
     }
 
-    const refreshTokenInDatabase = await this.refreshTokenRepository
+    const refreshTokenInDatabase = await this._refreshTokenRepository
       .findOne({
         where: [
           { userId },

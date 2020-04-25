@@ -1,6 +1,6 @@
 import { Config } from './config.types'
 
-const config : Config = {
+const config: Config = {
   auth: {
     password: {
       minimumLength: parseInt(process.env.PASSWORD_MINIMUM_LENGTH) || 6,

@@ -1,5 +1,6 @@
-import { Entity, Column } from 'typeorm'
 import { UserRole } from 'src/modules/user/user.enum'
+import { Column, Entity } from 'typeorm'
+
 import { BaseEntity } from '../database/database.entities.base'
 
 @Entity()
@@ -20,5 +21,5 @@ export class User extends BaseEntity {
   role: UserRole
 
   @Column({ type: 'timestamptz', default: null })
-  lastLoginAt: string
+  lastLoginAt: Date
 }

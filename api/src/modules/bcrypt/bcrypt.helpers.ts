@@ -1,18 +1,18 @@
 import * as crypto from 'crypto'
-import * as bcrypt from 'bcrypt'
+
+import { compare, hash } from 'bcrypt'
 import config from 'src/modules/config/config.main'
 
-const pepperify = (str: string): string => {
-  return crypto
+const pepperify = async (str: string): Promise<string> =>
+  await crypto
     .createHmac('sha1', config.auth.pepper)
     .update(str)
     .digest('hex')
-}
 
-export const hashString = (plainText: string): string =>
-  bcrypt.hash(pepperify(plainText), config.auth.saltRounds)
+export const hashString = async (plainText: string): Promise<string> =>
+  await hash(pepperify(plainText), config.auth.saltRounds)
 
-export const compareHashed = (plainText, cipherText): boolean =>
-  bcrypt.compare(pepperify(plainText), cipherText)
+export const compareHashed = async (plainText, cipherText): Promise<boolean> =>
+  await compare(pepperify(plainText), cipherText)
 
 

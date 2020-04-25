@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType, Int } from '@nestjs/graphql'
+import { Field, Int, ObjectType } from '@nestjs/graphql'
 
 @ObjectType({ isAbstract: true })
 export abstract class Model {
@@ -7,7 +7,7 @@ export abstract class Model {
 
   @Field((type) => Date)
   createdAt: Date
-  
+
   @Field((type) => Date)
   updatedAt: Date
 }

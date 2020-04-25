@@ -1,35 +1,34 @@
-import { Injectable, Inject } from '@nestjs/common'
-import { Repository, getConnection } from 'typeorm'
+import { Inject, Injectable } from '@nestjs/common'
+import { CONTEXT } from '@nestjs/graphql'
+import { InjectRepository } from '@nestjs/typeorm'
+import moment from 'moment'
 import { User as UserEntity } from 'src/modules/user/user.entity'
 import { User as UserModel } from 'src/modules/user/user.model'
-import { InjectRepository } from '@nestjs/typeorm'
-import { CONTEXT } from '@nestjs/graphql'
+import { Repository, getConnection } from 'typeorm'
+
 import { UserRole } from './user.enum'
-import moment from 'moment'
 
 @Injectable()
 export class UserProvider {
   constructor(
-    @InjectRepository(UserEntity) private usersRepository: Repository<UserModel>,
-    @Inject(CONTEXT) private context,
-  ){}
+    @InjectRepository(UserEntity) private readonly _usersRepository: Repository<UserModel>,
+    @Inject(CONTEXT) private readonly _context, // Unused for now
+  ) { }
 
   async findById(id: number) {
-    console.log('received context: ', this.context)
-
-    return this.usersRepository.findOne( { where: { id } })
+    return this._usersRepository.findOne({ where: { id } })
   }
 
   async findByUsername(username: string) {
-    return this.usersRepository.findOne( { where: { username } } )
+    return this._usersRepository.findOne({ where: { username } })
   }
 
   async findByEmail(email: string) {
-    return this.usersRepository.findOne( { where: { email } } )
+    return this._usersRepository.findOne({ where: { email } })
   }
 
   async listUsers() {
-    return this.usersRepository.find()
+    return this._usersRepository.find()
   }
 
   async createUser(
@@ -47,7 +46,7 @@ export class UserProvider {
       isActive,
     }
 
-    return this.usersRepository.save(userObject)
+    return this._usersRepository.save(userObject)
   }
 
   async updateLastLoginAt(userId: number) {
@@ -55,6 +54,21 @@ export class UserProvider {
       .createQueryBuilder()
       .update(UserEntity)
       .set({ lastLoginAt: moment.utc().toISOString() })
+      .where('id = :userId', { userId })
+      .execute()
+
+    return result
+  }
+
+  /**
+   * Updates the user with the provided id
+   * with any properties specified in the payload object
+  */
+  async updateUser(userId: number, payload: Partial<UserModel>) {
+    const result = await getConnection()
+      .createQueryBuilder()
+      .update(UserEntity)
+      .set({ ...payload })
       .where('id = :userId', { userId })
       .execute()
 

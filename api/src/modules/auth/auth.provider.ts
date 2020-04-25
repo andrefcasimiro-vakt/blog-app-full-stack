@@ -1,52 +1,52 @@
 import { Injectable } from '@nestjs/common'
-import { UserProvider } from 'src/modules/user/user.provider'
-import { User } from 'src/modules/user/user.model'
 import { JwtService } from '@nestjs/jwt'
+import { User } from 'src/modules/user/user.model'
+import { UserProvider } from 'src/modules/user/user.provider'
+
 import { compareHashed } from '../bcrypt/bcrypt.helpers'
 import { RefreshTokenProvider } from '../refresh-token/refresh-token.provider'
 import { AuthResponse } from './auth.types'
 
 @Injectable()
 export class AuthProvider {
-  constructor(
-    private userProvider: UserProvider,
-    private jwtProvider: JwtService,
-    private refreshTokenProvider: RefreshTokenProvider,
-  ) {}
+	constructor(
+		private readonly _userProvider: UserProvider,
+		private readonly _jwtProvider: JwtService,
+		private readonly _refreshTokenProvider: RefreshTokenProvider,
+	) { }
 
-  async validateUser(username: string, pwd: string): Promise<User> {
-    const user = await this.userProvider.findByUsername(username)
+	async validateUser(username: string, pwd: string): Promise<User> {
+		const user = await this._userProvider.findByUsername(username)
 
-    if (!user) {
-      return null
-    }
+		if (!user) {
+			return null
+		}
 
-    const passwordsMatch = await compareHashed(pwd, user.password)
+		const isMatchBetweenPasswords = await compareHashed(pwd, user.password)
 
-    if (!passwordsMatch) {
-      return null
-    }
+		if (!isMatchBetweenPasswords) {
+			return null
+		}
 
-    const { password, ...result} = user
-    return user
-  }
+		const { password, ...result } = user
+		return user
+	}
 
-  async login(user: User): Promise<AuthResponse> {
-    const payload = { username: user.username, id: user.id }
+	async login(user: User): Promise<AuthResponse> {
+		const payload = { username: user.username, id: user.id }
 
-    const accessToken = this.jwtProvider.sign(payload)
-    
-    // Generate refresh token
-    const refreshToken = await this.refreshTokenProvider
-      .createRefreshToken(user)
+		const accessToken = this._jwtProvider.sign(payload)
 
-    // Update last login
-    await this.userProvider.updateLastLoginAt(user.id)
+		// Generate refresh token
+		const refreshToken = await this._refreshTokenProvider.createRefreshToken(user)
 
-    return {
-      user,
-      accessToken,
-      refreshToken,
-    }
-  }
+		// Update last login
+		await this._userProvider.updateLastLoginAt(user.id)
+
+		return {
+			user,
+			accessToken,
+			refreshToken,
+		}
+	}
 }

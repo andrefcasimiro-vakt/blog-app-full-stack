@@ -3,8 +3,9 @@ import { BlogModule } from 'src/modules/blog/blog.module'
 import { ConfigModule } from 'src/modules/config/config.module'
 import { DatabaseModule } from 'src/modules/database/database.module'
 import { GraphQLModule } from 'src/modules/graphql/graphql.module'
-import { UserModule } from '../user/user.module'
+
 import { RefreshTokenModule } from '../refresh-token/refresh-token.module'
+import { UserModule } from '../user/user.module'
 
 export const moduleMappers = {
   auth: AuthModule,
@@ -15,3 +16,5 @@ export const moduleMappers = {
   refreshToken: RefreshTokenModule,
   user: UserModule,
 }
+
+export type Modules = AuthModule | BlogModule | ConfigModule | DatabaseModule | GraphQLModule | RefreshTokenModule | UserModule

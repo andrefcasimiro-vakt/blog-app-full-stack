@@ -1,4 +1,5 @@
 import { NestFactory } from "@nestjs/core";
+
 import { SeederModule } from "./modules/seeder/seeder.module";
 import { SeederProvider } from "./modules/seeder/seeder.provider";
 
@@ -6,7 +7,7 @@ import { SeederProvider } from "./modules/seeder/seeder.provider";
 // so the database config defaults to the fallback defined in the config/main
 
 async function bootstrap() {
-  NestFactory.createApplicationContext(SeederModule)
+  await NestFactory.createApplicationContext(SeederModule)
     .then(appContext => {
       const seeder = appContext.get(SeederProvider);
       seeder

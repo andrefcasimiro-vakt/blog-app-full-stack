@@ -1,5 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm'
-import { UserRole } from 'src/modules/user/user.enum'
+import { CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
 
 @Entity()
 export class BaseEntity {
@@ -8,7 +7,7 @@ export class BaseEntity {
 
   @CreateDateColumn({ type: 'timestamp' })
   createdAt: Date
-  
+
   @UpdateDateColumn({ type: 'timestamp' })
   updatedAt: Date
 }
