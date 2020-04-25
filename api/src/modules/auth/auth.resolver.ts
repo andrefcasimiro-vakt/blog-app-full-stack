@@ -3,6 +3,7 @@ import { Args, Context, Mutation, Resolver } from '@nestjs/graphql'
 import { UserProvider } from 'src/modules/user/user.provider'
 
 import { setAuthHeaders } from '../graphql/graphql.ctx.utils'
+import { ILogin } from './auth.input'
 import { AuthResponse } from './auth.model'
 import { AuthProvider } from './auth.provider'
 
@@ -15,10 +16,11 @@ export class AuthResolver {
 
 	@Mutation((returns) => AuthResponse, { name: 'login' })
 	async login(
-		@Args('username') username: string,
-		@Args('password') password: string,
+		@Args('input') input: ILogin,
 		@Context() ctx,
 	): Promise<AuthResponse> {
+		const { username, password } = input
+
 		const user = await this._authProvider.validateUser(username, password)
 
 		if (!user) {

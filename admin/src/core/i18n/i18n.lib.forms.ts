@@ -4,6 +4,7 @@ const forms = (language: Language) => ({
 	users: {
 		create: {
 			title: { en: 'Create user', pt: 'Criar utilizador' }[language],
+			id: { en: 'ID', pt: 'ID' }[language],
 			username: { en: 'Username', pt: 'Nome de utilizador' }[language],
 			email: { en: 'E-mail', pt: 'E-mail' }[language],
 			password: { en: 'Password', pt: 'Palavra-passe' }[language],
@@ -19,6 +20,13 @@ const forms = (language: Language) => ({
 			successMessage: {
 				en: 'User was created',
 				pt: 'Utilizador criado com sucesso',
+			}[language],
+		},
+		update: {
+			submit: { en: 'Save', pt: 'Guardar' }[language],
+			successMessage: {
+				en: 'User was updated',
+				pt: 'Utilizador atualizado com sucesso',
 			}[language],
 		},
 	},

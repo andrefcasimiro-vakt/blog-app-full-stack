@@ -1,16 +1,16 @@
-import React from 'react'
-import { useSnackbar } from 'notistack'
 import BaseForm from 'shared/form/form.base.component'
+import { DeepPartial } from 'react-hook-form'
 import { Form as FormType } from 'shared/form/form.types'
 import { MutationTuple } from '@apollo/react-hooks'
-import { DeepPartial } from 'react-hook-form'
+import React from 'react'
+import { useSnackbar } from 'notistack'
 
 type Props<FormData, FormSchema, MutationReturn> = {
 	form: FormType
 	schema: FormSchema
 	useMutation: (
 		onCompleted?: (result: MutationReturn) => unknown,
-	) => MutationTuple<MutationReturn, FormData>
+	) => MutationTuple<MutationReturn, { input: FormData }>
 
 	onSuccess?: (result: MutationReturn) => unknown
 
@@ -45,7 +45,7 @@ function Form<
 	const { enqueueSnackbar } = useSnackbar()
 
 	const handleSubmit = (formData: FormData) => {
-		mutate({ variables: formData })
+		mutate({ variables: { input: formData } })
 	}
 
 	if (error) {

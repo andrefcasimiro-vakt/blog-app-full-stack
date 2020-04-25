@@ -4,9 +4,10 @@ import { InjectRepository } from '@nestjs/typeorm'
 import moment from 'moment'
 import { User as UserEntity } from 'src/modules/user/user.entity'
 import { User as UserModel } from 'src/modules/user/user.model'
-import { Repository, getConnection } from 'typeorm'
+import { Repository, UpdateResult, getConnection } from 'typeorm'
 
 import { UserRole } from './user.enum'
+import { IUpdateUser } from './user.inputs'
 
 @Injectable()
 export class UserProvider {
@@ -64,12 +65,12 @@ export class UserProvider {
    * Updates the user with the provided id
    * with any properties specified in the payload object
   */
-  async updateUser(userId: number, payload: Partial<UserModel>) {
+  async updateUser(input: IUpdateUser): Promise<UpdateResult> {
     const result = await getConnection()
       .createQueryBuilder()
       .update(UserEntity)
-      .set({ ...payload })
-      .where('id = :userId', { userId })
+      .set({ ...input })
+      .where('id = :id', { id: input.id })
       .execute()
 
     return result

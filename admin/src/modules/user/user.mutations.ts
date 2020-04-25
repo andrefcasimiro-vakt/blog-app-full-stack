@@ -1,23 +1,11 @@
-import gql from 'graphql-tag'
 import { Mutation } from 'core/graphql/graphql.types'
 import { User } from './user.types'
+import gql from 'graphql-tag'
 
 export const createUser: Mutation<User> = {
 	gql: gql`
-		mutation createUser(
-			$username: String!
-			$email: String!
-			$password: String!
-			$role: String!
-			$isActive: Boolean!
-		) {
-			createUser(
-				username: $username
-				email: $email
-				password: $password
-				role: $role
-				isActive: $isActive
-			) {
+		mutation createUser($input: ICreateUser!) {
+			createUser(input: $input) {
 				id
 				username
 				email
@@ -27,4 +15,15 @@ export const createUser: Mutation<User> = {
 		}
 	`,
 	selector: ['createUser'],
+}
+
+export const updateUser: Mutation<Partial<User>> = {
+	gql: gql`
+		mutation updateUser($input: IUpdateUser!) {
+			updateUser(input: $input) {
+				id
+			}
+		}
+	`,
+	selector: ['updateUser'],
 }

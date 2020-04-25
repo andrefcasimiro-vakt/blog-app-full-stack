@@ -14,6 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const graphql_1 = require("@nestjs/graphql");
+const ramda_1 = require("ramda");
 const graphql_guard_1 = require("../graphql/graphql.guard");
 const user_model_1 = require("./user.model");
 const user_provider_1 = require("./user.provider");
@@ -21,7 +22,7 @@ const auth_helpers_1 = require("../auth/auth.helpers");
 const auth_model_1 = require("../auth/auth.model");
 const bcrypt_helpers_1 = require("../bcrypt/bcrypt.helpers");
 const current_user_1 = require("../graphql/decorators/current-user");
-const user_enum_1 = require("./user.enum");
+const user_inputs_1 = require("./user.inputs");
 let UserResolver = class UserResolver {
     constructor(_userProvider) {
         this._userProvider = _userProvider;
@@ -46,7 +47,23 @@ let UserResolver = class UserResolver {
     async listUsers() {
         return this._userProvider.listUsers();
     }
-    async createUser(username, email, password, role, isActive, ctx) {
+    async updateUser(input) {
+        const user = await this._userProvider.findById(input.id);
+        if (!user) {
+            throw new common_1.ConflictException(`User with id: ${input.id} could not be found.`);
+        }
+        if (input.password) {
+            const hashedPassword = await bcrypt_helpers_1.hashString(input.password);
+            input.password = hashedPassword;
+        }
+        const filteredInput = ramda_1.reject(ramda_1.equals('') || ramda_1.isEmpty)(input);
+        await this._userProvider.updateUser(filteredInput);
+        return {
+            id: user.id,
+        };
+    }
+    async createUser(input, ctx) {
+        const { username, email, password, role, isActive } = input;
         const user = await this._userProvider.findByUsername(username);
         if (user) {
             throw new common_1.ConflictException("Username is already registered");
@@ -87,15 +104,18 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "listUsers", null);
 __decorate([
-    graphql_1.Mutation(returns => user_model_1.User, { name: 'createUser' }),
-    __param(0, graphql_1.Args('username')),
-    __param(1, graphql_1.Args('email')),
-    __param(2, graphql_1.Args('password')),
-    __param(3, graphql_1.Args('role')),
-    __param(4, graphql_1.Args('isActive')),
-    __param(5, graphql_1.Context()),
+    graphql_1.Mutation(returns => user_model_1.User, { name: 'updateUser' }),
+    __param(0, graphql_1.Args('input')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String, String, String, Boolean, Object]),
+    __metadata("design:paramtypes", [user_inputs_1.IUpdateUser]),
+    __metadata("design:returntype", Promise)
+], UserResolver.prototype, "updateUser", null);
+__decorate([
+    graphql_1.Mutation(returns => user_model_1.User, { name: 'createUser' }),
+    __param(0, graphql_1.Args('input')),
+    __param(1, graphql_1.Context()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [user_inputs_1.ICreateUser, Object]),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "createUser", null);
 UserResolver = __decorate([

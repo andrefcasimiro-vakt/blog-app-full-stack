@@ -1,12 +1,12 @@
-import React from 'react'
 import { Controller } from 'react-hook-form'
-import TextField from '@material-ui/core/TextField'
+import { Field } from 'shared/form/form.types'
 import Grid from '@material-ui/core/Grid'
+import InputSelect from './inputs.select'
+import InputSwitch from './inputs.switch'
+import React from 'react'
+import TextField from '@material-ui/core/TextField'
 import { makeStyles } from '@material-ui/core'
 import theme from 'modules/app/app.theme'
-import InputSwitch from './inputs.switch'
-import InputSelect from './inputs.select'
-import { Field } from 'shared/form/form.types'
 
 interface Props {
 	field: Field
@@ -33,6 +33,9 @@ const useStyles = makeStyles({
 	helperText: {
 		position: 'absolute',
 		marginTop: '3rem',
+	},
+	hidden: {
+		display: 'none',
 	},
 })
 
@@ -146,7 +149,14 @@ function GenericField({
 		TextInput
 	)
 
-	return <Controller as={Input} name={name || ''} control={control} />
+	return (
+		<Controller
+			className={field.type === 'hidden' ? classes.hidden : ''}
+			as={Input}
+			name={name || ''}
+			control={control}
+		/>
+	)
 }
 
 export default GenericField

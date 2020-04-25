@@ -1,24 +1,28 @@
-import React, { useCallback, useState } from 'react'
-import makeStyles from '@material-ui/core/styles/makeStyles'
-import Grid from '@material-ui/core/Grid/Grid'
-import Form from 'shared/form/form.main.component'
 import {
-	createUserForm,
 	CreateUserFormData,
+	UpdateUserFormData,
+	createUserForm,
 	createUserSchema,
+	updateUserForm,
+	updateUserSchema,
 } from './user.form.create'
+import React, { useCallback, useState } from 'react'
+import { useGetUserByUserId, useUpdateUser } from './user.hooks'
+import { useHistory, useLocation } from 'react-router'
+
+import ButtonsToggleMode from 'shared/subpage/details.subpage.toggler'
+import DetailSubheader from 'shared/subpage/common.subpage.header'
+import Form from 'shared/form/form.main.component'
+import Grid from '@material-ui/core/Grid/Grid'
+import Paper from '@material-ui/core/Paper/Paper'
 import { User } from './user.types'
+import UserDetails from 'modules/user/user.details'
+import { extractIdFromLocation } from 'core/router/router.utils'
 import i18n from 'core/i18n/i18n'
-import { useCreateUser, useGetUserByUserId } from './user.hooks'
+import makeStyles from '@material-ui/core/styles/makeStyles'
+import { pathOr } from 'ramda'
 import theme from 'modules/app/app.theme'
 import { urls } from 'modules/routes/routes.constants.urls'
-import { useHistory, useLocation } from 'react-router'
-import DetailSubheader from 'shared/subpage/common.subpage.header'
-import { extractIdFromLocation } from 'core/router/router.utils'
-import { pathOr } from 'ramda'
-import Paper from '@material-ui/core/Paper/Paper'
-import UserDetails from 'modules/user/user.details'
-import ButtonsToggleMode from 'shared/subpage/details.subpage.toggler'
 
 interface Props {}
 
@@ -87,14 +91,15 @@ const UserPageDetail = ({}: Props) => {
 					<ButtonsToggleMode mode={editMode} onClick={setEditMode} />
 
 					{editMode === 'edit' ? (
-						<Form<CreateUserFormData, typeof createUserSchema, User>
-							form={createUserForm}
-							schema={createUserSchema}
-							useMutation={useCreateUser}
+						<Form<UpdateUserFormData, typeof updateUserSchema, Partial<User>>
+							form={updateUserForm}
+							schema={updateUserSchema}
+							useMutation={useUpdateUser}
 							successMessage={i18n.t('forms.users.create.successMessage')}
 							onSuccess={handleBack}
 							loading={loading}
 							formData={{
+								id: userId,
 								username: data.username,
 								password: '',
 								email: data.email,

@@ -1,5 +1,6 @@
 import { ConflictException, NotFoundException, UseGuards } from '@nestjs/common'
 import { Args, Context, Int, Mutation, Query, Resolver } from '@nestjs/graphql'
+import { equals, isEmpty, reject } from 'ramda'
 import { GqlAuthGuard } from 'src/modules/graphql/graphql.guard'
 import { User } from 'src/modules/user/user.model'
 import { UserProvider } from 'src/modules/user/user.provider'
@@ -9,6 +10,7 @@ import { AuthUser } from '../auth/auth.model'
 import { hashString } from '../bcrypt/bcrypt.helpers'
 import { CurrentUser } from '../graphql/decorators/current-user'
 import { UserRole } from './user.enum'
+import { ICreateUser, IUpdateUser } from './user.inputs'
 
 @Resolver(of => User)
 export class UserResolver {
@@ -57,16 +59,51 @@ export class UserResolver {
 
   // Mutations
 
+  // For users
+  @Mutation(returns => User, { name: 'updateUser' })
+  async updateUser(
+    @Args('input') input: IUpdateUser
+  ): Promise<Partial<User>> {
+    const user = await this._userProvider.findById(input.id)
+
+    if (!user) {
+      throw new ConflictException(`User with id: ${input.id} could not be found.`)
+    }
+
+    // Is updating password?
+    if (input.password) {
+
+      // TODO: Require previous password to continue operation
+
+      const hashedPassword = await hashString(input.password)
+      input.password = hashedPassword
+    }
+
+    // Filter null properties
+    const filteredInput = reject(equals('') || isEmpty)(input)
+
+
+    await this._userProvider.updateUser(filteredInput)
+
+    return {
+      id: user.id,
+    }
+  }
+
   // For admins
   @Mutation(returns => User, { name: 'createUser' })
   async createUser(
-    @Args('username') username: string,
-    @Args('email') email: string,
-    @Args('password') password: string,
-    @Args('role') role: UserRole,
-    @Args('isActive') isActive: boolean,
+    @Args('input') input: ICreateUser,
     @Context() ctx,
   ): Promise<Partial<User>> {
+    const {
+      username,
+      email,
+      password,
+      role,
+      isActive
+    } = input
+
     const user = await this._userProvider.findByUsername(username)
 
     if (user) {
@@ -76,6 +113,7 @@ export class UserResolver {
     checkPassword(password)
 
     const hashedPassword = await hashString(password)
+
 
     const createdUser = await this._userProvider.createUser(username, email, hashedPassword, role, isActive)
     return createdUser

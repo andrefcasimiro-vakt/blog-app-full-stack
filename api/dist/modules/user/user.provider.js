@@ -59,12 +59,12 @@ let UserProvider = class UserProvider {
             .execute();
         return result;
     }
-    async updateUser(userId, payload) {
+    async updateUser(input) {
         const result = await typeorm_2.getConnection()
             .createQueryBuilder()
             .update(user_entity_1.User)
-            .set(Object.assign({}, payload))
-            .where('id = :userId', { userId })
+            .set(Object.assign({}, input))
+            .where('id = :id', { id: input.id })
             .execute();
         return result;
     }

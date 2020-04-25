@@ -1,11 +1,11 @@
-import gql from 'graphql-tag'
-import { Mutation } from 'core/graphql/graphql.types'
 import { AuthResponse } from './auth.types'
+import { Mutation } from 'core/graphql/graphql.types'
+import gql from 'graphql-tag'
 
 export const login: Mutation<AuthResponse> = {
 	gql: gql`
-		mutation login($username: String!, $password: String!) {
-			login(username: $username, password: $password) {
+		mutation login($input: ILogin!) {
+			login(input: $input) {
 				user {
 					id
 					username

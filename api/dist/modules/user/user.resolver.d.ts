@@ -1,7 +1,7 @@
 import { User } from 'src/modules/user/user.model';
 import { UserProvider } from 'src/modules/user/user.provider';
 import { AuthUser } from '../auth/auth.model';
-import { UserRole } from './user.enum';
+import { ICreateUser, IUpdateUser } from './user.inputs';
 export declare class UserResolver {
     private readonly _userProvider;
     constructor(_userProvider: UserProvider);
@@ -9,5 +9,6 @@ export declare class UserResolver {
     findById(id: number): Promise<User>;
     findByUsername(username: string): Promise<User>;
     listUsers(): Promise<Partial<User[]>>;
-    createUser(username: string, email: string, password: string, role: UserRole, isActive: boolean, ctx: any): Promise<Partial<User>>;
+    updateUser(input: IUpdateUser): Promise<Partial<User>>;
+    createUser(input: ICreateUser, ctx: any): Promise<Partial<User>>;
 }
