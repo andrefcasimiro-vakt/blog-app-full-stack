@@ -1,6 +1,20 @@
 import { Language } from './i18n.resources'
 
 const forms = (language: Language) => ({
+	auth: {
+		login: {
+			// Notification
+			successMessage: {
+				en: 'Welcome back',
+				pt: 'Bem-vindo de volta',
+			}[language],
+			// Notification
+			unauthorizedAccess: {
+				en: 'Not enough permissions',
+				pt: 'Permissões insuficientes',
+			}[language],
+		},
+	},
 	users: {
 		create: {
 			title: { en: 'Create user', pt: 'Criar utilizador' }[language],

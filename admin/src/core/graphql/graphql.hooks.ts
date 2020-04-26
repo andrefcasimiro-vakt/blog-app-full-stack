@@ -1,10 +1,13 @@
+import { GraphqlResponse, Mutation, Query } from 'core/graphql/graphql.types'
 import {
-	useQuery as apolloUseQuery,
-	useMutation as apolloUseMutation,
-	MutationTuple,
 	MutationHookOptions,
+	MutationTuple,
+	useMutation as apolloUseMutation,
+	useQuery as apolloUseQuery,
 } from '@apollo/react-hooks'
-import { GraphqlResponse, Query, Mutation } from 'core/graphql/graphql.types'
+
+import { ApolloError } from 'apollo-client/errors/ApolloError'
+import { MutationFunctionOptions } from '@apollo/react-common'
 import { path } from 'ramda'
 
 export function useQuery<Variables, Data>(
@@ -31,20 +34,43 @@ export function useQuery<Variables, Data>(
 	}
 }
 
+export interface UseMutationReturn<Variables, Data> {
+	mutate: (
+		options?: MutationFunctionOptions<any, Record<string, any>> | undefined,
+	) => Promise<any>
+	data: any
+	loading: boolean
+	error: ApolloError | undefined
+}
+
+/**
+ * We need to perform selector extraction twice because the data in the return and the one received on onCompleted are parallel to each other
+ */
 export function useMutation<Variables, Data>(
 	mutation: Mutation<Data>,
 	options: MutationHookOptions = {},
-): MutationTuple<Data, Variables> {
-	return apolloUseMutation(mutation.gql, {
+): UseMutationReturn<Variables, Data> {
+	const { selector } = mutation
+
+	const [mutate, { data, loading, error }] = apolloUseMutation(mutation.gql, {
 		...options,
 		onCompleted: (data: Data) => {
-			if (mutation.selector) {
-				// @ts-ignore
-				data = path(mutation.selector)(data)
-			}
+			data = transform<Data>(data, selector)
 
-			// If we pass an onCompleted callback, execute it after data is extracted
-			if (options.onCompleted) options.onCompleted(data)
+			if (options.onCompleted) {
+				options.onCompleted(data)
+			}
 		},
 	})
+
+	return {
+		mutate,
+		data: transform<Data>(data, selector),
+		loading,
+		error,
+	}
+}
+
+function transform<Data>(data: Data, selector?: string[]): Data {
+	return (selector ? path(selector)(data) : data) as Data
 }

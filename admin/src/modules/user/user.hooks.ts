@@ -1,7 +1,11 @@
 import * as mutations from './user.mutations'
 import * as queries from './user.queries'
 
-import { useMutation, useQuery } from 'core/graphql/graphql.hooks'
+import {
+	UseMutationReturn,
+	useMutation,
+	useQuery,
+} from 'core/graphql/graphql.hooks'
 
 import { GraphqlResponse } from 'core/graphql/graphql.types'
 import { MutationTuple } from '@apollo/react-hooks/lib/types'
@@ -23,7 +27,7 @@ type ICreateUser = {
 }
 export function useCreateUser(
 	onCompleted?: (result: User) => unknown,
-): MutationTuple<User, { input: ICreateUser }> {
+): UseMutationReturn<User, { input: ICreateUser }> {
 	return useMutation(mutations.createUser, {
 		onCompleted,
 	})
@@ -39,7 +43,7 @@ type IUpdateUser = {
 }
 export function useUpdateUser(
 	onCompleted?: (result: Partial<User>) => unknown,
-): MutationTuple<Partial<User>, { input: IUpdateUser }> {
+): UseMutationReturn<Partial<User>, { input: IUpdateUser }> {
 	return useMutation(mutations.updateUser, {
 		onCompleted,
 	})

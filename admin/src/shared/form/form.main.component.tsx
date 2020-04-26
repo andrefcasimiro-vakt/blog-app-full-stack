@@ -3,6 +3,7 @@ import { DeepPartial } from 'react-hook-form'
 import { Form as FormType } from 'shared/form/form.types'
 import { MutationTuple } from '@apollo/react-hooks'
 import React from 'react'
+import { UseMutationReturn } from 'core/graphql/graphql.hooks'
 import { useSnackbar } from 'notistack'
 
 type Props<FormData, FormSchema, MutationReturn> = {
@@ -10,12 +11,12 @@ type Props<FormData, FormSchema, MutationReturn> = {
 	schema: FormSchema
 	useMutation: (
 		onCompleted?: (result: MutationReturn) => unknown,
-	) => MutationTuple<MutationReturn, { input: FormData }>
+	) => UseMutationReturn<MutationReturn, { input: FormData }>
 
 	onSuccess?: (result: MutationReturn) => unknown
 
 	/** If set, displays a snackbar notification upon a successfull mutation response */
-	successMessage?: string
+	successMessage?: string | Function
 
 	loading?: boolean
 
@@ -41,7 +42,7 @@ function Form<
 	loading,
 	formData,
 }: Props<FormData, FormSchema, MutationReturn>) {
-	const [mutate, { data, error }] = useMutation()
+	const { mutate, data, loading: inProgress, error } = useMutation()
 	const { enqueueSnackbar } = useSnackbar()
 
 	const handleSubmit = (formData: FormData) => {
@@ -52,8 +53,15 @@ function Form<
 		enqueueSnackbar(error.message, { variant: 'error' })
 	}
 
+	// Display the snackbar notification success, if successMessage is defined
 	if (data && successMessage) {
-		enqueueSnackbar(successMessage, { variant: 'success' })
+		// If we want to handle the success message outside, pass the mutation result
+		if (typeof successMessage === 'function') {
+			successMessage(data)
+		} else {
+			// Otherwise, default to showing the success message, if it's passed in the props
+			enqueueSnackbar(successMessage, { variant: 'success' })
+		}
 
 		if (onSuccess) {
 			onSuccess(data)

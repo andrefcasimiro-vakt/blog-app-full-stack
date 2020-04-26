@@ -1,8 +1,9 @@
 import * as mutations from './auth.mutations'
 
+import { UseMutationReturn, useMutation } from 'core/graphql/graphql.hooks'
+
 import { AuthResponse } from './auth.types'
 import { MutationTuple } from '@apollo/react-hooks/lib/types'
-import { useMutation } from 'core/graphql/graphql.hooks'
 
 type UseLoginVariables = {
 	username: string
@@ -10,7 +11,7 @@ type UseLoginVariables = {
 }
 export function useLogin(
 	onCompleted?: (result: AuthResponse) => unknown,
-): MutationTuple<AuthResponse, { input: UseLoginVariables }> {
+): UseMutationReturn<AuthResponse, { input: UseLoginVariables }> {
 	return useMutation(mutations.login, {
 		onCompleted,
 	})
