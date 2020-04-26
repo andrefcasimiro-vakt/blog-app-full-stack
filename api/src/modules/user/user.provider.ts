@@ -4,10 +4,10 @@ import { InjectRepository } from '@nestjs/typeorm'
 import moment from 'moment'
 import { User as UserEntity } from 'src/modules/user/user.entity'
 import { User as UserModel } from 'src/modules/user/user.model'
-import { Repository, UpdateResult, getConnection } from 'typeorm'
+import { DeleteResult, Repository, UpdateResult, getConnection } from 'typeorm'
 
 import { UserRole } from './user.enum'
-import { IUpdateUser } from './user.inputs'
+import { IDeleteUser, IUpdateUser } from './user.inputs'
 
 @Injectable()
 export class UserProvider {
@@ -70,6 +70,20 @@ export class UserProvider {
       .createQueryBuilder()
       .update(UserEntity)
       .set({ ...input })
+      .where('id = :id', { id: input.id })
+      .execute()
+
+    return result
+  }
+
+  /**
+   * Updates the user with the provided id
+   * with any properties specified in the payload object
+  */
+  async deleteUser(input: IDeleteUser): Promise<DeleteResult> {
+    const result = await getConnection()
+      .createQueryBuilder()
+      .delete()
       .where('id = :id', { id: input.id })
       .execute()
 

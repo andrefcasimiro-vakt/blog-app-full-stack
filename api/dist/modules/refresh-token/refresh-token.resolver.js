@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const graphql_1 = require("@nestjs/graphql");
-const graphql_guard_1 = require("../graphql/graphql.guard");
 const user_provider_1 = require("../user/user.provider");
 const refresh_token_errors_1 = require("./refresh-token.errors");
 const refresh_token_helpers_1 = require("./refresh-token.helpers");
@@ -39,7 +38,6 @@ let RefreshTokenResolver = class RefreshTokenResolver {
 };
 __decorate([
     graphql_1.Query(returns => refresh_token_model_1.RefreshToken, { name: 'authenticateRefreshToken' }),
-    common_1.UseGuards(graphql_guard_1.GqlAuthGuard),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)

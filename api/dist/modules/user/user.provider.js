@@ -68,6 +68,14 @@ let UserProvider = class UserProvider {
             .execute();
         return result;
     }
+    async deleteUser(input) {
+        const result = await typeorm_2.getConnection()
+            .createQueryBuilder()
+            .delete()
+            .where('id = :id', { id: input.id })
+            .execute();
+        return result;
+    }
 };
 UserProvider = __decorate([
     common_1.Injectable(),

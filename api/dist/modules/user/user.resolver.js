@@ -15,13 +15,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const graphql_1 = require("@nestjs/graphql");
 const ramda_1 = require("ramda");
-const graphql_guard_1 = require("../graphql/graphql.guard");
 const user_model_1 = require("./user.model");
 const user_provider_1 = require("./user.provider");
 const auth_helpers_1 = require("../auth/auth.helpers");
 const auth_model_1 = require("../auth/auth.model");
 const bcrypt_helpers_1 = require("../bcrypt/bcrypt.helpers");
-const current_user_1 = require("../graphql/decorators/current-user");
+const graphql_decorator_current_user_1 = require("../graphql/graphql.decorator.current-user");
+const roles_decorator_1 = require("../roles/roles.decorator");
+const roles_guard_1 = require("../roles/roles.guard");
+const user_enum_1 = require("./user.enum");
 const user_inputs_1 = require("./user.inputs");
 let UserResolver = class UserResolver {
     constructor(_userProvider) {
@@ -44,7 +46,7 @@ let UserResolver = class UserResolver {
         }
         return user;
     }
-    async listUsers() {
+    async listUsers(user) {
         return this._userProvider.listUsers();
     }
     async updateUser(input) {
@@ -62,6 +64,10 @@ let UserResolver = class UserResolver {
             id: user.id,
         };
     }
+    async deleteUser(input, ctx) {
+        await this._userProvider.deleteUser(input);
+        return true;
+    }
     async createUser(input, ctx) {
         const { username, email, password, role, isActive } = input;
         const user = await this._userProvider.findByUsername(username);
@@ -76,8 +82,7 @@ let UserResolver = class UserResolver {
 };
 __decorate([
     graphql_1.Query(returns => user_model_1.User, { name: 'whoAmI' }),
-    common_1.UseGuards(graphql_guard_1.GqlAuthGuard),
-    __param(0, current_user_1.CurrentUser()),
+    __param(0, graphql_decorator_current_user_1.CurrentUser()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [auth_model_1.AuthUser]),
     __metadata("design:returntype", void 0)
@@ -98,9 +103,11 @@ __decorate([
 ], UserResolver.prototype, "findByUsername", null);
 __decorate([
     graphql_1.Query(returns => [user_model_1.User], { name: 'listUsers' }),
-    common_1.UseGuards(graphql_guard_1.GqlAuthGuard),
+    roles_decorator_1.Roles(user_enum_1.UserRole.ADMIN),
+    common_1.UseGuards(roles_guard_1.RolesGuard),
+    __param(0, graphql_decorator_current_user_1.CurrentUser()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [user_model_1.User]),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "listUsers", null);
 __decorate([
@@ -110,6 +117,14 @@ __decorate([
     __metadata("design:paramtypes", [user_inputs_1.IUpdateUser]),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "updateUser", null);
+__decorate([
+    graphql_1.Mutation(returns => Boolean, { name: 'deleteUser' }),
+    __param(0, graphql_1.Args('input')),
+    __param(1, graphql_1.Context()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [user_inputs_1.IDeleteUser, Object]),
+    __metadata("design:returntype", Promise)
+], UserResolver.prototype, "deleteUser", null);
 __decorate([
     graphql_1.Mutation(returns => user_model_1.User, { name: 'createUser' }),
     __param(0, graphql_1.Args('input')),

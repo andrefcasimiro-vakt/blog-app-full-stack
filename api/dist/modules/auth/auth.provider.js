@@ -32,7 +32,15 @@ let AuthProvider = class AuthProvider {
         this._jwtProvider = _jwtProvider;
         this._refreshTokenProvider = _refreshTokenProvider;
     }
-    async validateUser(username, pwd) {
+    async validateUser(payload) {
+        const { username } = payload;
+        const user = await this._userProvider.findByUsername(username);
+        if (!user) {
+            throw new common_1.UnauthorizedException();
+        }
+        return user;
+    }
+    async validateUserLogin(username, pwd) {
         const user = await this._userProvider.findByUsername(username);
         if (!user) {
             return null;
@@ -45,7 +53,7 @@ let AuthProvider = class AuthProvider {
         return user;
     }
     async login(user) {
-        const payload = { username: user.username, id: user.id };
+        const payload = { id: user.id, username: user.username, email: user.email, role: user.role };
         const accessToken = this._jwtProvider.sign(payload);
         const refreshToken = await this._refreshTokenProvider.createRefreshToken(user);
         await this._userProvider.updateLastLoginAt(user.id);

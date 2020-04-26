@@ -19,7 +19,7 @@ GraphQLModule = __decorate([
                 context: ({ req }) => ({ req }),
                 installSubscriptionHandlers: true,
             })
-        ]
+        ],
     })
 ], GraphQLModule);
 exports.GraphQLModule = GraphQLModule;

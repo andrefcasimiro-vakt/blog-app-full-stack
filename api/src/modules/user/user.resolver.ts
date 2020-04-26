@@ -1,16 +1,17 @@
 import { ConflictException, NotFoundException, UseGuards } from '@nestjs/common'
 import { Args, Context, Int, Mutation, Query, Resolver } from '@nestjs/graphql'
 import { equals, isEmpty, reject } from 'ramda'
-import { GqlAuthGuard } from 'src/modules/graphql/graphql.guard'
 import { User } from 'src/modules/user/user.model'
 import { UserProvider } from 'src/modules/user/user.provider'
 
 import { checkPassword } from '../auth/auth.helpers'
 import { AuthUser } from '../auth/auth.model'
 import { hashString } from '../bcrypt/bcrypt.helpers'
-import { CurrentUser } from '../graphql/decorators/current-user'
+import { CurrentUser } from '../graphql/graphql.decorator.current-user'
+import { Roles } from '../roles/roles.decorator'
+import { RolesGuard } from '../roles/roles.guard'
 import { UserRole } from './user.enum'
-import { ICreateUser, IUpdateUser } from './user.inputs'
+import { ICreateUser, IDeleteUser, IUpdateUser } from './user.inputs'
 
 @Resolver(of => User)
 export class UserResolver {
@@ -20,7 +21,6 @@ export class UserResolver {
   }
 
   @Query(returns => User, { name: 'whoAmI' })
-  @UseGuards(GqlAuthGuard)
   whoAmI(@CurrentUser() user: AuthUser) {
     return this._userProvider.findById(user.id)
   }
@@ -52,8 +52,9 @@ export class UserResolver {
   }
 
   @Query(returns => [User], { name: 'listUsers' })
-  @UseGuards(GqlAuthGuard)
-  async listUsers(): Promise<Partial<User[]>> {
+  @Roles(UserRole.ADMIN)
+  @UseGuards(RolesGuard)
+  async listUsers(@CurrentUser() user: User): Promise<Partial<User[]>> {
     return this._userProvider.listUsers()
   }
 
@@ -88,6 +89,17 @@ export class UserResolver {
     return {
       id: user.id,
     }
+  }
+
+  @Mutation(returns => Boolean, { name: 'deleteUser' })
+  async deleteUser(
+    @Args('input') input: IDeleteUser,
+    @Context() ctx,
+  ): Promise<boolean> {
+    // Delete posts, comments, profiles first
+    await this._userProvider.deleteUser(input)
+
+    return true
   }
 
   // For admins

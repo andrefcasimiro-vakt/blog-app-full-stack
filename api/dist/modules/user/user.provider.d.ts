@@ -1,7 +1,7 @@
 import { User as UserModel } from 'src/modules/user/user.model';
-import { Repository, UpdateResult } from 'typeorm';
+import { DeleteResult, Repository, UpdateResult } from 'typeorm';
 import { UserRole } from './user.enum';
-import { IUpdateUser } from './user.inputs';
+import { IDeleteUser, IUpdateUser } from './user.inputs';
 export declare class UserProvider {
     private readonly _usersRepository;
     private readonly _context;
@@ -13,4 +13,5 @@ export declare class UserProvider {
     createUser(username: string, email: string, hashedPassword: string, role?: UserRole, isActive?: boolean): Promise<Partial<UserModel> & UserModel>;
     updateLastLoginAt(userId: number): Promise<UpdateResult>;
     updateUser(input: IUpdateUser): Promise<UpdateResult>;
+    deleteUser(input: IDeleteUser): Promise<DeleteResult>;
 }

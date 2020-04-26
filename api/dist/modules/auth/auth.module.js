@@ -18,7 +18,6 @@ const refresh_token_module_1 = require("../refresh-token/refresh-token.module");
 const user_module_1 = require("../user/user.module");
 const auth_provider_1 = require("./auth.provider");
 const auth_resolver_1 = require("./auth.resolver");
-const auth_strategy_1 = require("./auth.strategy");
 let AuthModule = class AuthModule {
 };
 AuthModule = __decorate([
@@ -31,10 +30,14 @@ AuthModule = __decorate([
                 secret: config_main_1.default.jwt.secret,
                 signOptions: {
                     expiresIn: `${config_main_1.default.jwt.expiresIn}h`,
-                },
-            }),
+                }
+            })
         ],
-        providers: [auth_resolver_1.AuthResolver, auth_provider_1.AuthProvider, auth_strategy_1.LocalStrategy, jwt_strategy_1.JwtStrategy],
+        providers: [
+            auth_resolver_1.AuthResolver,
+            auth_provider_1.AuthProvider,
+            jwt_strategy_1.JwtStrategy,
+        ],
     })
 ], AuthModule);
 exports.AuthModule = AuthModule;

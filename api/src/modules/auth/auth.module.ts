@@ -19,9 +19,14 @@ import { LocalStrategy } from './auth.strategy'
       secret: config.jwt.secret,
       signOptions: {
         expiresIn: `${config.jwt.expiresIn}h`,
-      },
-    }),
+      }
+    })
   ],
-  providers: [AuthResolver, AuthProvider, LocalStrategy, JwtStrategy],
+  providers: [
+    AuthResolver,
+    AuthProvider,
+    // LocalStrategy,
+    JwtStrategy,
+  ],
 })
 export class AuthModule { }

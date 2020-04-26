@@ -30,6 +30,10 @@ input ICreateUser {
   isActive: Boolean
 }
 
+input IDeleteUser {
+  id: Float!
+}
+
 input ILogin {
   username: String!
   password: String!
@@ -46,6 +50,7 @@ input IUpdateUser {
 
 type Mutation {
   updateUser(input: IUpdateUser!): User!
+  deleteUser(input: IDeleteUser!): Boolean!
   createUser(input: ICreateUser!): User!
   login(input: ILogin!): AuthResponse!
 }

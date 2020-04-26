@@ -1,9 +1,10 @@
-import React from 'react'
 import { Redirect, Route } from 'react-router-dom'
+
+import React from 'react'
+import { RouteProps } from './routes.interfaces'
+import { selectCurrentUser } from 'modules/auth/auth.redux'
 import { urls } from './routes.constants.urls'
 import { useSelector } from 'react-redux'
-import { selectCurrentUser } from 'modules/auth/auth.redux'
-import { RouteProps } from './routes.interfaces'
 
 interface Props extends RouteProps {}
 

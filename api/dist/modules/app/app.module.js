@@ -17,6 +17,7 @@ let AppModule = class AppModule {
 AppModule = __decorate([
     common_1.Module({
         imports: config_helpers_1.mapModules(config_main_1.default.modules),
+        providers: []
     })
 ], AppModule);
 exports.AppModule = AppModule;

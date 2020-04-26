@@ -4521,12 +4521,12 @@
         "signature": "1d5f30cbd06ffa2aab22346b087e140f069851c17b91189be8d1e168d53f9f93"
       },
       "../src/modules/user/user.inputs.ts": {
-        "version": "777587c1a26fd67464608e4afb41884855b42c6202663a30c557a88f1fdb5a17",
-        "signature": "5d6bf52ea555cb8a1ccf6cf7ee4e1ad060a4889555f428b23522e3d39078d6cc"
+        "version": "2690a8811fe0062d8c6990e741e2c8695106c5869f85a37e112ea3728b9f0876",
+        "signature": "e1d1998ad14822923ae4db496fb937ca58cd5dfe125ddb9d64ce9056cb538fbe"
       },
       "../src/modules/user/user.provider.ts": {
-        "version": "191c2d7a1a449684681102933ad286c70083c1f6fa56eb98e273a6008e3e0848",
-        "signature": "0336ecabb3308c0ea674b546be46469513390218e0888dca279d9229926bf720"
+        "version": "585c75ee24bedf92f36b4c79268b33c10865aa05fc0e8aff9808c76abd2ea884",
+        "signature": "9510997f027e9f0a94334ec5cb689e0b68452a9adc9a67d6dc06ada42e1b73f4"
       },
       "../src/modules/user/user.provider.seed.ts": {
         "version": "8c5ebf395072b0628bfeb86da8921af260c183e79b56981672035a9978007089",
@@ -4543,14 +4543,6 @@
       "../node_modules/@types/ramda/index.d.ts": {
         "version": "9d20e62e0249bed298f3bc5f653ad67c78f8364e46cfd4320ec6846d91a15b8e",
         "signature": "9d20e62e0249bed298f3bc5f653ad67c78f8364e46cfd4320ec6846d91a15b8e"
-      },
-      "../src/modules/jwt/jwt.guard.ts": {
-        "version": "aaabeb54cea8c74bf35c3cda3b88e2b41d257ee5e0922809314dda043f247f2f",
-        "signature": "8e6bbc2f2928474b292b22cdd100dadbc5e8e530356ce49a21963ee1e9395558"
-      },
-      "../src/modules/graphql/graphql.guard.ts": {
-        "version": "68e9daf7e510c1a49ce163988a5bab4d01b5f1e0925917423213cba9f4d703a9",
-        "signature": "83ecf0fc06f1d8f64340ca3944189b8cfac1354c4086bd5a67991fbe857f230b"
       },
       "../node_modules/graphql-subscriptions/dist/pubsub-engine.d.ts": {
         "version": "4c9aded23c1eb21c4d7a4b03edb29e0611ee88975520a4aa8514186bb22cf20c",
@@ -4584,13 +4576,25 @@
         "version": "390310a073924de9f4ec584d57c3ffedce5b641bff59ca4bf6a0d757c1ec22fb",
         "signature": "4ac2df345931b7f76771338951da3d78360bb60630886dea61207ddf6a44400a"
       },
-      "../src/modules/graphql/decorators/current-user.ts": {
+      "../src/modules/graphql/graphql.decorator.current-user.ts": {
         "version": "ab6208857d76e03fbca8fb1ea88613a320f51f03f8d2d21cf0cdd2b30b6e0399",
         "signature": "d92c6372987a54b554ef3ba33f3c7ef7b0c45aeec354a8cf9904326383ed3db5"
       },
+      "../src/modules/roles/roles.decorator.ts": {
+        "version": "3472910defe055b464d450f69a6a2011b5dcc599ce785faef2d2ad45e76937ae",
+        "signature": "f219bb51faebf0a994ef15e34c1e9abeaa0fd36e891ea744c09f9eacb615a71b"
+      },
+      "../src/modules/jwt/jwt.guard.ts": {
+        "version": "aaabeb54cea8c74bf35c3cda3b88e2b41d257ee5e0922809314dda043f247f2f",
+        "signature": "8e6bbc2f2928474b292b22cdd100dadbc5e8e530356ce49a21963ee1e9395558"
+      },
+      "../src/modules/roles/roles.guard.ts": {
+        "version": "4b4812656171237d95e9c44e1fb8e83baa983c5846a4d1756040a0d1808ba57f",
+        "signature": "66ef4317b77a2cc61a9e6b97d5260a6c30ec00feffda762cc143e0833e5e4bfa"
+      },
       "../src/modules/user/user.resolver.ts": {
-        "version": "1832ab913b9d596f321b393de91d7f7bde508e18e97f9816db36d9ff87958c6c",
-        "signature": "778bd6bf19e369a1df6399263641cf3edae1ee5da82d28e22e9649d742540330"
+        "version": "b7405a2fd6401a9425bea70b0b41d515c2395ba3c04442c92f2a4cfb8acde27a",
+        "signature": "a4df33a2ae17466f69072328dcbfc58158f25dbc409ce2a178e55b4bf7fdd625"
       },
       "../src/modules/user/user.module.ts": {
         "version": "7477af7977fd80d7c4faedaa169ef462cb3ef66ecc0c7875c463b9dadf9735fc",
@@ -4601,8 +4605,8 @@
         "signature": "e1250c17b43cb1783dccd2350b6e52cdc1977a3e9b060cfcdfc21e5524d35a0b"
       },
       "../src/modules/auth/auth.provider.ts": {
-        "version": "48ecc783470ae49c6b492970adc637400055f0efd5263493d7218069c3ac4767",
-        "signature": "405c6197ed7cb5a088da618c3a5cad35d6956f08d39a038c7f7383cc5d53d40f"
+        "version": "6e3f6cb241c6f39cc30212a47950af95924ada0bab36cf7cedcf745382cdcff1",
+        "signature": "c4aaa9a16c718b16d84c7c9ba8f475ffdec66fb52ca9bf3d2bd56bcf92aca6b8"
       },
       "../src/modules/graphql/graphql.ctx.utils.ts": {
         "version": "93b46d40c6e5ea132de96ad8beb63d79a448047781f6cf84b78d1c3ca663efe6",
@@ -4613,7 +4617,7 @@
         "signature": "68dfc6e3f2694185415d3631b1351a56a8526079cfebe1791702ef2875e55ac4"
       },
       "../src/modules/auth/auth.resolver.ts": {
-        "version": "49fa1b9ae77a0890667286cc4d2c53ad0846e928104786a556976515ee84df58",
+        "version": "6c52e58334607dc1e33ba19b51354fc08418d99527a7105d3b4f3037b252860e",
         "signature": "9c939aba6aaa5850bbfd408564be1d309b2ee5b7067ae9f7fbcc4a7057acbe7d"
       },
       "../node_modules/@types/passport-strategy/index.d.ts": {
@@ -4625,11 +4629,11 @@
         "signature": "e50f9ae34bb92232533e3a32848970dd04f874a8f64d3ae48980e062b6489f26"
       },
       "../src/modules/auth/auth.strategy.ts": {
-        "version": "83e91e26c8aa1109b890677e3fb9696a65656b60ed329b430b64aa122f77617e",
+        "version": "fb6a8f2cb490b21364565d3d926b73d300ed2623ba7bb62927c47b286f6f70f5",
         "signature": "e2458cfb9a2f744610418145a581485f3fcf970060e5abdd04314d5db784340b"
       },
       "../src/modules/auth/auth.module.ts": {
-        "version": "8b179db77bb88c9b1053e5aa9f0e11aa671d4b56aaeacda58f2ce3879f91ee3c",
+        "version": "5effb618fa0648a29455353f88855fa57703ee35e614333bd525175a8ebb0ba9",
         "signature": "2e5d258cf85349b02b015c3f1b8873c152d182c3819a7ccc3aff16fc3037a5fc"
       },
       "../src/modules/blog/blog.module.ts": {
@@ -4693,7 +4697,7 @@
         "signature": "012ca69dacdbff2b4621a9a43ccfba38fabd3511b3a084afb4b12446140989d3"
       },
       "../src/modules/graphql/graphql.module.ts": {
-        "version": "b9ecaaf25da79aba5cdc9152b9db6b47f6219b81a39608ad11c0ebae8cababf3",
+        "version": "84ffcca31075fec50ce15dd053624205ae7f65dbcd3bd8474e2ff07d941e30d6",
         "signature": "2564ab47432fc54e81cfa7fdf2f63d15d32e8cf865282decbe46fd2b475b013b"
       },
       "../src/modules/config/config.module.mappers.ts": {
@@ -4705,7 +4709,7 @@
         "signature": "9144bdc510dcd2ac32755355c56cfeab08db565f1004b0002a78e09680a0cb7e"
       },
       "../src/modules/app/app.module.ts": {
-        "version": "1520bde5bf0cc69d3d14682f2f18d2f21c20889701e3c1c8cba9095b13eae1fb",
+        "version": "e45919536f70b0c577195d7e502f061c299edee5a73aa92fdd27fa5c2ef82854",
         "signature": "9fc7f7b6ad854404973b8cba8e6d883f758237991968e9a3965d716d46f1da88"
       },
       "../src/main.ts": {
@@ -4728,8 +4732,12 @@
         "version": "62aa45cdce4228ee02bd7b7eca40259ed7dfd59120bbc78f2d2cdd4a4a31cd82",
         "signature": "dd5efde3811284e818dff88bbbcebc064c251fef04320b1c4ba102b4000480aa"
       },
+      "../src/modules/graphql/graphql.guard.ts": {
+        "version": "68e9daf7e510c1a49ce163988a5bab4d01b5f1e0925917423213cba9f4d703a9",
+        "signature": "83ecf0fc06f1d8f64340ca3944189b8cfac1354c4086bd5a67991fbe857f230b"
+      },
       "../src/modules/refresh-token/refresh-token.resolver.ts": {
-        "version": "f84b30fb25a627dabf3a8ce966e9997b1ff24d965777df3bc647f09e341bf549",
+        "version": "f5fd8c9536bb34040d3c80aea102adc5702fa1d4699f7d3fa0bac857323a5b59",
         "signature": "568e7293852c5a3ae99162620a2df5cc219c10f582cb80f812fcfbda5918b6ca"
       },
       "../node_modules/@types/anymatch/index.d.ts": {
@@ -14612,23 +14620,6 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "../src/modules/jwt/jwt.guard.ts": [
-        "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@nestjs/passport/index.d.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "../src/modules/graphql/graphql.guard.ts": [
-        "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@nestjs/graphql/index.d.ts",
-        "../src/modules/jwt/jwt.guard.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
       "../node_modules/graphql-subscriptions/dist/pubsub-engine.d.ts": [
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
@@ -14697,9 +14688,38 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "../src/modules/graphql/decorators/current-user.ts": [
+      "../src/modules/graphql/graphql.decorator.current-user.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/graphql/index.d.ts",
+        "../src/modules/user/user.model.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../src/modules/roles/roles.decorator.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../src/modules/user/user.enum.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../src/modules/jwt/jwt.guard.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/passport/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../src/modules/roles/roles.guard.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/core/index.d.ts",
+        "../node_modules/@nestjs/core/helpers/execution-context-host.d.ts",
+        "../node_modules/@nestjs/graphql/dist/services/gql-execution-context.d.ts",
+        "../src/modules/jwt/jwt.guard.ts",
+        "../src/modules/user/user.enum.ts",
         "../src/modules/user/user.model.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
@@ -14710,13 +14730,14 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/graphql/index.d.ts",
         "../node_modules/@types/ramda/index.d.ts",
-        "../src/modules/graphql/graphql.guard.ts",
         "../src/modules/user/user.model.ts",
         "../src/modules/user/user.provider.ts",
         "../src/modules/auth/auth.helpers.ts",
         "../src/modules/auth/auth.model.ts",
         "../src/modules/bcrypt/bcrypt.helpers.ts",
-        "../src/modules/graphql/decorators/current-user.ts",
+        "../src/modules/graphql/graphql.decorator.current-user.ts",
+        "../src/modules/roles/roles.decorator.ts",
+        "../src/modules/roles/roles.guard.ts",
         "../src/modules/user/user.enum.ts",
         "../src/modules/user/user.inputs.ts",
         "../node_modules/@types/node/fs.d.ts",
@@ -14949,6 +14970,7 @@
         "../node_modules/@types/node/path.d.ts",
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/graphql/index.d.ts",
+        "../src/modules/auth/auth.provider.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -14977,8 +14999,10 @@
       ],
       "../src/modules/app/app.module.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/core/constants.d.ts",
         "../src/modules/config/config.helpers.ts",
         "../src/modules/config/config.main.ts",
+        "../src/modules/roles/roles.guard.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -15027,10 +15051,18 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "../src/modules/graphql/graphql.guard.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/graphql/index.d.ts",
+        "../src/modules/jwt/jwt.guard.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
       "../src/modules/refresh-token/refresh-token.resolver.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/graphql/index.d.ts",
-        "../src/modules/graphql/graphql.guard.ts",
         "../src/modules/user/user.provider.ts",
         "../src/modules/refresh-token/refresh-token.errors.ts",
         "../src/modules/refresh-token/refresh-token.helpers.ts",
@@ -24838,12 +24870,27 @@
         "../node_modules/typeorm/index.d.ts",
         "../src/modules/user/user.model.ts"
       ],
-      "../src/modules/jwt/jwt.guard.ts": [
-        "../node_modules/@nestjs/passport/index.d.ts"
+      "../node_modules/ts-toolbelt/out/index.d.ts": [
+        "../node_modules/ts-toolbelt/out/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "../src/modules/graphql/graphql.guard.ts": [
-        "../node_modules/@nestjs/common/index.d.ts",
-        "../src/modules/jwt/jwt.guard.ts"
+      "../node_modules/@types/ramda/tools.d.ts": [
+        "../node_modules/ts-toolbelt/out/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../node_modules/@types/ramda/index.d.ts": [
+        "../node_modules/ts-toolbelt/out/index.d.ts",
+        "../node_modules/@types/ramda/tools.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
       "../node_modules/graphql-subscriptions/dist/pubsub-engine.d.ts": [
         "../node_modules/@types/node/fs.d.ts",
@@ -24904,6 +24951,18 @@
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../src/modules/roles/roles.decorator.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../src/modules/user/user.enum.ts"
+      ],
+      "../src/modules/jwt/jwt.guard.ts": [
+        "../node_modules/@nestjs/passport/index.d.ts"
+      ],
+      "../src/modules/roles/roles.guard.ts": [
+        "../node_modules/@nestjs/core/index.d.ts",
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../src/modules/jwt/jwt.guard.ts"
       ],
       "../src/modules/user/user.resolver.ts": [
         "../src/modules/user/user.provider.ts",
@@ -25054,6 +25113,10 @@
       ],
       "../src/modules/blog/post/post.model.ts": [
         "../src/modules/graphql/graphql.model.ts"
+      ],
+      "../src/modules/graphql/graphql.guard.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../src/modules/jwt/jwt.guard.ts"
       ],
       "../src/modules/refresh-token/refresh-token.resolver.ts": [
         "../src/modules/refresh-token/refresh-token.types.ts",
@@ -25324,28 +25387,6 @@
       ],
       "../node_modules/@types/yargs/index.d.ts": [
         "../node_modules/@types/yargs-parser/index.d.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "../node_modules/ts-toolbelt/out/index.d.ts": [
-        "../node_modules/ts-toolbelt/out/index.d.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "../node_modules/@types/ramda/index.d.ts": [
-        "../node_modules/ts-toolbelt/out/index.d.ts",
-        "../node_modules/@types/ramda/tools.d.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "../node_modules/@types/ramda/tools.d.ts": [
-        "../node_modules/ts-toolbelt/out/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -26486,8 +26527,9 @@
       "../src/modules/user/user.inputs.ts",
       "../src/modules/user/user.provider.ts",
       "../src/modules/user/user.provider.seed.ts",
-      "../src/modules/jwt/jwt.guard.ts",
-      "../src/modules/graphql/graphql.guard.ts",
+      "../node_modules/ts-toolbelt/out/index.d.ts",
+      "../node_modules/@types/ramda/tools.d.ts",
+      "../node_modules/@types/ramda/index.d.ts",
       "../node_modules/graphql-subscriptions/dist/pubsub-engine.d.ts",
       "../node_modules/graphql-subscriptions/dist/pubsub.d.ts",
       "../node_modules/graphql-subscriptions/dist/with-filter.d.ts",
@@ -26496,7 +26538,11 @@
       "../node_modules/apollo-server-express/dist/apolloserver.d.ts",
       "../node_modules/apollo-server-express/dist/index.d.ts",
       "../src/modules/auth/auth.helpers.ts",
-      "../src/modules/graphql/decorators/current-user.ts",
+      "../src/modules/graphql/graphql.decorator.current-user.ts",
+      "../src/modules/roles/roles.decorator.ts",
+      "../src/modules/jwt/jwt.guard.ts",
+      "../src/modules/roles/roles.guard.ts",
+      "../src/modules/user/user.module.ts",
       "../src/modules/auth/auth.types.ts",
       "../src/modules/auth/auth.provider.ts",
       "../src/modules/graphql/graphql.ctx.utils.ts",
@@ -26530,6 +26576,7 @@
       "../src/modules/seeder/seeder.module.ts",
       "../src/seed.ts",
       "../src/modules/blog/post/post.model.ts",
+      "../src/modules/graphql/graphql.guard.ts",
       "../src/modules/refresh-token/refresh-token.resolver.ts",
       "../node_modules/@types/anymatch/index.d.ts",
       "../node_modules/@babel/types/lib/index.d.ts",
@@ -26569,11 +26616,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../node_modules/ts-toolbelt/out/index.d.ts",
-      "../node_modules/@types/ramda/index.d.ts",
-      "../node_modules/@types/ramda/tools.d.ts",
-      "../src/modules/user/user.resolver.ts",
-      "../src/modules/user/user.module.ts"
+      "../src/modules/user/user.resolver.ts"
     ]
   },
   "version": "3.8.3"

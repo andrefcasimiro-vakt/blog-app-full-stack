@@ -4,6 +4,9 @@ import { Strategy } from 'passport-local'
 
 import { AuthProvider } from './auth.provider'
 
+/**
+ * @deprecated
+ */
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {
   constructor(private readonly _authProvider: AuthProvider) {
@@ -11,7 +14,7 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
   }
 
   async validate(username: string, password: string): Promise<any> {
-    const user = await this._authProvider.validateUser(username, password)
+    const user = await this._authProvider.validateUserLogin(username, password)
 
     if (!user) {
       throw new UnauthorizedException()

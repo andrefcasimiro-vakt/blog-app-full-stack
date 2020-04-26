@@ -8,6 +8,7 @@ export declare class AuthProvider {
     private readonly _jwtProvider;
     private readonly _refreshTokenProvider;
     constructor(_userProvider: UserProvider, _jwtProvider: JwtService, _refreshTokenProvider: RefreshTokenProvider);
-    validateUser(username: string, pwd: string): Promise<User>;
+    validateUser(payload: User): Promise<User>;
+    validateUserLogin(username: string, pwd: string): Promise<User>;
     login(user: User): Promise<AuthResponse>;
 }

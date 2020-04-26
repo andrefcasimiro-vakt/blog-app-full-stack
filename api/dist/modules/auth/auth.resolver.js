@@ -26,7 +26,7 @@ let AuthResolver = class AuthResolver {
     }
     async login(input, ctx) {
         const { username, password } = input;
-        const user = await this._authProvider.validateUser(username, password);
+        const user = await this._authProvider.validateUserLogin(username, password);
         if (!user) {
             throw new common_1.UnauthorizedException();
         }

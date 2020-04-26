@@ -67,3 +67,12 @@ export class IUpdateUser {
   isActive: boolean;
 
 }
+
+@InputType()
+export class IDeleteUser {
+
+  @IsDefined()
+  @Field()
+  id: number;
+
+}

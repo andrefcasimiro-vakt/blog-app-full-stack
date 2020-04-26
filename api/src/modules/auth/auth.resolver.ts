@@ -21,7 +21,7 @@ export class AuthResolver {
 	): Promise<AuthResponse> {
 		const { username, password } = input
 
-		const user = await this._authProvider.validateUser(username, password)
+		const user = await this._authProvider.validateUserLogin(username, password)
 
 		if (!user) {
 			throw new UnauthorizedException()

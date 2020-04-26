@@ -1,6 +1,5 @@
 import { NotFoundException, UseGuards } from '@nestjs/common'
 import { Query, Resolver } from '@nestjs/graphql'
-import { GqlAuthGuard } from 'src/modules/graphql/graphql.guard'
 import { UserProvider } from 'src/modules/user/user.provider'
 
 import { errors } from './refresh-token.errors'
@@ -18,7 +17,6 @@ export class RefreshTokenResolver {
 
 
   @Query(returns => RefreshToken, { name: 'authenticateRefreshToken' })
-  @UseGuards(GqlAuthGuard)
   async authenticateRefreshToken(payload: IAuthRefreshToken) {
     const { email, refreshToken } = payload
 
