@@ -24,10 +24,9 @@ type TranslateOptions = {
 	isUpdate?: boolean
 }
 
-const translate = (key: string, options?: TranslateOptions): string =>
-	i18n.t(`forms.users.${options?.isUpdate ? `update` : `create`}.${key}`)
+const translate = (key: string): string => i18n.t(`forms.users.create.${key}`)
 
-const fields = [
+export const createUserFields = [
 	[
 		{
 			name: 'username',
@@ -86,25 +85,11 @@ const fields = [
 ]
 
 export const createUserForm: Form = {
-	fields,
+	fields: createUserFields,
 	submitName: translate('submit'),
 }
 
-export const updateUserForm: Form = {
-	fields: [
-		[
-			{
-				name: 'id',
-				label: translate('id'),
-				type: 'hidden',
-			},
-		],
-		...fields,
-	],
-	submitName: translate('submit', { isUpdate: true }),
-}
-
-const commonFields = {
+export const commonFields = {
 	username: stringRequired,
 	email: stringRequired.email(i18n.t('validators.yup.invalidEmail')),
 	password: password('login', translate('password')),
@@ -116,17 +101,6 @@ export const createUserSchema = yup.object().shape({
 	...commonFields,
 })
 
-export const updateUserSchema = yup.object().shape({
-	...commonFields,
-
-	id: numberRequired,
-	password: optionalPassword(translate('password')),
-})
-
 export type CreateUserFormData = ExtractSchemaFields<
 	typeof createUserSchema.fields
->
-
-export type UpdateUserFormData = ExtractSchemaFields<
-	typeof updateUserSchema.fields
 >

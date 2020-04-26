@@ -5,6 +5,7 @@ const subpages = (language: Language) => ({
 		details: {
 			view: { en: 'Details', pt: 'Ver detalhes' }[language],
 			update: { en: 'Update', pt: 'Editar' }[language],
+			delete: { en: 'Delete', pt: 'Remover' }[language],
 		},
 	},
 })

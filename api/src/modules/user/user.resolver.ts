@@ -62,6 +62,8 @@ export class UserResolver {
 
   // For users
   @Mutation(returns => User, { name: 'updateUser' })
+  @Roles(UserRole.ADMIN)
+  @UseGuards(RolesGuard)
   async updateUser(
     @Args('input') input: IUpdateUser
   ): Promise<Partial<User>> {

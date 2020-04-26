@@ -42,8 +42,8 @@ type IUpdateUser = {
 	isActive: boolean
 }
 export function useUpdateUser(
-	onCompleted?: (result: Partial<User>) => unknown,
-): UseMutationReturn<Partial<User>, { input: IUpdateUser }> {
+	onCompleted?: (result: User | Partial<User>) => unknown,
+): UseMutationReturn<User | Partial<User>, { input: IUpdateUser }> {
 	return useMutation(mutations.updateUser, {
 		onCompleted,
 	})

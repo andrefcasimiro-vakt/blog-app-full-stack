@@ -6,7 +6,7 @@ import React from 'react'
 import { UseMutationReturn } from 'core/graphql/graphql.hooks'
 import { useSnackbar } from 'notistack'
 
-type Props<FormData, FormSchema, MutationReturn> = {
+export type FormProps<FormData, FormSchema, MutationReturn> = {
 	form: FormType
 	schema: FormSchema
 	useMutation: (
@@ -41,7 +41,7 @@ function Form<
 	successMessage,
 	loading,
 	formData,
-}: Props<FormData, FormSchema, MutationReturn>) {
+}: FormProps<FormData, FormSchema, MutationReturn>) {
 	const { mutate, data, loading: inProgress, error } = useMutation()
 	const { enqueueSnackbar } = useSnackbar()
 

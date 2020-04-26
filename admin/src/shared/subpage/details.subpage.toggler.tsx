@@ -1,7 +1,9 @@
-import React from 'react'
+import { Theme, createStyles, makeStyles } from '@material-ui/core/styles'
+
 import Button from '@material-ui/core/Button'
 import ButtonGroup from '@material-ui/core/ButtonGroup'
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
+import React from 'react'
+import { SubpageMode } from './details.subpage.constants'
 import i18n from 'core/i18n/i18n'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -23,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface Props {
 	onClick: Function
-	mode: 'view' | 'edit'
+	mode: SubpageMode
 }
 
 /**
@@ -39,16 +41,22 @@ export default function ButtonsToggleMode({ onClick, mode }: Props) {
 				aria-label="contained primary button group"
 			>
 				<Button
-					className={mode === 'view' ? classes.active : ''}
-					onClick={() => onClick('view')}
+					className={mode === SubpageMode.VIEW_DETAILS ? classes.active : ''}
+					onClick={() => onClick(SubpageMode.VIEW_DETAILS)}
 				>
 					{i18n.t('subpages.generic.details.view')}
 				</Button>
 				<Button
-					className={mode === 'edit' ? classes.active : ''}
-					onClick={() => onClick('edit')}
+					className={mode === SubpageMode.UPDATE_DETAILS ? classes.active : ''}
+					onClick={() => onClick(SubpageMode.UPDATE_DETAILS)}
 				>
 					{i18n.t('subpages.generic.details.update')}
+				</Button>
+				<Button
+					className={mode === SubpageMode.REMOVE_DETAILS ? classes.active : ''}
+					onClick={() => onClick(SubpageMode.REMOVE_DETAILS)}
+				>
+					{i18n.t('subpages.generic.details.delete')}
 				</Button>
 			</ButtonGroup>
 		</div>

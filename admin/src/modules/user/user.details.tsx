@@ -1,11 +1,12 @@
+import { CircularProgress, Switch } from '@material-ui/core'
+import Details, { Detail } from '../../shared/details/details.renderer'
+
 import React from 'react'
-import makeStyles from '@material-ui/core/styles/makeStyles'
-import i18n from 'core/i18n/i18n'
-import { Switch, CircularProgress } from '@material-ui/core'
-import Details, { Detail } from '../../shared/details/details'
 import { User } from 'modules/user/user.types'
-import { formatUserRole } from 'modules/user/user.utils.formatters'
 import { formatBool } from 'shared/utils/formatters'
+import { formatUserRole } from 'modules/user/user.utils.formatters'
+import i18n from 'core/i18n/i18n'
+import makeStyles from '@material-ui/core/styles/makeStyles'
 
 const useStyles = makeStyles({
 	root: {},

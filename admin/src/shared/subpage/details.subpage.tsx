@@ -1,73 +1,120 @@
-import React from 'react'
+import { DetailsFormProps, DetailsRenderer } from './details.subpage.form.props'
+import React, { useState } from 'react'
+import { useHistory, useLocation } from 'react-router'
+
+import ButtonsToggleMode from 'shared/subpage/details.subpage.toggler'
+import DetailSubheader from 'shared/subpage/common.subpage.header'
+import { GraphqlResponse } from 'core/graphql/graphql.types'
+import Grid from '@material-ui/core/Grid/Grid'
+import Paper from '@material-ui/core/Paper/Paper'
+import { SubpageMode } from './details.subpage.constants'
+import { extractIdFromLocation } from 'core/router/router.utils'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import theme from 'modules/app/app.theme'
-import Grid from '@material-ui/core/Grid/Grid'
-import Table, { TableProps } from 'shared/table/table'
-import AddFloatButton from 'shared/buttons/button.action.create'
-import { useHistory, useLocation } from 'react-router'
-import { CreateProps } from './create.subpage.props'
 
 const useStyles = makeStyles({
 	root: {
 		flexGrow: 1,
-		padding: theme.spacing(2),
+		flexDirection: 'column',
+		justifyContent: 'center',
+		alignItems: 'center',
+		marginTop: theme.spacing(4),
 	},
-	actionNavbar: {
-		display: 'flex',
+	paper: {
 		flexGrow: 1,
+		marginTop: theme.spacing(2),
+	},
+	container: {
+		maxWidth: '50rem',
+		marginTop: theme.spacing(2),
+		[theme.breakpoints.up('md')]: {
+			margin: theme.spacing(2),
+		},
+	},
+	header: {
+		flexGrow: 1,
+		flexDirection: 'column',
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+	card: {
+		flexGrow: 1,
+		width: '100%',
 		flexDirection: 'row',
-		marginTop: theme.spacing(2.5),
-		marginBottom: theme.spacing(2.5),
-		justifyContent: 'flex-end',
-		alignItems: 'flex-end',
+		justifyContent: 'center',
+		alignItems: 'center',
+		padding: theme.spacing(1),
+	},
+	deleteInnerContent: {
+		opacity: '0.25',
 	},
 })
 
-interface Props<TableData, TableRow, DTO> {
-	title: string
+interface Props<QueryData, UpdateMutationData> {
+	backUrl: string
+	detailsRenderer: React.FC<DetailsRenderer<QueryData>>
+	updateDataForm: React.FC<DetailsFormProps<QueryData, UpdateMutationData>>
+	useQuery: (variables: { id: number }) => GraphqlResponse<QueryData>
 
-	/**
-	 * For creating the creation routes
-	 *
-	 * Includes:
-	 * the create query that is passed to the create page
-	 * the icon for the add floating button
-	 * the aria label for the add floating button
-	 */
-	createProps: CreateProps<DTO>
-
-	/** For populating the table.
-	 *
-	 * Includes:
-	 * table name,
-	 * columns,
-	 * the graphql query for fetching the table data
-	 */
-	tableProps: TableProps<TableData, TableRow>
+	// Use for extracting the title that will be used in the header
+	getTitle: (data: QueryData) => string
 }
 
-/**
- * Template for creating generic subpages for lists
- */
-function ListSubpage<
-	TableData, // The data that will be injected in the table (e. g. Partial<UserModel>)
-	TableRow, // The column definitions for the table
-	DTO // The GRAPHQL model for operating the crud mutations (e. g. UserModel)
->({ title, createProps, tableProps }: Props<TableData, TableRow, DTO>) {
+function DetailsSubpage<QueryData, UpdateMutationData>({
+	backUrl,
+	updateDataForm: UpdateDataForm,
+	detailsRenderer: DetailsRenderer,
+	useQuery,
+	getTitle,
+}: Props<QueryData, UpdateMutationData>) {
 	const classes = useStyles()
-	return (
-		<React.Fragment>
-			<Grid container className={classes.root}>
-				<Grid className={classes.actionNavbar}>
-					{/* Add Button */}
-					<AddFloatButton {...createProps.addButton} />
-				</Grid>
+	const history = useHistory()
+	const location = useLocation()
+	const [mode, setMode] = useState<SubpageMode>(SubpageMode.VIEW_DETAILS)
 
-				{/** Table */}
-				<Table tableProps={tableProps} />
+	const handleBack = (updateMutationData: UpdateMutationData) => {
+		history.push(backUrl)
+	}
+
+	const dataId = extractIdFromLocation(location.pathname)
+
+	if (!dataId) {
+		return null // Return an error message
+	}
+
+	const { data, loading, error } = useQuery({ id: dataId })
+
+	return (
+		<Grid container className={classes.root}>
+			<Grid container className={classes.container}>
+				<DetailSubheader title={getTitle(data)} backUrl={backUrl} />
+
+				<Paper className={classes.paper}>
+					<ButtonsToggleMode mode={mode} onClick={setMode} />
+					{(mode === SubpageMode.VIEW_DETAILS ||
+						mode === SubpageMode.REMOVE_DETAILS) && (
+						<div
+							className={
+								mode === SubpageMode.REMOVE_DETAILS
+									? classes.deleteInnerContent
+									: ''
+							}
+						>
+							<DetailsRenderer data={data} loading={loading} />
+						</div>
+					)}
+					{mode === SubpageMode.UPDATE_DETAILS && (
+						<UpdateDataForm
+							data={data}
+							dataId={dataId}
+							loading={loading}
+							onSuccess={handleBack}
+						/>
+					)}
+				</Paper>
 			</Grid>
-		</React.Fragment>
+		</Grid>
 	)
 }
 
-export default ListSubpage
+export default DetailsSubpage
