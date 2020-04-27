@@ -48,3 +48,14 @@ export function useUpdateUser(
 		onCompleted,
 	})
 }
+
+type IDeleteUser = {
+	id: number
+}
+export function useDeleteUser(
+	onCompleted?: (result: { id: number }) => unknown,
+): UseMutationReturn<{ id: number }, { input: IUpdateUser }> {
+	return useMutation(mutations.deleteUser, {
+		onCompleted,
+	})
+}

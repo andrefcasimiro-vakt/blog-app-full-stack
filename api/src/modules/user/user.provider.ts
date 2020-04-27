@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@nestjs/common'
 import { CONTEXT } from '@nestjs/graphql'
 import { InjectRepository } from '@nestjs/typeorm'
 import moment from 'moment'
-import { User as UserEntity } from 'src/modules/user/user.entity'
+import { User, User as UserEntity } from 'src/modules/user/user.entity'
 import { User as UserModel } from 'src/modules/user/user.model'
 import { DeleteResult, Repository, UpdateResult, getConnection } from 'typeorm'
 
@@ -84,6 +84,7 @@ export class UserProvider {
     const result = await getConnection()
       .createQueryBuilder()
       .delete()
+      .from(User)
       .where('id = :id', { id: input.id })
       .execute()
 

@@ -1,3 +1,4 @@
+import { Button, Typography } from '@material-ui/core'
 import { DetailsFormProps, DetailsRenderer } from './details.subpage.form.props'
 import React, { useState } from 'react'
 import { useHistory, useLocation } from 'react-router'
@@ -6,9 +7,13 @@ import ButtonsToggleMode from 'shared/subpage/details.subpage.toggler'
 import DetailSubheader from 'shared/subpage/common.subpage.header'
 import { GraphqlResponse } from 'core/graphql/graphql.types'
 import Grid from '@material-ui/core/Grid/Grid'
+import Modal from 'shared/modal/modal'
 import Paper from '@material-ui/core/Paper/Paper'
+import RemoveData from './details.subpage.modal.remove'
 import { SubpageMode } from './details.subpage.constants'
+import { UseMutationReturn } from 'core/graphql/graphql.hooks'
 import { extractIdFromLocation } from 'core/router/router.utils'
+import i18n from 'core/i18n/i18n'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import theme from 'modules/app/app.theme'
 
@@ -50,23 +55,42 @@ const useStyles = makeStyles({
 	},
 })
 
-interface Props<QueryData, UpdateMutationData> {
+interface Props<
+	QueryData,
+	UpdateMutationData,
+	DeleteMutationReturn,
+	DeleteMutationInput
+> {
 	backUrl: string
 	detailsRenderer: React.FC<DetailsRenderer<QueryData>>
 	updateDataForm: React.FC<DetailsFormProps<QueryData, UpdateMutationData>>
 	useQuery: (variables: { id: number }) => GraphqlResponse<QueryData>
+	useDeleteMutation: (
+		onCompleted?: (result: DeleteMutationReturn) => unknown,
+	) => UseMutationReturn<DeleteMutationReturn, { input: DeleteMutationInput }>
 
 	// Use for extracting the title that will be used in the header
 	getTitle: (data: QueryData) => string
 }
 
-function DetailsSubpage<QueryData, UpdateMutationData>({
+function DetailsSubpage<
+	QueryData,
+	UpdateMutationData,
+	DeleteMutationReturn,
+	DeleteMutationInput
+>({
 	backUrl,
 	updateDataForm: UpdateDataForm,
 	detailsRenderer: DetailsRenderer,
+	useDeleteMutation,
 	useQuery,
 	getTitle,
-}: Props<QueryData, UpdateMutationData>) {
+}: Props<
+	QueryData,
+	UpdateMutationData,
+	DeleteMutationReturn,
+	DeleteMutationInput
+>) {
 	const classes = useStyles()
 	const history = useHistory()
 	const location = useLocation()
@@ -112,6 +136,14 @@ function DetailsSubpage<QueryData, UpdateMutationData>({
 						/>
 					)}
 				</Paper>
+				<RemoveData
+					mode={mode}
+					setMode={setMode}
+					modalTitle={i18n.t('modals.delete.modalTitle')}
+					modalContent={i18n.t('modals.delete.message')}
+					data={data}
+					useDeleteMutation={useDeleteMutation}
+				/>
 			</Grid>
 		</Grid>
 	)

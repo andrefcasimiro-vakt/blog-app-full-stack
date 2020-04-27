@@ -9,7 +9,7 @@ export class RefreshToken extends BaseEntity {
   @Column()
   hash: string
 
-  @ManyToOne(type => User)
+  @ManyToOne(type => User, { onDelete: 'CASCADE' })
   @JoinColumn()
   user: User
 

@@ -1,14 +1,18 @@
+import { useDeleteUser, useGetUserByUserId } from './user.hooks'
+
 import DetailsSubpage from 'shared/subpage/details.subpage'
 import React from 'react'
 import UpdateUserForm from './user.form.wrapper.update'
 import { User } from './user.types'
 import UserDetails from 'modules/user/user.details'
 import { urls } from 'modules/routes/routes.constants.urls'
-import { useGetUserByUserId } from './user.hooks'
+import { useHistory } from 'react-router'
 
 interface Props {}
 
 const UserPageDetail = ({}: Props) => {
+	const history = useHistory()
+
 	const getTitle = (user: User): string => {
 		if (!user) {
 			return ''
@@ -24,6 +28,12 @@ const UserPageDetail = ({}: Props) => {
 			detailsRenderer={UserDetails}
 			useQuery={useGetUserByUserId}
 			getTitle={getTitle}
+			useDeleteMutation={() =>
+				useDeleteUser(() => {
+					// On delete, redirect to urls.user
+					history.push(urls.users)
+				})
+			}
 		/>
 	)
 }

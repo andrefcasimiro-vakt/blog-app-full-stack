@@ -27,3 +27,12 @@ export const updateUser: Mutation<Partial<User>> = {
 	`,
 	selector: ['updateUser'],
 }
+
+export const deleteUser: Mutation<{ id: number }> = {
+	gql: gql`
+		mutation deleteUser($input: IDeleteUser!) {
+			deleteUser(input: $input)
+		}
+	`,
+	selector: ['deleteUser'],
+}
