@@ -5,10 +5,12 @@ import { ConfigModule } from 'src/modules/config/config.module'
 import { DatabaseModule } from 'src/modules/database/database.module'
 import { GraphQLModule } from 'src/modules/graphql/graphql.module'
 
+import { AclModule } from '../acl/acl.module'
 import { RefreshTokenModule } from '../refresh-token/refresh-token.module'
 import { UserModule } from '../user/user.module'
 
 export const moduleMappers = {
+  acl: AclModule,
   auth: AuthModule,
   blog: BlogModule,
   config: ConfigModule,
@@ -18,4 +20,15 @@ export const moduleMappers = {
   user: UserModule,
 }
 
-export type Modules = typeof AuthModule | typeof BlogModule | typeof ConfigModule | typeof DatabaseModule | typeof GraphQLModule | typeof RefreshTokenModule | typeof UserModule | DynamicModule
+export type Modules =
+  typeof AclModule
+  | typeof AuthModule
+  | typeof BlogModule
+  | typeof ConfigModule
+  | typeof DatabaseModule
+  | typeof GraphQLModule
+  | typeof RefreshTokenModule
+  | typeof UserModule
+  | DynamicModule
+
+

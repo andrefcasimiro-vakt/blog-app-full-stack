@@ -24,6 +24,7 @@ const config: Config = {
     },
   },
   modules: [
+    'acl',
     'auth',
     'blog',
     'config',
