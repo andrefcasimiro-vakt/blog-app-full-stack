@@ -26,7 +26,12 @@ export type Config = {
       accessToken: string,
       refreshToken: string,
     }
-  }
+  },
+  queue: {
+    host?: string,
+    user?: string,
+    password?: string,
+  },
   /** List of modules used in the application */
   modules: Array<string>,
 }

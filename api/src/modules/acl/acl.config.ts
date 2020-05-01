@@ -12,7 +12,6 @@ export const config = (acl: Acl) => {
     ...getUserPermissions(acl),
   )
 
-
   // Hierarchy
   promises.push(acl.addRoleParents(roles.USER, roles.ANONYMOUS))
   promises.push(acl.addRoleParents(roles.ADMIN, roles.USER))

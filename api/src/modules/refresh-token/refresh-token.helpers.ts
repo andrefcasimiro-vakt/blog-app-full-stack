@@ -1,11 +1,12 @@
 import * as crypto from 'crypto'
 
 import * as jwt from 'jsonwebtoken'
+import * as ErrorTypes from 'src/modules/error/error.constants'
 
 import { hashString } from '../bcrypt/bcrypt.helpers'
 import config from '../config/config.main'
+import InternalError from '../error/error.internal-error'
 import { User } from '../user/user.model'
-import { errors } from './refresh-token.errors'
 import { GeneratedAccessToken, RefreshToken } from './refresh-token.types'
 
 export const generateRefreshToken = async (): Promise<RefreshToken> => {
@@ -25,7 +26,7 @@ export const generateAccessToken = (payload: Partial<User>) => {
   const { id, email, role } = payload
 
   if (!id || !email || !role) {
-    throw new Error(errors.INVALID_PAYLOAD_INFORMATION)
+    throw new InternalError(ErrorTypes.generic.INTERNAL, ErrorTypes.refreshToken.INVALID_PAYLOAD_INFORMATION)
   }
 
   const jwtPayload = { id, email, role }

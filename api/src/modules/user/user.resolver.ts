@@ -13,6 +13,9 @@ import { AuthorizeAgainst } from '../acl/acl.roles-decorator'
 import { checkPassword } from '../auth/auth.helpers'
 import { AuthUser } from '../auth/auth.model'
 import { hashString } from '../bcrypt/bcrypt.helpers'
+import ConflictError from '../error/error.conflict-error'
+import { generic } from '../error/error.constants'
+import NotFoundError from '../error/error.not-found-error'
 import { CurrentUser } from '../graphql/graphql.decorator.current-user'
 import { GqlAuthGuard } from '../graphql/graphql.guard'
 import { ICreateUser, IDeleteUser, IUpdateUser } from './user.inputs'
@@ -42,7 +45,7 @@ export class UserResolver {
     const user = await this._userProvider.findById(id)
 
     if (!user) {
-      throw new NotFoundException(id)
+      throw new NotFoundError(generic.NOT_FOUND, `User with id ${id} does not exist`)
     }
 
     return user
@@ -57,7 +60,7 @@ export class UserResolver {
     const user = await this._userProvider.findByUsername(username)
 
     if (!user) {
-      throw new NotFoundException(username)
+      throw new NotFoundError(generic.NOT_FOUND, `User with username ${username} does not exist`)
     }
 
     return user
@@ -94,7 +97,7 @@ export class UserResolver {
 
     const user = await this._userProvider.findById(input.id)
     if (!user) {
-      throw new ConflictException(`User with id: ${input.id} could not be found.`)
+      throw new ConflictError(generic.CONFLICT, `User with id: ${input.id} could not be found.`)
     }
 
     // Is updating password?
@@ -158,12 +161,12 @@ export class UserResolver {
 
     const userByUsername = await this._userProvider.findByUsername(username)
     if (userByUsername) {
-      throw new ConflictException("Username is already registered")
+      throw new ConflictError(generic.CONFLICT, `Username is already registered`)
     }
 
     const userByEmail = await this._userProvider.findByEmail(email)
     if (userByEmail) {
-      throw new ConflictException("Email is already registered")
+      throw new ConflictError(generic.CONFLICT, `Email is already registered`)
     }
 
     checkPassword(password)
@@ -173,6 +176,4 @@ export class UserResolver {
     const createdUser = await this._userProvider.createUser(username, email, hashedPassword, role, isActive)
     return createdUser
   }
-
 }
-

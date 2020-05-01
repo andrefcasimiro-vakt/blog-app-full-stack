@@ -1,8 +1,8 @@
 import { NotFoundException, UseGuards } from '@nestjs/common'
 import { Query, Resolver } from '@nestjs/graphql'
+import * as ErrorTypes from 'src/modules/error/error.constants'
 import { UserProvider } from 'src/modules/user/user.provider'
 
-import { errors } from './refresh-token.errors'
 import { generateAuthTokens } from './refresh-token.helpers'
 import { RefreshToken } from './refresh-token.model'
 import { RefreshTokenProvider } from './refresh-token.provider'
@@ -24,14 +24,14 @@ export class RefreshTokenResolver {
       .findByEmail(email)
 
     if (!user) {
-      throw new NotFoundException(errors.EMAIL_NOT_FOUND)
+      throw new NotFoundException(ErrorTypes.refreshToken.EMAIL_NOT_FOUND)
     }
 
     const isMatchBetweenTokens = await this._refreshTokenProvider
       .isValidRefreshToken(user.id, refreshToken)
 
     if (!isMatchBetweenTokens) {
-      throw new NotFoundException(errors.INVALID_REFRESH_TOKEN)
+      throw new NotFoundException(ErrorTypes.refreshToken.INVALID_REFRESH_TOKEN)
     }
 
     return await generateAuthTokens(user)

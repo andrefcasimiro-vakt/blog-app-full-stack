@@ -30,8 +30,7 @@ function RemoveData<Data, DeleteMutationReturn, DeleteMutationInput>({
 	data,
 	useDeleteMutation,
 }: Props<Data, DeleteMutationReturn, DeleteMutationInput>) {
-	const { mutate, data: mutationResult, loading, error } = useDeleteMutation()
-	const { enqueueSnackbar } = useSnackbar()
+	const { mutate } = useDeleteMutation()
 
 	const handleRemove = () => {
 		mutate({ variables: { input: { id: path(['id'], data) } } })

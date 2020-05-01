@@ -21,9 +21,10 @@ export const config = {
 				: extractEnv('APP_LANGUAGE_USE_DETECTOR') || false,
 		},
 		options: {
-			/** Specifies if a logged in user should be logged out if any Authorization Error occurs */
+			/** Specifies if a logged in user should be logged out if any API Error occurs */
+			/** Should be false for Admin app */
 			logUserOutOnAuthError:
-				extractEnv('APP_OPTIONS_LOG_USER_OUT_ON_AUTH_ERROR') || true,
+				extractEnv('APP_OPTIONS_LOG_USER_OUT_ON_AUTH_ERROR') || false,
 		},
 	},
 	http: {

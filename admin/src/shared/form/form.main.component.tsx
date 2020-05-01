@@ -43,23 +43,24 @@ function Form<
 	formData,
 }: FormProps<FormData, FormSchema, MutationReturn>) {
 	const { mutate, data, loading: inProgress, error } = useMutation()
-	const { enqueueSnackbar } = useSnackbar()
+	const { enqueueSnackbar, closeSnackbar } = useSnackbar()
 
 	const handleSubmit = (formData: FormData) => {
 		mutate({ variables: { input: formData } })
 	}
 
 	if (error) {
+		closeSnackbar()
 		enqueueSnackbar(error.message, { variant: 'error' })
 	}
 
-	// Display the snackbar notification success, if successMessage is defined
 	if (data && successMessage) {
 		// If we want to handle the success message outside, pass the mutation result
 		if (typeof successMessage === 'function') {
 			successMessage(data)
 		} else {
-			// Otherwise, default to showing the success message, if it's passed in the props
+			closeSnackbar()
+
 			enqueueSnackbar(successMessage, { variant: 'success' })
 		}
 
