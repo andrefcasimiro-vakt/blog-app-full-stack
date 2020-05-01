@@ -5,19 +5,24 @@ import { Message } from 'amqplib'
 import { path } from 'ramda'
 
 import config from '../config/config.main'
+import { queue as ErrorTypes } from '../error/error.constants'
+import ValidationError from '../error/error.validation-error'
 import { Logger } from '../logger/logger.provider'
+import { workerTasks } from '../worker/worker.tasks'
+import { queues } from './queue.config'
+import { QueueTaskPayload } from './queue.types'
 
 const CHANNEL_PREFETCH = 1
 
 @Injectable()
-export class QueueProvider implements OnModuleInit, OnModuleDestroy {
+export class QueueProvider implements OnModuleDestroy {
 	private _amqp
 	private _conn: AmqpConnectionManager
 	private _channel: ChannelWrapper
 	private _messageHandler
 	private readonly _logger = new Logger()
 
-	onModuleInit() {
+	constructor() {
 		this.initialize()
 	}
 
@@ -47,7 +52,7 @@ export class QueueProvider implements OnModuleInit, OnModuleDestroy {
 				channel.assertQueue(name),
 				channel.prefetch(CHANNEL_PREFETCH),
 				channel.consume(name, this.handleMessage.bind(this), { noAck: false }),
-				this._logger.log(`Listening for messages in: ${name}`),
+				this._logger.info(`Listening for messages in: ${name}`),
 			])
 		})
 	}
@@ -79,6 +84,28 @@ export class QueueProvider implements OnModuleInit, OnModuleDestroy {
 		this._channel.sendToQueue(queue, Buffer.from(JSON.stringify(message)), { deliveryMode: true })
 
 		console.log(`Sending message to queue (${queue}): ${JSON.stringify(message)}`)
+	}
+
+	createTask(task) {
+		if (!task.type) {
+			throw new ValidationError(ErrorTypes.QUEUE_INVALID_TASK)
+		}
+
+		const tasksQueue = queues.find((queue) => queue.type === 'tasks_queue').name
+
+		return this.publishMessage(tasksQueue, task)
+	}
+
+	/**
+	 * External handler for dispatching various queues tasks
+	 */
+	dispatch<Payload>(payload: QueueTaskPayload<Payload>) {
+		switch (payload.type) {
+			case workerTasks.EMAIL_SEND:
+				return this.createTask(payload)
+			default:
+				return this.createTask(payload)
+		}
 	}
 
 	onModuleDestroy() {

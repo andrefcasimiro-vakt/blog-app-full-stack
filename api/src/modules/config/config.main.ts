@@ -22,6 +22,13 @@ const config: Config = {
 			separator: process.env.AUTH_REFRESH_TOKEN_SEPARATOR || '$',
 		},
 	},
+	email: {
+		apiKey: process.env.SENDGRID_API_KEY || '',
+		sender: {
+			email: process.env.EMAIL_SENDER_EMAIL || 'andrefcasimiro@gmail.com',
+			name: process.env.EMAIL_SENDER_NAME || 'ADMIN',
+		},
+	},
 	jwt: {
 		secret: process.env.JWT_SECRET_KEY || 'jwtSecretKey',
 		expiresIn: parseInt(process.env.JWT_EXPIRES_IN) || 1,
@@ -33,6 +40,7 @@ const config: Config = {
 		},
 	},
 	queue: {
+		enabled: process.env.QUEUE_ENABLED || true,
 		host: process.env.RABBITMQ_HOST,
 		user: process.env.RABBITMQ_USER,
 		password: process.env.RABBITMQ_PASSWORD,
@@ -40,7 +48,19 @@ const config: Config = {
 	logger: {
 		logLevel: process.env.LOGGER_LEVEL || 'info',
 	},
-	modules: [ 'acl', 'auth', 'blog', 'config', 'database', 'graphql', 'refreshToken', 'queue', 'user' ],
+	modules: [
+		'acl',
+		'auth',
+		'blog',
+		'config',
+		'database',
+		'email',
+		'graphql',
+		'refreshToken',
+		'queue',
+		'user',
+		'worker',
+	],
 }
 
 export default config

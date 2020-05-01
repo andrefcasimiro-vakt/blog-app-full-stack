@@ -8,7 +8,6 @@ const logger = winston.createLogger({
 	level: config.logger.logLevel,
 
 	format: winston.format.json(),
-	defaultMeta: { service: 'user-service' },
 	transports: [
 		new winston.transports.File({ filename: `${LOG_DIRECTORY}/error.log`, level: 'error' }),
 		// - Write all logs with level `info` and below to `combined.log`

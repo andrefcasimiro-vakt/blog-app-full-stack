@@ -6,9 +6,11 @@ import { DatabaseModule } from 'src/modules/database/database.module'
 import { GraphQLModule } from 'src/modules/graphql/graphql.module'
 
 import { AclModule } from '../acl/acl.module'
+import { EmailModule } from '../email/email.module'
 import { QueueModule } from '../queue/queue.module'
 import { RefreshTokenModule } from '../refresh-token/refresh-token.module'
 import { UserModule } from '../user/user.module'
+import { WorkerModule } from '../worker/worker.module'
 
 export const moduleMappers = {
 	acl: AclModule,
@@ -16,10 +18,12 @@ export const moduleMappers = {
 	blog: BlogModule,
 	config: ConfigModule,
 	database: DatabaseModule,
+	email: EmailModule,
 	graphql: GraphQLModule,
 	refreshToken: RefreshTokenModule,
 	queue: QueueModule,
 	user: UserModule,
+	worker: WorkerModule,
 }
 
 export type Modules =
@@ -28,8 +32,10 @@ export type Modules =
 	| typeof BlogModule
 	| typeof ConfigModule
 	| typeof DatabaseModule
+	| typeof EmailModule
 	| typeof GraphQLModule
 	| typeof RefreshTokenModule
 	| typeof QueueModule
 	| typeof UserModule
+	| typeof WorkerModule
 	| DynamicModule

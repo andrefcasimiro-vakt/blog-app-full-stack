@@ -17,6 +17,13 @@ export type Config = {
 			separator: string
 		}
 	}
+	email: {
+		apiKey: string
+		sender: {
+			email: string
+			name: string
+		}
+	}
 	/** JWT configuration */
 	jwt: {
 		/** The jwt secret used to sign a JWT token */
@@ -31,6 +38,7 @@ export type Config = {
 		}
 	}
 	queue: {
+		enabled?: string | boolean
 		host?: string
 		user?: string
 		password?: string
