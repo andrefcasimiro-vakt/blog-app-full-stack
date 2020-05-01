@@ -1635,3 +1635,39 @@
 {"message":"Sending e-mail via sendgrid...","level":"info"}
 {"message":"Error sending e-mail, \u001b[31mForbidden (403)\u001b[39m\n  \u001b[33mThe from address does not match a verified Sender Identity. Mail cannot be sent until this error is resolved. Visit https://sendgrid.com/docs/for-developers/sending-email/sender-identity/ to see the Sender Identity requirements\u001b[39m\n    \u001b[90mfrom\u001b[39m\n    \u001b[90mnull\u001b[39m","level":"error"}
 {"message":"👊 Done executing task EMAIL_SEND (qICcLNIEj)","level":"info"}
+{"message":"Starting Nest application...","level":"info"}
+{"message":"AppModule dependencies initialized","level":"info"}
+{"message":"AclModule dependencies initialized","level":"info"}
+{"message":"QueueModule dependencies initialized","level":"info"}
+{"message":"PassportModule dependencies initialized","level":"info"}
+{"message":"BlogModule dependencies initialized","level":"info"}
+{"message":"ConfigModule dependencies initialized","level":"info"}
+{"message":"DatabaseModule dependencies initialized","level":"info"}
+{"message":"TypeOrmModule dependencies initialized","level":"info"}
+{"message":"EmailModule dependencies initialized","level":"info"}
+{"message":"GraphQLModule dependencies initialized","level":"info"}
+{"message":"JwtModule dependencies initialized","level":"info"}
+{"message":"Attaching custom queue message handler","level":"info"}
+{"message":"== > 👷 Worker has started...","level":"info"}
+{"message":"ConfigHostModule dependencies initialized","level":"info"}
+{"message":"WorkerModule dependencies initialized","level":"info"}
+{"message":"ConfigModule dependencies initialized","level":"info"}
+{"message":"GraphQLSchemaBuilderModule dependencies initialized","level":"info"}
+{"message":"GraphQLModule dependencies initialized","level":"info"}
+{"message":"Listening for messages in: tasks_queue","level":"info"}
+{"message":"TypeOrmCoreModule dependencies initialized","level":"info"}
+{"message":"TypeOrmModule dependencies initialized","level":"info"}
+{"message":"TypeOrmModule dependencies initialized","level":"info"}
+{"message":"RefreshTokenModule dependencies initialized","level":"info"}
+{"message":"AuthModule dependencies initialized","level":"info"}
+{"message":"UserModule dependencies initialized","level":"info"}
+{"message":"Nest application successfully started","level":"info"}
+{"message":"== > 1588370540675 :: 👷 Started executing task EMAIL_SEND (ot83nojSl)...","level":"info"}
+{"message":"\n        to: andrefcasimiro@gmail.com\n        from: andrefcasimiro@gmail.com\n        subject: Welcome, andre!\n      ","level":"info"}
+{"message":"Sending e-mail via sendgrid...","level":"info"}
+{"message":"Error sending e-mail, \u001b[31mForbidden (403)\u001b[39m\n  \u001b[33mThe from address does not match a verified Sender Identity. Mail cannot be sent until this error is resolved. Visit https://sendgrid.com/docs/for-developers/sending-email/sender-identity/ to see the Sender Identity requirements\u001b[39m\n    \u001b[90mfrom\u001b[39m\n    \u001b[90mnull\u001b[39m","level":"error"}
+{"message":"👊 Done executing task EMAIL_SEND (ot83nojSl)","level":"info"}
+{"message":"== > 1588370732818 :: 👷 Started executing task EMAIL_SEND (nqcySa5aj)...","level":"info"}
+{"message":"\n        to: andrefcasimiro@gmail.com\n        from: andrefcasimiro@gmail.com\n        subject: Welcome, andrefcasimiro@gmail.com!\n      ","level":"info"}
+{"message":"Sending e-mail via sendgrid...","level":"info"}
+{"message":"👊 Done executing task EMAIL_SEND (nqcySa5aj)","level":"info"}
