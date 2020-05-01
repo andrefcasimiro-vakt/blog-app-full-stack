@@ -1,6 +1,15 @@
+import dotenv from 'dotenv'
+
 import { Config } from './config.types'
 
+dotenv.config()
+
+const DEFAULT_PORT = 8080
+
 const config: Config = {
+	app: {
+		port: parseInt(process.env.PORT) || DEFAULT_PORT,
+	},
 	auth: {
 		password: {
 			minimumLength: parseInt(process.env.PASSWORD_MINIMUM_LENGTH) || 6,
@@ -27,6 +36,9 @@ const config: Config = {
 		host: process.env.RABBITMQ_HOST,
 		user: process.env.RABBITMQ_USER,
 		password: process.env.RABBITMQ_PASSWORD,
+	},
+	logger: {
+		logLevel: process.env.LOGGER_LEVEL || 'info',
 	},
 	modules: [ 'acl', 'auth', 'blog', 'config', 'database', 'graphql', 'refreshToken', 'queue', 'user' ],
 }

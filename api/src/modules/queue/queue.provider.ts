@@ -5,6 +5,7 @@ import { Message } from 'amqplib'
 import { path } from 'ramda'
 
 import config from '../config/config.main'
+import { Logger } from '../logger/logger.provider'
 
 const CHANNEL_PREFETCH = 1
 
@@ -14,6 +15,7 @@ export class QueueProvider implements OnModuleInit, OnModuleDestroy {
 	private _conn: AmqpConnectionManager
 	private _channel: ChannelWrapper
 	private _messageHandler
+	private readonly _logger = new Logger()
 
 	onModuleInit() {
 		this.initialize()
@@ -28,6 +30,7 @@ export class QueueProvider implements OnModuleInit, OnModuleDestroy {
 	getConnectionString(): string {
 		if (path([ 'queue', 'host' ], config)) {
 			const { user, password, host } = config.queue
+
 			return `amqp://${user}:${password}@${host}`
 		}
 
@@ -35,7 +38,7 @@ export class QueueProvider implements OnModuleInit, OnModuleDestroy {
 	}
 
 	defaultMessageHandler(body, metadata) {
-		console.info({ body, metadata }, `Queue ${metadata.routingKey} received a message`)
+		this._logger.info(`Queue ${metadata.routingKey} received a message`)
 	}
 
 	consumeQueue(name: string) {
@@ -44,7 +47,7 @@ export class QueueProvider implements OnModuleInit, OnModuleDestroy {
 				channel.assertQueue(name),
 				channel.prefetch(CHANNEL_PREFETCH),
 				channel.consume(name, this.handleMessage.bind(this), { noAck: false }),
-				console.log(`Listening for messages in: ${name}`),
+				this._logger.log(`Listening for messages in: ${name}`),
 			])
 		})
 	}
