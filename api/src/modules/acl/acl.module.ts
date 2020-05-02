@@ -1,15 +1,10 @@
-import { Module } from "@nestjs/common";
+import { Module } from '@nestjs/common'
 
-import { AclProvider } from "./acl.provider";
+import { AclProvider } from './acl.provider'
 
 @Module({
-  imports: [
-  ],
-  providers: [
-    AclProvider,
-  ],
-  exports: [
-    AclProvider,
-  ]
+	imports: [],
+	providers: [ AclProvider ],
+	exports: [ AclProvider ],
 })
-export class AclModule { }
+export class AclModule {}

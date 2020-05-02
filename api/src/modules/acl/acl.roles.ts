@@ -1,12 +1,12 @@
-import { UserRole } from "../user/user.enum";
+import { UserRole } from '../user/user.enum'
 
 export const roles = {
-  /** Requests without jwt */
-  ANONYMOUS: UserRole.ANONYMOUS,
+	/** Requests without jwt */
+	ANONYMOUS: UserRole.ANONYMOUS,
 
-  /** Users with an account */
-  USER: UserRole.USER,
+	/** Users with an account */
+	USER: UserRole.USER,
 
-  /** Administrators */
-  ADMIN: UserRole.ADMIN,
+	/** Administrators */
+	ADMIN: UserRole.ADMIN,
 }

@@ -2,12 +2,11 @@ import { CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } fr
 
 @Entity()
 export class BaseEntity {
-  @PrimaryGeneratedColumn()
-  id: number
+	@PrimaryGeneratedColumn() id: number
 
-  @CreateDateColumn({ type: 'timestamp' })
-  createdAt: Date
+	@CreateDateColumn({ type: 'timestamp' })
+	createdAt: Date
 
-  @UpdateDateColumn({ type: 'timestamp' })
-  updatedAt: Date
+	@UpdateDateColumn({ type: 'timestamp' })
+	updatedAt: Date
 }

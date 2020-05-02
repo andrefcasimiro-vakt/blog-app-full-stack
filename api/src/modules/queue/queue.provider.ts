@@ -1,4 +1,4 @@
-import { OnModuleDestroy, OnModuleInit } from '@nestjs/common'
+import { OnModuleDestroy } from '@nestjs/common'
 import { Injectable } from '@nestjs/common/decorators/core/injectable.decorator'
 import amqp, { AmqpConnectionManager, ChannelWrapper } from 'amqp-connection-manager'
 import { Message } from 'amqplib'
@@ -99,7 +99,7 @@ export class QueueProvider implements OnModuleDestroy {
 	/**
 	 * External handler for dispatching various queues tasks
 	 */
-	dispatch<Payload>(payload: QueueTaskPayload<Payload>) {
+	dispatch<T>(payload: QueueTaskPayload<T>) {
 		switch (payload.type) {
 			case workerTasks.EMAIL_SEND:
 				return this.createTask(payload)

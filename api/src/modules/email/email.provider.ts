@@ -1,4 +1,4 @@
-import { Injectable, OnModuleInit } from '@nestjs/common'
+import { Injectable } from '@nestjs/common'
 import sendgrid from '@sendgrid/mail'
 
 import config from '../config/config.main'

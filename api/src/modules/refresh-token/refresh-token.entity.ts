@@ -5,12 +5,9 @@ import { User } from '../user/user.entity'
 
 @Entity()
 export class RefreshToken extends BaseEntity {
+	@Column() hash: string
 
-  @Column()
-  hash: string
-
-  @ManyToOne(type => User, { onDelete: 'CASCADE' })
-  @JoinColumn()
-  user: User
-
+	@ManyToOne((type) => User, { onDelete: 'CASCADE' })
+	@JoinColumn()
+	user: User
 }

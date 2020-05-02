@@ -1,5 +1,4 @@
 import { LoggerService } from '@nestjs/common'
-import { LogCallback } from 'winston'
 
 import logger from './logger.winston'
 

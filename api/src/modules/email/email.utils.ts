@@ -1,6 +1,5 @@
 import config from '../config/config.main'
 import { User } from '../user/user.entity'
-import userRepository from '../user/user.repository'
 import { getAccountCreatedInfo } from './email.action.account-created'
 import { getForgottenPasswordInfo } from './email.action.forgotten-password'
 import { EmailTypeEnum } from './email.email-types'
@@ -16,7 +15,7 @@ export const getContent = (type, payload) => {
 	}
 }
 
-export const getMessage = async (type, payload, content) => {
+export const getMessage = (type, payload, content) => {
 	switch (type) {
 		case EmailTypeEnum.ACCOUNT_CREATED: {
 			const user: Partial<User> = content

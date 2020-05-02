@@ -1,4 +1,4 @@
-import { Injectable, OnModuleDestroy, OnModuleInit } from '@nestjs/common'
+import { Injectable, OnModuleDestroy } from '@nestjs/common'
 import * as shortid from 'shortid'
 
 import config from '../config/config.main'
@@ -7,8 +7,6 @@ import { Logger } from '../logger/logger.provider'
 import { queues } from '../queue/queue.config'
 import { QueueProvider } from '../queue/queue.provider'
 import { workerTasks } from './worker.tasks'
-
-const QUEUE_NAME = `tasks_queue`
 
 @Injectable()
 export class WorkerProvider implements OnModuleDestroy {
@@ -41,8 +39,7 @@ export class WorkerProvider implements OnModuleDestroy {
 		this._queueProvider.setMessageHandler(this.handleMessage)
 
 		this._logger.info(`Attaching custom queue message handler`)
-
-		this._logger.info(`== > 👷 Worker has started...`)
+		this._logger.info(`==>👷 Worker has started...`)
 
 		return Promise.resolve()
 	}
@@ -51,7 +48,7 @@ export class WorkerProvider implements OnModuleDestroy {
 		process.removeAllListeners(`SIGINT`)
 		process.removeAllListeners(`SIGTERM`)
 
-		this._logger.info(`==> 👷 Stopping worker.`)
+		this._logger.info(`==>👷 Stopping worker.`)
 		process.exit(0)
 	}
 
@@ -70,8 +67,6 @@ export class WorkerProvider implements OnModuleDestroy {
 			this._logger.warn(`Ignoring tasks by config`)
 		}
 
-		console.log(' this.tasks(): ', this.tasks)
-
 		const tasksResolver = this.tasks()[type] as unknown
 
 		if (!tasksResolver || typeof tasksResolver !== 'function') {
@@ -83,8 +78,7 @@ export class WorkerProvider implements OnModuleDestroy {
 		const taskId = shortid.generate()
 		const startTime = Date.now()
 		const taskString = `${type} (${taskId})`
-
-		this._logger.info(`== > ${startTime} :: 👷 Started executing task ${taskString}...`)
+		this._logger.info(`== > ${startTime}::👷 Started executing task ${taskString}...`)
 
 		try {
 			await tasksResolver(payload)

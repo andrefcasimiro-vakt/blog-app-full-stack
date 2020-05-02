@@ -1,4 +1,4 @@
-import { ConflictException, NotFoundException, UseGuards } from '@nestjs/common'
+import { UseGuards } from '@nestjs/common'
 import { Args, Context, Int, Mutation, Query, Resolver } from '@nestjs/graphql'
 import { equals, isEmpty, reject } from 'ramda'
 import { User } from 'src/modules/user/user.model'
@@ -20,7 +20,6 @@ import NotFoundError from '../error/error.not-found-error'
 import { CurrentUser } from '../graphql/graphql.decorator.current-user'
 import { GqlAuthGuard } from '../graphql/graphql.guard'
 import { QueueProvider } from '../queue/queue.provider'
-import { workerTasks } from '../worker/worker.tasks'
 import { ICreateUser, IDeleteUser, IUpdateUser } from './user.inputs'
 
 @Resolver((of) => User)

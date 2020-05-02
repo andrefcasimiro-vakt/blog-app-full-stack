@@ -5,16 +5,13 @@ import { getUserPermissions } from './acl.permissions.user'
 import { roles } from './acl.roles'
 
 export const config = (acl: Acl) => {
-  const promises = []
+	const promises = []
 
-  promises.push(
-    ...getPostsPermissions(acl),
-    ...getUserPermissions(acl),
-  )
+	promises.push(...getPostsPermissions(acl), ...getUserPermissions(acl))
 
-  // Hierarchy
-  promises.push(acl.addRoleParents(roles.USER, roles.ANONYMOUS))
-  promises.push(acl.addRoleParents(roles.ADMIN, roles.USER))
+	// Hierarchy
+	promises.push(acl.addRoleParents(roles.USER, roles.ANONYMOUS))
+	promises.push(acl.addRoleParents(roles.ADMIN, roles.USER))
 
-  return Promise.all(promises)
+	return Promise.all(promises)
 }

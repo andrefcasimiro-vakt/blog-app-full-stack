@@ -1,6 +1,6 @@
-import { WorkerTasksTypes, workerTasks } from '../worker/worker.tasks'
+import { WorkerTasksTypes } from '../worker/worker.tasks'
 
-export interface QueueTaskPayload<Payload> {
+export interface QueueTaskPayload<T> {
 	type: WorkerTasksTypes
-	payload: Payload
+	payload: T
 }

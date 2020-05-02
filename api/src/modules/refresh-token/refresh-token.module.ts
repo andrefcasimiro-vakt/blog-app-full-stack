@@ -5,18 +5,9 @@ import { RefreshToken } from './refresh-token.entity'
 import { RefreshTokenProvider } from './refresh-token.provider'
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([RefreshToken]),
-  ],
-  exports: [
-    RefreshTokenProvider,
-  ],
-  providers: [
-    RefreshTokenProvider,
-    RefreshTokenProvider,
-  ],
-  controllers: [
-
-  ],
+	imports: [ TypeOrmModule.forFeature([ RefreshToken ]) ],
+	exports: [ RefreshTokenProvider ],
+	providers: [ RefreshTokenProvider, RefreshTokenProvider ],
+	controllers: [],
 })
-export class RefreshTokenModule { }
+export class RefreshTokenModule {}

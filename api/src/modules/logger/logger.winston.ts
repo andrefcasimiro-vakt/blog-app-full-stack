@@ -1,4 +1,4 @@
-import winston, { addColors } from 'winston'
+import winston from 'winston'
 
 import config from '../config/config.main'
 
@@ -14,9 +14,6 @@ const logger = winston.createLogger({
 		new winston.transports.File({ filename: `${LOG_DIRECTORY}/combined-log.log` }),
 	],
 })
-
-// If we are not in production, log to the `console` with the format:
-// `${info.level}: ${info.message} JSON.stringify({ ...rest })`
 
 const alignedWithColorsAndTime = winston.format.combine(
 	winston.format.colorize(),
