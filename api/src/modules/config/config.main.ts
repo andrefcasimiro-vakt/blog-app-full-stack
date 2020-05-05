@@ -8,11 +8,13 @@ const DEFAULT_PORT = 8080
 
 const config: Config = {
 	app: {
+		clientUri: process.env.CLIENT_URI || `http://localhost:3000`,
 		port: parseInt(process.env.PORT) || DEFAULT_PORT,
 	},
 	auth: {
 		password: {
 			minimumLength: parseInt(process.env.PASSWORD_MINIMUM_LENGTH) || 6,
+			resetPasswordMinimumLength: parseInt(process.env.PASSWORD_RESET_MINIMUM_LENGTH) || 32,
 		},
 		pepper: process.env.PEPPER_STRING || 'long_enough_random_string',
 		saltRounds: parseInt(process.env.SALT_ROUNDS) || 10,
@@ -59,6 +61,7 @@ const config: Config = {
 		'refreshToken',
 		'queue',
 		'user',
+		'resetPassword',
 		'worker',
 	],
 }

@@ -3,9 +3,9 @@ import sendgrid from '@sendgrid/mail'
 
 import config from '../config/config.main'
 import { Logger } from '../logger/logger.provider'
+import templateBuilder from './email.builder'
 import { EmailType } from './email.email-types'
-import templateBuilder from './email.template.builder'
-import { getContent, getMessage } from './email.utils'
+import { getMessage } from './email.utils'
 
 interface EmailPayload {
 	type: EmailType
@@ -36,10 +36,9 @@ export default class EmailProvider {
 	}
 
 	async generateContent({ type, ...payload }: EmailPayload) {
-		const content = await getContent(type, payload)
-		const message = await getMessage(type, payload, content)
+		const message = (await getMessage(type, payload)) as any
 
-		const template = templateBuilder.prepareTemplate({ type, payload, content })
+		const template = templateBuilder.prepareTemplate({ type, payload })
 		message.html = template.html
 		return message
 	}

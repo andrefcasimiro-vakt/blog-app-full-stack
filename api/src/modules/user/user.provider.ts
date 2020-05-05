@@ -7,7 +7,7 @@ import { User as UserModel } from 'src/modules/user/user.model'
 import { DeleteResult, Repository, UpdateResult, getConnection } from 'typeorm'
 
 import { UserRole } from './user.enum'
-import { IDeleteUser, IUpdateUser } from './user.inputs'
+import { IDeleteUser, IUpdateUser } from './user.input'
 
 @Injectable()
 export class UserProvider {

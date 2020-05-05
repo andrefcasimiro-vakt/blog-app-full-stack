@@ -8,9 +8,7 @@ import config from '../config/config.main'
 import { queue as ErrorTypes } from '../error/error.constants'
 import ValidationError from '../error/error.validation-error'
 import { Logger } from '../logger/logger.provider'
-import { workerTasks } from '../worker/worker.tasks'
 import { queues } from './queue.config'
-import { QueueTaskPayload } from './queue.types'
 
 const CHANNEL_PREFETCH = 1
 
@@ -94,18 +92,6 @@ export class QueueProvider implements OnModuleDestroy {
 		const tasksQueue = queues.find((queue) => queue.type === 'tasks_queue').name
 
 		return this.publishMessage(tasksQueue, task)
-	}
-
-	/**
-	 * External handler for dispatching various queues tasks
-	 */
-	dispatch<T>(payload: QueueTaskPayload<T>) {
-		switch (payload.type) {
-			case workerTasks.EMAIL_SEND:
-				return this.createTask(payload)
-			default:
-				return this.createTask(payload)
-		}
 	}
 
 	onModuleDestroy() {

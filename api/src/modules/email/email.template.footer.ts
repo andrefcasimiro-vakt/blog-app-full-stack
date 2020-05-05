@@ -14,13 +14,15 @@ const footer = `
     padding-right="20%"
     text-align="center"
   >
-    <mj-text
-      align="center"
-      color="${colors.COLUMN_TEXT}"
-      font-size="11px"
-    >
-      ${FOOTER_TEXT}
-    </mj-text>
+    <mj-column>
+      <mj-text
+        align="center"
+        color="${colors.COLUMN_TEXT}"
+        font-size="11px"
+      >
+        ${FOOTER_TEXT}
+      </mj-text>
+    </mj-column>
   </mj-section>
 
 `

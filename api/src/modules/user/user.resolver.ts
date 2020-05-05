@@ -13,21 +13,22 @@ import { AuthorizeAgainst } from '../acl/acl.roles-decorator'
 import { checkPassword } from '../auth/auth.helpers'
 import { AuthUser } from '../auth/auth.model'
 import { hashString } from '../bcrypt/bcrypt.helpers'
-import { EmailTypeEnum } from '../email/email.email-types'
+import { AccountCreatedPayload, EmailTypeEnum } from '../email/email.email-types'
 import ConflictError from '../error/error.conflict-error'
 import { generic } from '../error/error.constants'
 import NotFoundError from '../error/error.not-found-error'
 import { CurrentUser } from '../graphql/graphql.decorator.current-user'
 import { GqlAuthGuard } from '../graphql/graphql.guard'
-import { QueueProvider } from '../queue/queue.provider'
-import { ICreateUser, IDeleteUser, IUpdateUser } from './user.inputs'
+import { WorkerProvider } from '../worker/worker.provider'
+import { ICreateUser, IDeleteUser, IUpdateUser } from './user.input'
+import { omitPassword } from './user.utils'
 
 @Resolver((of) => User)
 export class UserResolver {
 	constructor(
 		private readonly _aclProvider: AclProvider,
 		private readonly _userProvider: UserProvider,
-		private readonly _queueProvider: QueueProvider,
+		private readonly _workerProvider: WorkerProvider,
 	) {}
 
 	@UseGuards(AclGuard)
@@ -160,12 +161,12 @@ export class UserResolver {
 
 		const createdUser = await this._userProvider.createUser(username, email, hashedPassword, role, isActive)
 
-		// Send email
-		this._queueProvider.dispatch<{ type: string } & User>({
+		// Send account created email
+		this._workerProvider.dispatch<AccountCreatedPayload>({
 			type: 'EMAIL_SEND',
 			payload: {
 				type: EmailTypeEnum.ACCOUNT_CREATED,
-				...createdUser,
+				data: omitPassword(createdUser),
 			},
 		})
 

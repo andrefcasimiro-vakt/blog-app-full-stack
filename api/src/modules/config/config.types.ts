@@ -1,12 +1,14 @@
 /** API configurations */
 export type Config = {
 	app: {
+		clientUri: string
 		port: number
 	}
 	/** Auth */
 	auth: {
 		password: {
 			minimumLength: number
+			resetPasswordMinimumLength: number
 		}
 		/** String used to pepperify hash strings */
 		pepper: string

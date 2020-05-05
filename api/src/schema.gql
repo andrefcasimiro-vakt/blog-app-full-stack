@@ -22,6 +22,10 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
+input ICreateResetPasswordCode {
+  email: String!
+}
+
 input ICreateUser {
   username: String
   email: String
@@ -53,6 +57,7 @@ type Mutation {
   deleteUser(input: IDeleteUser!): Boolean!
   createUser(input: ICreateUser!): User!
   login(input: ILogin!): AuthResponse!
+  createResetPasswordCode(input: ICreateResetPasswordCode!): ResetPasswordModel!
 }
 
 type Query {
@@ -60,6 +65,13 @@ type Query {
   getUserById(id: Int!): User!
   getUserByUsername(username: String!): User!
   listUsers: [User!]!
+}
+
+type ResetPasswordModel {
+  id: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  code: String!
 }
 
 type User {

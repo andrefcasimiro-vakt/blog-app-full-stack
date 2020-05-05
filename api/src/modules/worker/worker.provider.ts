@@ -4,9 +4,11 @@ import * as shortid from 'shortid'
 import config from '../config/config.main'
 import EmailProvider from '../email/email.provider'
 import { Logger } from '../logger/logger.provider'
+import logger from '../logger/logger.winston'
 import { queues } from '../queue/queue.config'
 import { QueueProvider } from '../queue/queue.provider'
 import { workerTasks } from './worker.tasks'
+import { WorkerTaskPayload } from './worker.types'
 
 @Injectable()
 export class WorkerProvider implements OnModuleDestroy {
@@ -17,11 +19,14 @@ export class WorkerProvider implements OnModuleDestroy {
 
 		this.tasks = this.tasks.bind(this)
 		this.handleMessage = this.handleMessage.bind(this)
+		this.dispatch = this.dispatch.bind(this)
 	}
 
 	static fatal(err: Error) {
 		process.removeAllListeners(`uncaughtException`)
 		process.removeAllListeners(`unhandledRejection`)
+
+		logger.log('error', `Error: ${err.name}, Message: ${err.message}, Stack: ${err.stack}`)
 	}
 
 	onModuleDestroy() {
@@ -52,11 +57,21 @@ export class WorkerProvider implements OnModuleDestroy {
 		process.exit(0)
 	}
 
-	tasks(): Record<string, any> {
-		const { EMAIL_SEND } = workerTasks
+	/**
+	 * Handler used to receive dispatched worker actions
+	 */
+	dispatch<T>(taskPayload: WorkerTaskPayload<T>) {
+		switch (taskPayload.type) {
+			case workerTasks.EMAIL_SEND:
+				return this._queueProvider.createTask(taskPayload)
+			default:
+				return this._queueProvider.createTask(taskPayload)
+		}
+	}
 
+	tasks(): Record<string, any> {
 		return {
-			[EMAIL_SEND]: this._emailProvider.send,
+			[workerTasks.EMAIL_SEND]: this._emailProvider.send,
 		}
 	}
 

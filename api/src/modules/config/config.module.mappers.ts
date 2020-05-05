@@ -9,6 +9,7 @@ import { AclModule } from '../acl/acl.module'
 import { EmailModule } from '../email/email.module'
 import { QueueModule } from '../queue/queue.module'
 import { RefreshTokenModule } from '../refresh-token/refresh-token.module'
+import { ResetPasswordModule } from '../reset-password/reset-password.module'
 import { UserModule } from '../user/user.module'
 import { WorkerModule } from '../worker/worker.module'
 
@@ -23,6 +24,7 @@ export const moduleMappers = {
 	refreshToken: RefreshTokenModule,
 	queue: QueueModule,
 	user: UserModule,
+	resetPassword: ResetPasswordModule,
 	worker: WorkerModule,
 }
 
@@ -37,5 +39,6 @@ export type Modules =
 	| typeof RefreshTokenModule
 	| typeof QueueModule
 	| typeof UserModule
+	| typeof ResetPasswordModule
 	| typeof WorkerModule
 	| DynamicModule

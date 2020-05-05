@@ -1,3 +1,4 @@
+import { AccountCreatedPayload } from './email.email-types'
 import attributes from './email.template.attributes'
 import footer from './email.template.footer'
 
@@ -5,11 +6,7 @@ const colors = {
 	SECTION_BACKGROUND: '#f5f6f8',
 }
 
-interface AccountCreatedProps {
-	username: string
-}
-
-const accountCreatedTemplate = ({ username }: Partial<AccountCreatedProps>) => `
+const accountCreatedTemplate = (payload: AccountCreatedPayload) => `
   <mjml>
     <mj-head>${attributes}</mj-head>
     <mj-body>
@@ -24,11 +21,11 @@ const accountCreatedTemplate = ({ username }: Partial<AccountCreatedProps>) => `
 
       <mj-section
         text-align="center"
-        full-width
+        full-width="full-width"
       >
         <mj-column>
           <mj-text>
-            Welcome, ${username}, <br /><br />
+            Welcome, ${payload.data.username}, <br /><br />
             
             Your account was created successfuly.<br /><br />
 
